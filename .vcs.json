@@ -1,88 +1,158 @@
 [
-  {"type":"directory","name":"packages/","contents":[
-    {"type":"directory","name":"burner-plugin","contents":[
-      {"type":"file","name":"README.md"},
-      {"type":"file","name":"package.json"},
-      {"type":"directory","name":"src","contents":[
-        {"type":"file","name":"MooniPlugin.ts"},
-        {"type":"directory","name":"ui","contents":[
-          {"type":"file","name":"MooniElement.tsx"},
-          {"type":"file","name":"MooniPage.tsx"}
-        ]}
-      ]},
-      {"type":"file","name":"tsconfig.json"}
-    ]},
-    {"type":"directory","name":"burner-wallet","contents":[
-      {"type":"file","name":"README.md"},
-      {"type":"file","name":"now.json"},
-      {"type":"file","name":"package.json"},
-      {"type":"directory","name":"public","contents":[
-        {"type":"file","name":"favicon.ico"},
-        {"type":"file","name":"index.html"},
-        {"type":"file","name":"logo512.png"},
-        {"type":"file","name":"manifest.json"}
-      ]},
-      {"type":"directory","name":"src","contents":[
-        {"type":"file","name":"index.tsx"},
-        {"type":"file","name":"react-app-env.d.ts"}
-      ]},
-      {"type":"file","name":"tsconfig.json"}
-    ]},
-    {"type":"directory","name":"example-host","contents":[
-      {"type":"file","name":"now.json"},
-      {"type":"file","name":"package.json"},
-      {"type":"directory","name":"public","contents":[
-        {"type":"file","name":"index.html"}
-      ]},
-      {"type":"directory","name":"src","contents":[
-        {"type":"file","name":"App.css"},
-        {"type":"file","name":"App.js"},
-        {"type":"file","name":"index.js"}
-      ]},
-      {"type":"file","name":"yarn.lock"}
-    ]},
-    {"type":"directory","name":"reporting","contents":[
-      {"type":"file","name":"package.json"},
-      {"type":"directory","name":"src","contents":[
-        {"type":"file","name":"config.ts"},
-        {"type":"file","name":"csv.ts"},
-        {"type":"file","name":"index.ts"},
-        {"type":"file","name":"orderHistory.ts"},
-        {"type":"file","name":"orderHistory_bityExtract.ts"},
-        {"type":"file","name":"reporter.ts"},
-        {"type":"file","name":"reports.ts"},
-        {"type":"file","name":"utils.ts"}
-      ]},
-      {"type":"file","name":"tsconfig.json"},
-      {"type":"file","name":"yarn.lock"}
-    ]},
-    {"type":"directory","name":"widget-sdk","contents":[
-      {"type":"directory","name":"@types","contents":[
-        {"type":"file","name":"url-parse.d.ts"}
-      ]},
-      {"type":"file","name":"README.md"},
-      {"type":"directory","name":"example","contents":[
-        {"type":"directory","name":"cjs","contents":[
-          {"type":"file","name":"index.html"},
-          {"type":"file","name":"index.js"}
-        ]},
-        {"type":"directory","name":"es","contents":[
-          {"type":"file","name":"index.html"},
-          {"type":"file","name":"index.js"}
-        ]},
-        {"type":"directory","name":"umd","contents":[
-          {"type":"file","name":"index.html"}
-        ]}
-      ]},
-      {"type":"file","name":"package.json"},
-      {"type":"directory","name":"src","contents":[
-        {"type":"file","name":"index.ts"},
-        {"type":"file","name":"modalStyles.ts"}
-      ]},
-      {"type":"file","name":"tsconfig.json"},
-      {"type":"file","name":"webpack.config.js"},
-      {"type":"file","name":"yarn.lock"}
-    ]}
-  ]},
-  {"type":"report","directories":18,"files":47}
+  {
+    "type": "directory",
+    "name": "packages/",
+    "contents": [
+      {
+        "type": "directory",
+        "name": "burner-plugin",
+        "contents": [
+          { "type": "file", "name": "README.md" },
+          { "type": "file", "name": "package.json" },
+          {
+            "type": "directory",
+            "name": "src",
+            "contents": [
+              { "type": "file", "name": "MooniPlugin.ts" },
+              {
+                "type": "directory",
+                "name": "ui",
+                "contents": [
+                  { "type": "file", "name": "MooniElement.tsx" },
+                  { "type": "file", "name": "MooniPage.tsx" }
+                ]
+              }
+            ]
+          },
+          { "type": "file", "name": "tsconfig.json" }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "burner-wallet",
+        "contents": [
+          { "type": "file", "name": "README.md" },
+          { "type": "file", "name": "now.json" },
+          { "type": "file", "name": "package.json" },
+          {
+            "type": "directory",
+            "name": "public",
+            "contents": [
+              { "type": "file", "name": "favicon.ico" },
+              { "type": "file", "name": "index.html" },
+              { "type": "file", "name": "logo512.png" },
+              { "type": "file", "name": "manifest.json" }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "src",
+            "contents": [
+              { "type": "file", "name": "index.tsx" },
+              { "type": "file", "name": "react-app-env.d.ts" }
+            ]
+          },
+          { "type": "file", "name": "tsconfig.json" }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "example-host",
+        "contents": [
+          { "type": "file", "name": "now.json" },
+          { "type": "file", "name": "package.json" },
+          {
+            "type": "directory",
+            "name": "public",
+            "contents": [{ "type": "file", "name": "index.html" }]
+          },
+          {
+            "type": "directory",
+            "name": "src",
+            "contents": [
+              { "type": "file", "name": "App.css" },
+              { "type": "file", "name": "App.js" },
+              { "type": "file", "name": "index.js" }
+            ]
+          },
+          { "type": "file", "name": "yarn.lock" }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "reporting",
+        "contents": [
+          { "type": "file", "name": "package.json" },
+          {
+            "type": "directory",
+            "name": "src",
+            "contents": [
+              { "type": "file", "name": "config.ts" },
+              { "type": "file", "name": "csv.ts" },
+              { "type": "file", "name": "index.ts" },
+              { "type": "file", "name": "orderHistory.ts" },
+              { "type": "file", "name": "orderHistory_bityExtract.ts" },
+              { "type": "file", "name": "reporter.ts" },
+              { "type": "file", "name": "reports.ts" },
+              { "type": "file", "name": "utils.ts" }
+            ]
+          },
+          { "type": "file", "name": "tsconfig.json" },
+          { "type": "file", "name": "yarn.lock" }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "widget-sdk",
+        "contents": [
+          {
+            "type": "directory",
+            "name": "@types",
+            "contents": [{ "type": "file", "name": "url-parse.d.ts" }]
+          },
+          { "type": "file", "name": "README.md" },
+          {
+            "type": "directory",
+            "name": "example",
+            "contents": [
+              {
+                "type": "directory",
+                "name": "cjs",
+                "contents": [
+                  { "type": "file", "name": "index.html" },
+                  { "type": "file", "name": "index.js" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "es",
+                "contents": [
+                  { "type": "file", "name": "index.html" },
+                  { "type": "file", "name": "index.js" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "umd",
+                "contents": [{ "type": "file", "name": "index.html" }]
+              }
+            ]
+          },
+          { "type": "file", "name": "package.json" },
+          {
+            "type": "directory",
+            "name": "src",
+            "contents": [
+              { "type": "file", "name": "index.ts" },
+              { "type": "file", "name": "modalStyles.ts" }
+            ]
+          },
+          { "type": "file", "name": "tsconfig.json" },
+          { "type": "file", "name": "webpack.config.js" },
+          { "type": "file", "name": "yarn.lock" }
+        ]
+      }
+    ]
+  },
+  { "type": "report", "directories": 18, "files": 47 }
 ]

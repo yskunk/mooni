@@ -25,37 +25,37 @@ export interface TradeRequest {
 }
 
 export interface MultiTradeRequest {
-  tradeRequest: TradeRequest,
-  ethInfo: ETHInfo,
-  bankInfo: BankInfo,
-  referralId?: string,
+  tradeRequest: TradeRequest;
+  ethInfo: ETHInfo;
+  bankInfo: BankInfo;
+  referralId?: string;
 }
 
 export interface MultiTradeEstimation {
-  tradeRequest: TradeRequest,
-  trades: (DexTrade | BityTrade)[],
+  tradeRequest: TradeRequest;
+  trades: (DexTrade | BityTrade)[];
   path: TradePath;
-  inputAmount: string,
-  outputAmount: string,
-  ethAmount: string,
+  inputAmount: string;
+  outputAmount: string;
+  ethAmount: string;
 }
 
-export interface MultiTrade extends MultiTradeTemp{
-  id: UUID,
+export interface MultiTrade extends MultiTradeTemp {
+  id: UUID;
 }
 
-export interface MultiTradeTemp extends MultiTradeEstimation{
-  ethInfo: ETHInfo,
-  bankInfo: BankInfo,
-  referralId?: string,
+export interface MultiTradeTemp extends MultiTradeEstimation {
+  ethInfo: ETHInfo;
+  bankInfo: BankInfo;
+  referralId?: string;
 }
 
 export interface Trade {
-  tradeRequest: TradeRequest,
-  tradeType: TradeType,
-  inputAmount: string,
-  outputAmount: string,
-  fee?: Fee,
+  tradeRequest: TradeRequest;
+  tradeType: TradeType;
+  inputAmount: string;
+  outputAmount: string;
+  fee?: Fee;
 }
 
 export interface DexTrade extends Trade {
@@ -63,7 +63,7 @@ export interface DexTrade extends Trade {
   maxSlippage: number;
 }
 export interface BityTrade extends Trade {
-  bityOrderResponse: BityOrderResponse,
+  bityOrderResponse: BityOrderResponse;
 }
 
 export interface BankInfo {
@@ -72,10 +72,10 @@ export interface BankInfo {
 }
 
 export interface ETHInfo {
-  fromAddress: string,
+  fromAddress: string;
 }
 
 export interface Fee {
-  amount: string,
-  currencyObject: CurrencyObject,
+  amount: string;
+  currencyObject: CurrencyObject;
 }

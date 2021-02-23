@@ -24,7 +24,9 @@ export const CurrenciesContext = createContext<CurrenciesContextType>({
   currenciesReady: false,
   inputCurrenciesMap: {},
   currencyBalances: {},
-  getCurrency: () => { throw new Error('not_ready_getCurrency') },
+  getCurrency: () => {
+    throw new Error('not_ready_getCurrency');
+  },
 });
 
 export const CurrenciesContextProvider: React.FC = ({ children }) => {
@@ -39,7 +41,8 @@ export const CurrenciesContextProvider: React.FC = ({ children }) => {
   // Get currency list
   useEffect(() => {
     // currenciesManager.getDefaultCurrencies() // Static currencies, disable token exchange
-    currenciesManager.fetchCurrencies()
+    currenciesManager
+      .fetchCurrencies()
       .then(tradeableCurrencyMap => {
         setInputCurrenciesMap(tradeableCurrencyMap);
         setCurrenciesReady(true);
@@ -52,12 +55,13 @@ export const CurrenciesContextProvider: React.FC = ({ children }) => {
 
   // Update balances
   useEffect(() => {
-    if(!address) {
+    if (!address) {
       return;
     }
 
     function fetchBalances() {
-      currenciesManager.fetchBalances(address)
+      currenciesManager
+        .fetchBalances(address)
         .then(setCurrencyBalances)
         .catch(error => {
           logError('error-fetching-balances-all', error);
@@ -72,24 +76,24 @@ export const CurrenciesContextProvider: React.FC = ({ children }) => {
     };
   }, [dispatch, address, currenciesManager]);
 
-  const currencyBalances_connected = useMemo(
-    () => address ? currencyBalances : {},
-    [address, currencyBalances]
-  );
+  const currencyBalances_connected = useMemo(() => (address ? currencyBalances : {}), [
+    address,
+    currencyBalances,
+  ]);
 
   // Get token from URL
   useEffect(() => {
-    if(!currenciesReady) return;
+    if (!currenciesReady) return;
 
     const query = new URLSearchParams(window.location.search);
     const tokenAddress = query.get('token');
-    if(tokenAddress) {
+    if (tokenAddress) {
       try {
         const currency = currenciesManager.getTokenByAddress(tokenAddress);
         dispatch(setInputCurrency(currency.toObject()));
-      } catch(error) {
+      } catch (error) {
         logError('invalid-custom-token', error);
-        dispatch(setModalError(new Error('invalid-custom-token')))
+        dispatch(setModalError(new Error('invalid-custom-token')));
       }
     }
   }, [dispatch, currenciesManager, currenciesReady]);
@@ -102,8 +106,7 @@ export const CurrenciesContextProvider: React.FC = ({ children }) => {
         inputCurrenciesMap,
         currencyBalances: currencyBalances_connected,
         getCurrency: currenciesManager.getCurrency.bind(currenciesManager),
-      }}
-    >
+      }}>
       {children}
     </CurrenciesContext.Provider>
   );

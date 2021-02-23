@@ -1,7 +1,7 @@
 import { providers, utils } from 'ethers';
 import { Base64 } from 'js-base64';
 import { v4 as uuidv4 } from 'uuid';
-import { store } from './store'
+import { store } from './store';
 import { signerHelper } from './eth';
 
 const tokenDuration = 1000 * 60 * 60 * 24 * 7; // 7 days
@@ -18,9 +18,9 @@ export type Token = {
   claim: Claim;
   signature: string;
   serializedToken: string;
-}
+};
 
-const FRIENDLY_STRING = "Please sign this message to login to Usdlayer: ";
+const FRIENDLY_STRING = 'Please sign this message to login to Usdlayer: ';
 
 function serializeClaim(claim: Claim): string {
   return `${FRIENDLY_STRING}${JSON.stringify(claim)}`;
@@ -34,9 +34,9 @@ const DIDManager = {
     const signer = provider.getSigner();
     const address = (await signer.getAddress()).toLowerCase();
     const existingJWS = store.get(`jws:${address}`);
-    if(existingJWS) {
+    if (existingJWS) {
       const token = DIDManager.decodeToken(existingJWS);
-      if(token.claim.exp > +new Date()) {
+      if (token.claim.exp > +new Date()) {
         return existingJWS;
       }
     }
@@ -49,9 +49,7 @@ const DIDManager = {
     store.remove(`jws:${address.toLowerCase()}`);
   },
 
-  async createToken(
-    provider: providers.Web3Provider,
-  ): Promise<string> {
+  async createToken(provider: providers.Web3Provider): Promise<string> {
     const signer = provider.getSigner();
     const address = await signer.getAddress();
 
@@ -82,7 +80,7 @@ const DIDManager = {
     }
     let signerAddress;
     try {
-      if(!signature) throw new Error('no signature found in token')
+      if (!signature) throw new Error('no signature found in token');
       signerAddress = utils.verifyMessage(serializedClaim, signature);
     } catch (error) {
       throw new Error('invalid signature');

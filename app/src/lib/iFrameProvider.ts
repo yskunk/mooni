@@ -12,14 +12,8 @@ const JSON_RPC_VERSION = '2.0';
 
 // The interface for the source of the events, typically the window.
 export interface MinimalEventSourceInterface {
-  addEventListener(
-    eventType: 'message',
-    handler: (message: MessageEvent) => void
-  ): void;
-  removeEventListener(
-    eventType: 'message',
-    handler: (message: MessageEvent) => void
-  ): void;
+  addEventListener(eventType: 'message', handler: (message: MessageEvent) => void): void;
+  removeEventListener(eventType: 'message', handler: (message: MessageEvent) => void): void;
 }
 
 // The interface for the target of our events, typically the parent window.
@@ -51,9 +45,7 @@ interface IFrameEthereumProviderOptions {
 interface PromiseCompleter<TResult, TErrorData> {
   // A response was received (either error or result response).
   resolve(
-    result:
-      | JsonRpcSucessfulResponseMessage<TResult>
-      | JsonRpcErrorResponseMessage<TErrorData>
+    result: JsonRpcSucessfulResponseMessage<TResult> | JsonRpcErrorResponseMessage<TErrorData>
   ): void;
 
   // An error with executing the request was encountered.
@@ -78,8 +70,7 @@ interface BaseJsonRpcResponseMessage {
   domain: string;
 }
 
-interface JsonRpcSucessfulResponseMessage<TResult = any>
-  extends BaseJsonRpcResponseMessage {
+interface JsonRpcSucessfulResponseMessage<TResult = any> extends BaseJsonRpcResponseMessage {
   result: TResult;
 }
 
@@ -89,8 +80,7 @@ interface JsonRpcError<TData = any> {
   data?: TData;
 }
 
-interface JsonRpcErrorResponseMessage<TErrorData = any>
-  extends BaseJsonRpcResponseMessage {
+interface JsonRpcErrorResponseMessage<TErrorData = any> extends BaseJsonRpcResponseMessage {
   error: JsonRpcError<TErrorData>;
 }
 
@@ -132,9 +122,9 @@ export interface IFrameEthereumProvider {
   on(event: 'accountsChanged', handler: (accounts: string[]) => void): this;
 }
 
-interface RequestOptions<TParams>{
-  method: string,
-  params?: TParams,
+interface RequestOptions<TParams> {
+  method: string;
+  params?: TParams;
 }
 
 /**
@@ -158,9 +148,7 @@ export class RpcError extends Error {
 /**
  * This is the primary artifact of this library.
  */
-export class IFrameEthereumProvider extends EventEmitter<
-  IFrameEthereumProviderEventTypes
-  > {
+export class IFrameEthereumProvider extends EventEmitter<IFrameEthereumProviderEventTypes> {
   /**
    * Differentiate this provider from other providers by providing an isIFrame property that always returns true.
    */
@@ -185,11 +173,11 @@ export class IFrameEthereumProvider extends EventEmitter<
   } = {};
 
   public constructor({
-                       targetOrigin = DEFAULT_TARGET_ORIGIN,
-                       timeoutMilliseconds = DEFAULT_TIMEOUT_MILLISECONDS,
-                       eventSource = window,
-                       eventTarget = window.parent,
-                     }: IFrameEthereumProviderOptions = {}) {
+    targetOrigin = DEFAULT_TARGET_ORIGIN,
+    timeoutMilliseconds = DEFAULT_TIMEOUT_MILLISECONDS,
+    eventSource = window,
+    eventTarget = window.parent,
+  }: IFrameEthereumProviderOptions = {}) {
     // Call super for `this` to be defined
     super();
 
@@ -210,10 +198,7 @@ export class IFrameEthereumProvider extends EventEmitter<
   private async execute<TParams, TResult, TErrorData>(
     method: string,
     params?: TParams
-  ): Promise<
-    | JsonRpcSucessfulResponseMessage<TResult>
-    | JsonRpcErrorResponseMessage<TErrorData>
-    > {
+  ): Promise<JsonRpcSucessfulResponseMessage<TResult> | JsonRpcErrorResponseMessage<TErrorData>> {
     const id = getUniqueId();
     const payload: JsonRpcRequestMessage = {
       jsonrpc: JSON_RPC_VERSION,
@@ -224,9 +209,8 @@ export class IFrameEthereumProvider extends EventEmitter<
     };
 
     const promise = new Promise<
-      | JsonRpcSucessfulResponseMessage<TResult>
-      | JsonRpcErrorResponseMessage<TErrorData>
-      >((resolve, reject) => (this.completers[id] = { resolve, reject }));
+      JsonRpcSucessfulResponseMessage<TResult> | JsonRpcErrorResponseMessage<TErrorData>
+    >((resolve, reject) => (this.completers[id] = { resolve, reject }));
 
     // Send the JSON RPC to the event source.
     this.eventTarget.postMessage(payload, this.targetOrigin);
@@ -235,9 +219,7 @@ export class IFrameEthereumProvider extends EventEmitter<
     setTimeout(() => {
       if (this.completers[id]) {
         this.completers[id].reject(
-          new Error(
-            `RPC ID "${id}" timed out after ${this.timeoutMilliseconds} milliseconds`
-          )
+          new Error(`RPC ID "${id}" timed out after ${this.timeoutMilliseconds} milliseconds`)
         );
         delete this.completers[id];
       }
@@ -270,8 +252,9 @@ export class IFrameEthereumProvider extends EventEmitter<
    * @param opts.method method to send to the parent provider
    * @param opts.params parameters to send
    */
-  public async request<TParams = any[], TResult = any>(opts: RequestOptions<TParams>)
-  : Promise<TResult> {
+  public async request<TParams = any[], TResult = any>(
+    opts: RequestOptions<TParams>
+  ): Promise<TResult> {
     const response = await this.execute<TParams, TResult, any>(opts.method, opts.params);
 
     if ('error' in response) {
@@ -350,9 +333,7 @@ export class IFrameEthereumProvider extends EventEmitter<
         if ('error' in message || 'result' in message) {
           completer.resolve(message);
         } else {
-          completer.reject(
-            new Error('Response from provider did not have error or result key')
-          );
+          completer.reject(new Error('Response from provider did not have error or result key'));
         }
 
         delete this.completers[message.id];
@@ -430,21 +411,25 @@ export function isIframe(): boolean {
 
 export function detectIframeWeb3Provider(): Promise<IFrameEthereumProvider | null> {
   return new Promise(resolve => {
-    if(!isIframe()) return resolve(null);
+    if (!isIframe()) return resolve(null);
 
     const provider = new IFrameEthereumProvider();
     provider.timeoutMilliseconds = 1000;
 
-    provider.request({
-      method: 'usdlayer_handshake',
-    }).then(result => {
-      if(result !== 'ok') { throw new Error('unexpected handshake response') }
-      provider.timeoutMilliseconds = DEFAULT_TIMEOUT_MILLISECONDS;
-      resolve(provider);
-    }).catch(() => {
-      provider.close();
-      resolve(null);
-    });
-
+    provider
+      .request({
+        method: 'usdlayer_handshake',
+      })
+      .then(result => {
+        if (result !== 'ok') {
+          throw new Error('unexpected handshake response');
+        }
+        provider.timeoutMilliseconds = DEFAULT_TIMEOUT_MILLISECONDS;
+        resolve(provider);
+      })
+      .catch(() => {
+        provider.close();
+        resolve(null);
+      });
   });
 }

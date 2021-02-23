@@ -3,13 +3,13 @@ import { ethers, providers } from 'ethers';
 
 import config from '../config';
 import { MetaError } from './errors';
-import {BN} from "./numbers";
+import { BN } from './numbers';
 import { ExternalProvider } from '@ethersproject/providers';
 
 const { chainId } = config;
 
 function reloadPage() {
-  window.location.reload()
+  window.location.reload();
 }
 
 interface ExtendedExternalProvider extends ExternalProvider {
@@ -22,7 +22,7 @@ interface ExtendedExternalProvider extends ExternalProvider {
 export default class ETHManager {
   ethereum: ExtendedExternalProvider;
   provider: ethers.providers.Web3Provider;
-  isContract: boolean= false;
+  isContract: boolean = false;
   accounts: string[] = [];
   events: EventEmitter;
 
@@ -36,15 +36,18 @@ export default class ETHManager {
     const ethManager = new ETHManager(ethereum);
     const walletChainId = await ethManager.provider.send('eth_chainId', []);
     const walletChainIdBN = new BN(walletChainId);
-    if(!walletChainIdBN.eq(chainId)) {
-      throw new MetaError('eth_wrong_network_id', { expectedChainId: chainId, walletChainId: walletChainIdBN.toFixed() });
+    if (!walletChainIdBN.eq(chainId)) {
+      throw new MetaError('eth_wrong_network_id', {
+        expectedChainId: chainId,
+        walletChainId: walletChainIdBN.toFixed(),
+      });
     }
 
     await ethManager.provider.send('eth_requestAccounts', []);
     await ethManager.updateAccounts();
 
     await ethManager.checkIsContract();
-    if(ethManager.isContract) {
+    if (ethManager.isContract) {
       ethManager.close();
       throw new MetaError('eth_smart_account_not_supported');
     }
@@ -72,10 +75,10 @@ export default class ETHManager {
   }
 
   close() {
-    if(this.ethereum.on && this.ethereum.removeAllListeners && !this.ethereum.isStatus) {
+    if (this.ethereum.on && this.ethereum.removeAllListeners && !this.ethereum.isStatus) {
       this.ethereum.removeAllListeners();
     }
-    if(this.ethereum.close) {
+    if (this.ethereum.close) {
       this.ethereum.close();
     }
     this.events.removeAllListeners();
@@ -98,7 +101,7 @@ export default class ETHManager {
 
   async waitForConfirmedTransaction(hash) {
     const receipt = await this.provider.waitForTransaction(hash);
-    if(receipt.status === 0) {
+    if (receipt.status === 0) {
       throw new Error('transaction-fail');
     }
   }
@@ -129,11 +132,8 @@ export async function signerHelper(provider: providers.Web3Provider, rawMessage:
   const signer = provider.getSigner();
   const address = await signer.getAddress();
 
-  let params = [
-    rawMessage,
-    address.toLowerCase(),
-  ];
-  if(ethereum.isMetaMask) {
+  let params = [rawMessage, address.toLowerCase()];
+  if (ethereum.isMetaMask) {
     params = [params[1], params[0]];
   }
   // @ts-ignore

@@ -15,7 +15,7 @@ export default function ScrollRoot({ children }) {
   const scrollRootRef = useRef();
 
   useEffect(() => {
-    if(scrollRootRef.current) {
+    if (scrollRootRef.current) {
       setVHProperty(scrollRootRef.current);
       const debounced = debounce(() => setVHProperty(scrollRootRef.current), 200);
       window.addEventListener('resize', debounced);

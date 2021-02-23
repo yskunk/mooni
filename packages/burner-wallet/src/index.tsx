@@ -10,18 +10,16 @@ import UsdlayerPlugin from '@usdlayer/burner-plugin';
 
 const core = new BurnerCore({
   signers: [new LocalSigner()],
-  gateways: [
-    new InfuraGateway(process.env.REACT_APP_INFURA_KEY),
-  ],
+  gateways: [new InfuraGateway(process.env.REACT_APP_INFURA_KEY)],
   assets: [eth, dai, usdc],
 });
 
-const BurnerWallet = () =>
+const BurnerWallet = () => (
   <ModernUI
     title="Usdlayer Burner Wallet"
     core={core}
     plugins={[new UsdlayerPlugin({ appUrl: process.env.REACT_APP_USDLAYER_URL })]}
   />
-
+);
 
 ReactDOM.render(<BurnerWallet />, document.getElementById('root'));

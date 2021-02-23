@@ -1,19 +1,19 @@
-import { PrismaClient } from '../../../app/node_modules/.prisma/client'
-import {BityOrderResponse} from "../../../app/src/lib/wrappers/bityTypes"
-import {UsdlayerOrderStatus} from "../../../app/src/types/api"
+import { PrismaClient } from '../../../app/node_modules/.prisma/client';
+import { BityOrderResponse } from '../../../app/src/lib/wrappers/bityTypes';
+import { UsdlayerOrderStatus } from '../../../app/src/types/api';
 import { AssetTransfersCategory, createAlchemyWeb3 } from '@alch/alchemy-web3';
 
-import {readJSON} from "./utils"
+import { readJSON } from './utils';
 
-const prisma = new PrismaClient()
-const web3 = createAlchemyWeb3("https://eth-mainnet.alchemyapi.io/v2/demo");
+const prisma = new PrismaClient();
+const web3 = createAlchemyWeb3('https://eth-mainnet.alchemyapi.io/v2/demo');
 
 async function fetchOrderTx(bityOrder: BityOrderResponse) {
   const usdlayerOrder = await prisma.usdlayerOrder.findUnique({
     where: { bityOrderId: bityOrder.id },
   });
-  if(!usdlayerOrder) throw new Error('usdlayerorder not found');
-  if(usdlayerOrder.txHash) return;
+  if (!usdlayerOrder) throw new Error('usdlayerorder not found');
+  if (usdlayerOrder.txHash) return;
 
   const transfers = await web3.alchemy.getAssetTransfers({
     fromBlock: web3.utils.numberToHex(11189980),
@@ -28,7 +28,6 @@ async function fetchOrderTx(bityOrder: BityOrderResponse) {
     where: { bityOrderId: bityOrder.id },
     data: { txHash },
   });
-
 }
 
 async function createUsdlayerOrder(bityOrder: BityOrderResponse) {
@@ -48,38 +47,36 @@ async function createUsdlayerOrder(bityOrder: BityOrderResponse) {
         create: { ethAddress: bityOrder.input.crypto_address },
       },
     },
-  }
+  };
 
   await prisma.usdlayerOrder.create({
     data: rawUsdlayerOrder,
-  })
+  });
 }
 
 async function run() {
+  const orders = readJSON('./output/orders.json');
 
-  const orders = readJSON('./output/orders.json')
-
-  for(let year of Object.keys(orders)) {
-    const yearOrders = orders[year]
-    for(let month of Object.keys(yearOrders)) {
-      const monthOrders = Object.values(yearOrders[month]) as BityOrderResponse[]
-      for(let order of monthOrders) {
-        if(order.input) {
-          console.log(order.id)
+  for (let year of Object.keys(orders)) {
+    const yearOrders = orders[year];
+    for (let month of Object.keys(yearOrders)) {
+      const monthOrders = Object.values(yearOrders[month]) as BityOrderResponse[];
+      for (let order of monthOrders) {
+        if (order.input) {
+          console.log(order.id);
           await createUsdlayerOrder(order).catch(error => {
-            if(error.code === 'P2002') return
-            throw error
-          })
+            if (error.code === 'P2002') return;
+            throw error;
+          });
           await fetchOrderTx(order);
         }
       }
     }
   }
-
 }
 
 run()
   .catch(console.error)
   .finally(async () => {
-    await prisma.$disconnect()
-  })
+    await prisma.$disconnect();
+  });

@@ -16,7 +16,7 @@ import {
   IconPermissions,
   Info,
   Help,
-} from '@aragon/ui'
+} from '@aragon/ui';
 import styled from 'styled-components';
 import { useMediaQuery } from '@chakra-ui/react';
 
@@ -26,7 +26,7 @@ import { getEtherscanTxURL } from '../../lib/eth';
 import Bity from '../../lib/wrappers/bity';
 import { PaymentStatus, PaymentStepId, PaymentStepStatus } from '../../lib/types';
 import { watchBityOrder, unwatchBityOrder } from '../../redux/payment/actions';
-import {selectUser} from "../../redux/user/userSlice";
+import { selectUser } from '../../redux/user/userSlice';
 
 const Title = styled.p`
   ${textStyle('title3')};
@@ -76,24 +76,24 @@ function PaymentOngoingInfo({ payment }) {
 
   return (
     <Box>
-      {miningStep &&
-      <Box mb={2}>
-        <Info mode="info">
-          Your transaction is validating. Please <b>do not speed up</b> the transaction in your wallet.
-        </Info>
-      </Box>
-      }
-      {ongoing && waitingBity ?
+      {miningStep && (
+        <Box mb={2}>
+          <Info mode="info">
+            Your transaction is validating. Please <b>do not speed up</b> the transaction in your
+            wallet.
+          </Info>
+        </Box>
+      )}
+      {ongoing && waitingBity ? (
         <Hint>
-          Your payment have been received and the bank transfer is being sent. This process can take up to 10 minutes.
+          Your payment have been received and the bank transfer is being sent. This process can take
+          up to 10 minutes.
         </Hint>
-        :
-        <Info mode="warning">
-          Please do not close this tab until the process is complete.
-        </Info>
-      }
+      ) : (
+        <Info mode="warning">Please do not close this tab until the process is complete.</Info>
+      )}
     </Box>
-  )
+  );
 }
 
 function PaymentSuccessInfo() {
@@ -104,38 +104,43 @@ function PaymentSuccessInfo() {
   return (
     <Box width={1}>
       <SubTitle>
-        That's a success <span role="img" aria-label="alright">👌</span>
+        That's a success{' '}
+        <span role="img" aria-label="alright">
+          👌
+        </span>
       </SubTitle>
       <Hint>
-        The payment is complete and the bank transfer have been sent. <br/>
-        Funds will arrive in your bank account between one hour and four days from now, depending on your bank.
+        The payment is complete and the bank transfer have been sent. <br />
+        Funds will arrive in your bank account between one hour and four days from now, depending on
+        your bank.
       </Hint>
       <Box display="flex" justifyContent="center" mb={1}>
-        <SimpleLink href={tweetURL} external>Spread the love <span role="img" aria-label="love">❤️</span></SimpleLink>
+        <SimpleLink href={tweetURL} external>
+          Spread the love{' '}
+          <span role="img" aria-label="love">
+            ❤️
+          </span>
+        </SimpleLink>
       </Box>
       <Hint>
         <b>Bonus</b> 🎁
       </Hint>
-      <Hint>
-        Orders made with your referral link will make you earn profit sharing !
-      </Hint>
+      <Hint>Orders made with your referral link will make you earn profit sharing !</Hint>
     </Box>
-  )
+  );
 }
 
 function getPaymentStepMessage(error) {
-
   let message = 'Unknown error.';
 
-  if(error.message === 'user-rejected-transaction')
-    message = 'You refused the transaction in your wallet.'; else
-  if(error.message === 'token-balance-too-low')
-    message = 'Your token balance is too low.'; else
-  if(error.message === 'bity-order-cancelled')
-    message = 'The order have been cancelled by bity. Please go to their order page and contact their support.';
+  if (error.message === 'user-rejected-transaction')
+    message = 'You refused the transaction in your wallet.';
+  else if (error.message === 'token-balance-too-low') message = 'Your token balance is too low.';
+  else if (error.message === 'bity-order-cancelled')
+    message =
+      'The order have been cancelled by bity. Please go to their order page and contact their support.';
 
   return message;
-
 }
 
 function PaymentErrorInfo({ onRestart, payment }) {
@@ -144,43 +149,48 @@ function PaymentErrorInfo({ onRestart, payment }) {
   return (
     <Box width={1}>
       <SubTitle>
-        Oops, something went wrong <span role="img" aria-label="oops">🤭</span>
+        Oops, something went wrong{' '}
+        <span role="img" aria-label="oops">
+          🤭
+        </span>
       </SubTitle>
-      {stepsWithError.length > 0 &&
-      <>
-        <Info mode="error" style={{paddingTop: 0, paddingBottom: 0}}>
-          {stepsWithError.map(step => (
-            <Box key={step.id} py={1}>
-              <StatusLabel>
-                {step.id === PaymentStepId.ALLOWANCE && 'Token allowance'}
-                {step.id === PaymentStepId.TRADE && 'Token exchange'}
-                {step.id === PaymentStepId.PAYMENT && 'Payment'}
-                {step.id === PaymentStepId.BITY && 'Fiat exchange'}
-              </StatusLabel>
-              <ErrorMessage>
-                {getPaymentStepMessage(step.error)}
-              </ErrorMessage>
-            </Box>
-          ))}
-        </Info>
-        <Box mt={2} />
-      </>
-      }
+      {stepsWithError.length > 0 && (
+        <>
+          <Info mode="error" style={{ paddingTop: 0, paddingBottom: 0 }}>
+            {stepsWithError.map(step => (
+              <Box key={step.id} py={1}>
+                <StatusLabel>
+                  {step.id === PaymentStepId.ALLOWANCE && 'Token allowance'}
+                  {step.id === PaymentStepId.TRADE && 'Token exchange'}
+                  {step.id === PaymentStepId.PAYMENT && 'Payment'}
+                  {step.id === PaymentStepId.BITY && 'Fiat exchange'}
+                </StatusLabel>
+                <ErrorMessage>{getPaymentStepMessage(step.error)}</ErrorMessage>
+              </Box>
+            ))}
+          </Info>
+          <Box mt={2} />
+        </>
+      )}
       <Hint>
-        If you think you found a bug, please <SimpleLink href="mailto:support@usdlayer.com" external>contact support</SimpleLink>.
+        If you think you found a bug, please{' '}
+        <SimpleLink href="mailto:support@usdlayer.com" external>
+          contact support
+        </SimpleLink>
+        .
       </Hint>
-      <Button mode="normal" onClick={onRestart} wide icon={<IconArrowLeft/>} label="Retry" />
+      <Button mode="normal" onClick={onRestart} wide icon={<IconArrowLeft />} label="Retry" />
     </Box>
-  )
+  );
 }
 
 function ExternalButton({ url, label }) {
-  const [isSmall] = useMediaQuery("(max-width: 960px)")
+  const [isSmall] = useMediaQuery('(max-width: 960px)');
   const theme = useTheme();
 
   let display = 'all';
   const style = {};
-  if(isSmall) {
+  if (isSmall) {
     display = 'icon';
     style.width = '50px';
   } else {
@@ -188,8 +198,15 @@ function ExternalButton({ url, label }) {
   }
 
   return (
-    <Button href={url} style={style} size="mini" display={display} icon={<IconExternal style={{color: theme.accent}}/>} label={label} />
-  )
+    <Button
+      href={url}
+      style={style}
+      size="mini"
+      display={display}
+      icon={<IconExternal style={{ color: theme.accent }} />}
+      label={label}
+    />
+  );
 }
 
 function StatusRow({ id, status, txHash, bityOrderId }) {
@@ -197,28 +214,28 @@ function StatusRow({ id, status, txHash, bityOrderId }) {
   const theme = useTheme();
 
   let color;
-  if(status === PaymentStepStatus.DONE) color = theme.positive;
-  if(status === PaymentStepStatus.ERROR) color = theme.negative;
-  if(status === PaymentStepStatus.APPROVAL) color = theme.infoSurfaceContent;
-  if(status === PaymentStepStatus.QUEUED) color = theme.disabledContent;
-  if(status === PaymentStepStatus.MINING) color = theme.warningSurfaceContent;
-  if(status === PaymentStepStatus.WAITING) color = theme.warningSurfaceContent;
-  if(status === PaymentStepStatus.RECEIVED) color = theme.warningSurfaceContent;
+  if (status === PaymentStepStatus.DONE) color = theme.positive;
+  if (status === PaymentStepStatus.ERROR) color = theme.negative;
+  if (status === PaymentStepStatus.APPROVAL) color = theme.infoSurfaceContent;
+  if (status === PaymentStepStatus.QUEUED) color = theme.disabledContent;
+  if (status === PaymentStepStatus.MINING) color = theme.warningSurfaceContent;
+  if (status === PaymentStepStatus.WAITING) color = theme.warningSurfaceContent;
+  if (status === PaymentStepStatus.RECEIVED) color = theme.warningSurfaceContent;
 
   let borderLeftColor;
-  if(status === PaymentStepStatus.DONE) borderLeftColor = '#9de2c9';
-  if(status === PaymentStepStatus.ERROR) borderLeftColor = theme.negative;
-  if(status === PaymentStepStatus.APPROVAL) borderLeftColor = theme.infoSurfaceContent;
-  if(status === PaymentStepStatus.QUEUED) borderLeftColor = '#c8d7e4';
-  if(status === PaymentStepStatus.MINING) borderLeftColor = '#ead4ae';
-  if(status === PaymentStepStatus.WAITING) borderLeftColor = '#ead4ae';
-  if(status === PaymentStepStatus.RECEIVED) borderLeftColor = '#ead4ae';
+  if (status === PaymentStepStatus.DONE) borderLeftColor = '#9de2c9';
+  if (status === PaymentStepStatus.ERROR) borderLeftColor = theme.negative;
+  if (status === PaymentStepStatus.APPROVAL) borderLeftColor = theme.infoSurfaceContent;
+  if (status === PaymentStepStatus.QUEUED) borderLeftColor = '#c8d7e4';
+  if (status === PaymentStepStatus.MINING) borderLeftColor = '#ead4ae';
+  if (status === PaymentStepStatus.WAITING) borderLeftColor = '#ead4ae';
+  if (status === PaymentStepStatus.RECEIVED) borderLeftColor = '#ead4ae';
 
   let backgroundColor = theme.surface;
-  if(status === PaymentStepStatus.DONE) backgroundColor = '#f1fbf8';
+  if (status === PaymentStepStatus.DONE) backgroundColor = '#f1fbf8';
 
   useEffect(() => {
-    if(bityOrderId) {
+    if (bityOrderId) {
       dispatch(watchBityOrder(bityOrderId));
     }
     return () => dispatch(unwatchBityOrder(bityOrderId));
@@ -228,13 +245,15 @@ function StatusRow({ id, status, txHash, bityOrderId }) {
     <StatusListItem disableGutters style={{ borderLeftColor, backgroundColor }}>
       <Box display="flex" width={1} alignItems="center">
         <Box width={24} mr={1} display="flex" justifyContent="center">
-          {status === PaymentStepStatus.MINING && <LoadingRing/>}
-          {status === PaymentStepStatus.WAITING && <LoadingRing/>}
-          {status === PaymentStepStatus.RECEIVED && <LoadingRing/>}
-          {status === PaymentStepStatus.DONE && <IconCheck size="medium" style={{ color }}/>}
-          {status === PaymentStepStatus.ERROR && <IconWarning size="medium" style={{ color }}  />}
-          {status === PaymentStepStatus.APPROVAL && <IconPermissions size="medium" style={{ color }}  />}
-          {status === PaymentStepStatus.QUEUED && <IconEllipsis size="medium" style={{ color }}  />}
+          {status === PaymentStepStatus.MINING && <LoadingRing />}
+          {status === PaymentStepStatus.WAITING && <LoadingRing />}
+          {status === PaymentStepStatus.RECEIVED && <LoadingRing />}
+          {status === PaymentStepStatus.DONE && <IconCheck size="medium" style={{ color }} />}
+          {status === PaymentStepStatus.ERROR && <IconWarning size="medium" style={{ color }} />}
+          {status === PaymentStepStatus.APPROVAL && (
+            <IconPermissions size="medium" style={{ color }} />
+          )}
+          {status === PaymentStepStatus.QUEUED && <IconEllipsis size="medium" style={{ color }} />}
         </Box>
         <Box flex={1} display="flex">
           <StatusLabel>
@@ -251,44 +270,48 @@ function StatusRow({ id, status, txHash, bityOrderId }) {
               {status === PaymentStepStatus.ERROR && <span style={{ color }}>Error</span>}
               {status === PaymentStepStatus.APPROVAL && <span style={{ color }}>Approval</span>}
             </StatusSecondary>
-            {status === PaymentStepStatus.APPROVAL &&
-            <Box ml={1}>
-              <Help hint="What does that mean ?">
-                We are waiting for you to accept a transaction in your Ethereum wallet.
-              </Help>
-            </Box>
-            }
+            {status === PaymentStepStatus.APPROVAL && (
+              <Box ml={1}>
+                <Help hint="What does that mean ?">
+                  We are waiting for you to accept a transaction in your Ethereum wallet.
+                </Help>
+              </Box>
+            )}
           </Box>
         </Box>
-        {txHash &&
-        <ExternalButton url={getEtherscanTxURL(txHash)} label="Transaction" />
-        }
-        {bityOrderId &&
-        <ExternalButton url={Bity.getOrderStatusPageURL(bityOrderId)} label="Bity order" />
-        }
+        {txHash && <ExternalButton url={getEtherscanTxURL(txHash)} label="Transaction" />}
+        {bityOrderId && (
+          <ExternalButton url={Bity.getOrderStatusPageURL(bityOrderId)} label="Bity order" />
+        )}
       </Box>
     </StatusListItem>
-  )
+  );
 }
 
 export default function PaymentStatusComponent({ payment, onRestart }) {
   return (
     <Box width={1}>
-      <Title>
-        Order status
-      </Title>
+      <Title>Order status</Title>
 
       <Box mb={2}>
         <List>
-          {payment.steps.map(step =>
-            <StatusRow key={step.id} id={step.id} status={step.status} txHash={step.txHash} bityOrderId={step.bityOrderId} />
-          )}
+          {payment.steps.map(step => (
+            <StatusRow
+              key={step.id}
+              id={step.id}
+              status={step.status}
+              txHash={step.txHash}
+              bityOrderId={step.bityOrderId}
+            />
+          ))}
         </List>
       </Box>
 
-      {payment.status === PaymentStatus.ONGOING && <PaymentOngoingInfo payment={payment}/>}
-      {payment.status === PaymentStatus.ERROR && <PaymentErrorInfo onRestart={onRestart} payment={payment} />}
+      {payment.status === PaymentStatus.ONGOING && <PaymentOngoingInfo payment={payment} />}
+      {payment.status === PaymentStatus.ERROR && (
+        <PaymentErrorInfo onRestart={onRestart} payment={payment} />
+      )}
       {payment.status === PaymentStatus.DONE && <PaymentSuccessInfo />}
     </Box>
-  )
+  );
 }

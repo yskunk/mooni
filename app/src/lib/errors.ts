@@ -11,12 +11,12 @@ export class MetaError {
     this.meta = meta;
   }
 
-  toObject(): object  {
+  toObject(): object {
     return {
       _metaError: true,
       message: this.message,
       meta: this.meta,
-    }
+    };
   }
 }
 
@@ -28,7 +28,7 @@ export class APIError extends MetaError {
   constructor(code: number, message?: string, description?: string, meta?: object) {
     super(message || getReasonPhrase(code), meta);
     this.code = code;
-    this.description = description
+    this.description = description;
   }
 
   toObject(): object {
@@ -43,9 +43,9 @@ export class APIError extends MetaError {
 export function serializeError(error: Error | MetaError) {
   let obj;
 
-  if(error instanceof MetaError) {
+  if (error instanceof MetaError) {
     obj = error.toObject();
-  }  else {
+  } else {
     obj = {
       stack: error.stack?.toString(),
       ...error,

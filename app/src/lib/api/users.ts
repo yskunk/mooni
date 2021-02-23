@@ -1,5 +1,5 @@
-import prisma from "./prisma";
-import {User} from "../../types/api";
+import prisma from './prisma';
+import { User } from '../../types/api';
 
 export async function getUser(ethAddress: string): Promise<User> {
   const userData = {
@@ -10,7 +10,7 @@ export async function getUser(ethAddress: string): Promise<User> {
     where: userData,
   });
 
-  if(!user) {
+  if (!user) {
     user = await prisma.user.create({
       data: userData,
     });

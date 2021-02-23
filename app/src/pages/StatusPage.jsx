@@ -20,14 +20,14 @@ export default function OrderStatusContainer() {
     history.push('/exchange');
   }
 
-  if(!payment) {
+  if (!payment) {
     history.push('/');
-    return <div/>;
+    return <div />;
   }
 
   return (
     <SmallWidth>
-      <PaymentStatus payment={payment} onRestart={onRestart}/>
+      <PaymentStatus payment={payment} onRestart={onRestart} />
     </SmallWidth>
   );
 }

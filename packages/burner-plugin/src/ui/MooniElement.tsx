@@ -6,8 +6,8 @@ const UsdlayerElement: React.FC<PluginElementContext> = ({ plugin }) => {
   return (
     <div>
       <div>Injected plugin element</div>
-  </div>
-);
+    </div>
+  );
 };
 
 export default UsdlayerElement;

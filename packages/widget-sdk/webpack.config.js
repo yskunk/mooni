@@ -8,12 +8,12 @@ const moduleCommon = {
     {
       test: /\.tsx?$/,
       exclude: /node_modules/,
-      use: 'ts-loader'
+      use: 'ts-loader',
     },
-  ]
+  ],
 };
 const resolveCommon = {
-  extensions: [ '.tsx', '.ts', '.js' ],
+  extensions: ['.tsx', '.ts', '.js'],
 };
 
 module.exports = [

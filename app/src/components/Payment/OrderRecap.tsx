@@ -5,10 +5,10 @@ import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { textStyle, Field, Info, Timer } from '@aragon/ui';
 
-import {significantNumbers} from '../../lib/numbers';
+import { significantNumbers } from '../../lib/numbers';
 
-import {BityTrade, MultiTrade, TradeType} from "../../lib/trading/types";
-import { RateAmount } from "./RateAmount";
+import { BityTrade, MultiTrade, TradeType } from '../../lib/trading/types';
+import { RateAmount } from './RateAmount';
 import { CurrencyLogo } from './Currencies/CurrencyLogo';
 
 const useStyles = makeStyles(theme => ({
@@ -42,14 +42,14 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.default,
     '&:focus': {
       outline: 'none',
-    }
+    },
   },
   currencySelector: {
     width: 86,
   },
   recipientField: {
     marginBottom: 10,
-  }
+  },
 }));
 
 const Value = styled.p`
@@ -62,7 +62,7 @@ function RecipientRow({ label, value }) {
     <Field label={label} className={classes.recipientField}>
       <Value data-private>{value}</Value>
     </Field>
-  )
+  );
 }
 
 function AmountRow({ value, symbol, caption }) {
@@ -71,9 +71,7 @@ function AmountRow({ value, symbol, caption }) {
   return (
     <Box className={classes.root}>
       <Box className={classes.caption}>
-        <Typography variant="caption">
-          {caption}
-        </Typography>
+        <Typography variant="caption">{caption}</Typography>
       </Box>
       <Box className={classes.rowRoot}>
         <Box flex={1}>
@@ -87,7 +85,7 @@ function AmountRow({ value, symbol, caption }) {
         </Box>
         <Box className={classes.currencySelector}>
           <Box display="flex" alignItems="center">
-            <CurrencyLogo symbol={symbol} width="20px"/>
+            <CurrencyLogo symbol={symbol} width="20px" />
             <Box ml={1}>{symbol}</Box>
           </Box>
         </Box>
@@ -98,20 +96,20 @@ function AmountRow({ value, symbol, caption }) {
 
 export default function OrderRecap({ multiTrade }: { multiTrade: MultiTrade }) {
   const bankInfo = multiTrade.bankInfo;
-  if(!bankInfo) throw new Error('missing bank info in OrderRecap');
-  const {recipient, reference} = bankInfo;
+  if (!bankInfo) throw new Error('missing bank info in OrderRecap');
+  const { recipient, reference } = bankInfo;
 
   let fullAddress = '';
-  if(recipient.owner?.address) {
+  if (recipient.owner?.address) {
     fullAddress += recipient.owner.address;
   }
-  if(recipient.owner?.zip) {
+  if (recipient.owner?.zip) {
     fullAddress += ', ' + recipient.owner.zip;
   }
-  if(recipient.owner?.city) {
+  if (recipient.owner?.city) {
     fullAddress += ', ' + recipient.owner.city;
   }
-  if(recipient.owner?.country) {
+  if (recipient.owner?.country) {
     fullAddress += ', ' + recipient.owner.country;
   }
 
@@ -126,21 +124,23 @@ export default function OrderRecap({ multiTrade }: { multiTrade: MultiTrade }) {
   return (
     <Box>
       <Box px={1}>
-        <RecipientRow label="Name" value={recipient.owner.name}/>
-        {fullAddress && <RecipientRow label="Address" value={fullAddress}/>}
+        <RecipientRow label="Name" value={recipient.owner.name} />
+        {fullAddress && <RecipientRow label="Address" value={fullAddress} />}
 
-        <RecipientRow label="IBAN" value={recipient.iban}/>
-        {recipient.bic_swift && <RecipientRow label="BIC" value={recipient.bic_swift}/>}
-        {reference && <RecipientRow label="Reference" value={reference}/>}
-        {recipient.email && <RecipientRow label="Contact email" value={recipient.email}/>}
-        {multiTrade.referralId && <RecipientRow label="Referral ID" value={multiTrade.referralId}/>}
+        <RecipientRow label="IBAN" value={recipient.iban} />
+        {recipient.bic_swift && <RecipientRow label="BIC" value={recipient.bic_swift} />}
+        {reference && <RecipientRow label="Reference" value={reference} />}
+        {recipient.email && <RecipientRow label="Contact email" value={recipient.email} />}
+        {multiTrade.referralId && (
+          <RecipientRow label="Referral ID" value={multiTrade.referralId} />
+        )}
       </Box>
 
       <AmountRow value={inputAmount} symbol={inputCurrencySymbol} caption="You send" />
       <AmountRow value={outputAmount} symbol={outputCurrencySymbol} caption="You receive" />
 
       <Box display="flex" justifyContent="center">
-        <RateAmount multiTradeEstimation={multiTrade}/>
+        <RateAmount multiTradeEstimation={multiTrade} />
       </Box>
 
       <Box pt={1}>
@@ -149,5 +149,5 @@ export default function OrderRecap({ multiTrade }: { multiTrade: MultiTrade }) {
         </Info>
       </Box>
     </Box>
-  )
+  );
 }

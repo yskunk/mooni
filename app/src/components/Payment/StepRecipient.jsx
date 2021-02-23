@@ -2,16 +2,16 @@ import React, { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Box from '@material-ui/core/Box';
-import { IconArrowRight } from '@aragon/ui'
+import { IconArrowRight } from '@aragon/ui';
 
-import {setRecipient, setReference} from '../../redux/payment/actions';
-import {getRecipient, getReference} from '../../redux/payment/selectors';
+import { setRecipient, setReference } from '../../redux/payment/actions';
+import { getRecipient, getReference } from '../../redux/payment/selectors';
 // import { getBoxManager } from '../../redux/box/selectors';
 // import { updateMyAccount } from '../../redux/contacts/actions';
 
 import RecipientForm from './RecipientForm';
-import {BoxLoadingContainer, BoxModal} from '../Utils/RequireBox';
-import {RoundButton} from "../UI/StyledComponents";
+import { BoxLoadingContainer, BoxModal } from '../Utils/RequireBox';
+import { RoundButton } from '../UI/StyledComponents';
 
 // const useStyles = makeStyles(() => ({
 //   saveInfoRow: {
@@ -48,15 +48,18 @@ function StepRecipient({ onComplete }) {
     }
   }
    */
-  const initialData = useMemo(() => ({
-    recipient,
-    reference,
-  }), [recipient, reference]);
+  const initialData = useMemo(
+    () => ({
+      recipient,
+      reference,
+    }),
+    [recipient, reference]
+  );
 
   return (
     <BoxLoadingContainer>
       <Box width={1}>
-        <BoxModal visible={showBoxModal} onClose={() => setShowBoxModal(false)}/>
+        <BoxModal visible={showBoxModal} onClose={() => setShowBoxModal(false)} />
 
         <RecipientForm
           initialData={initialData}
@@ -74,13 +77,20 @@ function StepRecipient({ onComplete }) {
                   The data is stored encrypted in a decentralized storage, so only you have access to it.
                 </Help>
               </label>*/}
-              <RoundButton mode="strong" onClick={submit} wide icon={<IconArrowRight/>} label="Next" disabled={!isValid} />
+              <RoundButton
+                mode="strong"
+                onClick={submit}
+                wide
+                icon={<IconArrowRight />}
+                label="Next"
+                disabled={!isValid}
+              />
             </Box>
           )}
         />
       </Box>
     </BoxLoadingContainer>
-  )
+  );
 }
 
 export default StepRecipient;

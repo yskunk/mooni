@@ -28,7 +28,7 @@ class BoxManager {
 
     return new BoxManager({
       box,
-      space
+      space,
     });
   }
 

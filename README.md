@@ -20,24 +20,22 @@ Usdlayer is a simple solution for end-users, marketplaces or DAOs to cash out cr
 
 ### Features
 
-* **Web wallets** Login with any web3-compatible wallet _\(Metamask, WalletConnect, etc...\)_
-* **Bank transfer** Receive funds in your bank account in EUR/CHF \(thanks to [Bity](https://bity.com)\)
-* **Quick checkout** No need to register accounts and pass long KYC verifications. Subject to amount limits.
+- **Web wallets** Login with any web3-compatible wallet _\(Metamask, WalletConnect, etc...\)_
+- **Bank transfer** Receive funds in your bank account in EUR/CHF \(thanks to [Bity](https://bity.com)\)
+- **Quick checkout** No need to register accounts and pass long KYC verifications. Subject to amount limits.
 
 [🚀 Use Usdlayer now](https://app.usdlayer.com)
 
-
 ### Use cases
 
-* **Crypto owner** Any crypto holder can convert some crypto into fiat into their bank account
-* **dApps** Decentralized applications that makes users generate revenue can allow them to exit and withdraw funds into their bank account \(games, decentralized marketplaces, via a widget\)
+- **Crypto owner** Any crypto holder can convert some crypto into fiat into their bank account
+- **dApps** Decentralized applications that makes users generate revenue can allow them to exit and withdraw funds into their bank account \(games, decentralized marketplaces, via a widget\)
 
 ## 🔮 Frontend integration
 
 You can easily integrate Usdlayer into your web application and quickly enable your users to cash out their crypto.
 
 This is useful for marketplace builders which want to increase conversion rate by allowing their users to withdraw the profit they make on the app.
-
 
 An [example app](https://integration-example.usdlayer.com) including Usdlayer widget is available to let you try it out.
 
@@ -59,6 +57,7 @@ const usdlayer = new UsdlayerWidget();
 // Open the widget when you want to show Usdlayer
 usdlayer.open();
 ```
+
 Check [the package](./packages/widget-sdk) for full API documentation.
 
 ## 📎 Burner Wallet Plugin
@@ -68,7 +67,6 @@ A plugin for [Burner Wallet](https://github.com/burner-wallet/burner-wallet-2/) 
 We have our own [Usdlayer Burner Wallet](https://burner.usdlayer.com) deployed if you want to try it.
 
 Please refer to the [plugin documentation](packages/burner-plugin) for integration instructions.
-
 
 ## 💻 Development
 

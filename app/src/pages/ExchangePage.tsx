@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Box } from '@material-ui/core'
-import { ArrowBack } from '@material-ui/icons'
+import { Box } from '@material-ui/core';
+import { ArrowBack } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box as ABox } from '@aragon/ui'
+import { Box as ABox } from '@aragon/ui';
 
 import StepNotice from '../components/Payment/StepNotice';
 import StepRecipient from '../components/Payment/StepRecipient';
@@ -30,12 +30,12 @@ const useStyles = makeStyles({
     lineHeight: 1.5,
     textTransform: 'uppercase',
     marginBottom: '14px',
-  }
+  },
 });
 
 const RoundedBox = styled(ABox)`
   border-radius: 20px;
-`
+`;
 
 const steps = ['Amount', 'Recipient', 'Notice', 'Order summary'];
 
@@ -89,15 +89,11 @@ export default function ExchangePage() {
           {steps[stepId]}
         </Box>
 
-        {stepId !== 0 && stepId !== (stepElements.length - 1) && <Box mb={2}>
-          <RoundButton
-            wide
-            onClick={handleBack}
-            icon={<ArrowBack/>}
-            label={"Back"}
-          />
-        </Box>
-        }
+        {stepId !== 0 && stepId !== stepElements.length - 1 && (
+          <Box mb={2}>
+            <RoundButton wide onClick={handleBack} icon={<ArrowBack />} label={'Back'} />
+          </Box>
+        )}
         {stepElements[stepId]}
       </RoundedBox>
     </SmallWidth>

@@ -1,7 +1,7 @@
 import React from 'react';
 import GitHubButton from 'react-github-btn';
 
-import { Link, textStyle, GU } from '@aragon/ui'
+import { Link, textStyle, GU } from '@aragon/ui';
 import { Box } from '@material-ui/core';
 import styled from 'styled-components';
 import { Twitter, Email } from '@material-ui/icons';
@@ -37,21 +37,34 @@ export default function AboutPage() {
   return (
     <Box>
       <Title>
-        Usdlayer is a web application allowing to transfer funds from a crypto wallet to a bank account.
+        Usdlayer is a web application allowing to transfer funds from a crypto wallet to a bank
+        account.
       </Title>
       <SubTitle>
-        Want to see how it works ? Check out the <Link href="https://doc.usdlayer.com/walkthrough" external style={{ textDecoration: 'none' }}>Walkthrough</Link> !
+        Want to see how it works ? Check out the{' '}
+        <Link
+          href="https://doc.usdlayer.com/walkthrough"
+          external
+          style={{ textDecoration: 'none' }}>
+          Walkthrough
+        </Link>{' '}
+        !
       </SubTitle>
-      <Header>
-        Availability
-      </Header>
+      <Header>Availability</Header>
       <Content>
-        Usdlayer can only transfer funds in Euro (EUR) and Swiss Franc (CHF) to bank accounts in the <Link href="https://www.ecb.europa.eu/paym/integration/retail/sepa/html/index.en.html" style={{ textDecoration: 'none' }} external>SEPA network</Link>.
-        <br/>The following banks are known to refuse payments from our service: <i style={{color: '#881111'}}>Payoneer, Transferwise</i>
+        Usdlayer can only transfer funds in Euro (EUR) and Swiss Franc (CHF) to bank accounts in the{' '}
+        <Link
+          href="https://www.ecb.europa.eu/paym/integration/retail/sepa/html/index.en.html"
+          style={{ textDecoration: 'none' }}
+          external>
+          SEPA network
+        </Link>
+        .
+        <br />
+        The following banks are known to refuse payments from our service:{' '}
+        <i style={{ color: '#881111' }}>Payoneer, Transferwise</i>
       </Content>
-      <Header>
-        Integration
-      </Header>
+      <Header>Integration</Header>
       <Content>
         It is possible to integrate Usdlayer into any applications. Please refer to
         <Link href="https://doc.usdlayer.com" external style={{ textDecoration: 'none' }}>
@@ -59,9 +72,7 @@ export default function AboutPage() {
         </Link>
         for more informations.
       </Content>
-      <Header>
-        Social
-      </Header>
+      <Header>Social</Header>
       <Box display="flex" justifyContent="center" my={1}>
         <SocialIcon href="https://twitter.com/usdlayerdapp" target="_blank">
           <Twitter fontSize="large" />
@@ -73,11 +84,13 @@ export default function AboutPage() {
           <Email fontSize="large" />
         </SocialIcon>
       </Box>
-      <SubTitle>
-        Usdlayer is open-source !
-      </SubTitle>
+      <SubTitle>Usdlayer is open-source !</SubTitle>
       <Box display="flex" justifyContent="center" mt={1}>
-        <GitHubButton href="https://github.com/manifoldfinance/usdlayer" data-color-scheme="no-preference: dark; light: dark; dark: dark;">Github</GitHubButton>
+        <GitHubButton
+          href="https://github.com/manifoldfinance/usdlayer"
+          data-color-scheme="no-preference: dark; light: dark; dark: dark;">
+          Github
+        </GitHubButton>
       </Box>
     </Box>
   );

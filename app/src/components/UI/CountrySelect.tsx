@@ -1,15 +1,13 @@
 import React from 'react';
 
 import { Autocomplete } from '@material-ui/lab';
-import {COUNTRIES_ARRAY} from "../../lib/countries";
+import { COUNTRIES_ARRAY } from '../../lib/countries';
 import styled from 'styled-components';
 import { WideInput } from './StyledComponents';
 
 function countryToFlag(isoCode) {
   return typeof String.fromCodePoint !== 'undefined'
-    ? isoCode
-      .toUpperCase()
-      .replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
+    ? isoCode.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397))
     : isoCode;
 }
 
@@ -28,13 +26,13 @@ export default function CountrySelect({ countryCode, onChange }) {
       // @ts-ignore
       value={COUNTRIES_ARRAY.find(c => c.code === countryCode) || null}
       onChange={(_, value) => onChange(value?.code)}
-      getOptionLabel={(option) => option.label}
-      renderInput={(params) => (
+      getOptionLabel={option => option.label}
+      renderInput={params => (
         <div ref={params.InputProps.ref}>
           <WideInput {...params.inputProps} />
         </div>
       )}
-      renderOption={(option) => (
+      renderOption={option => (
         <>
           <Flag>{countryToFlag(option.code)}</Flag>
           {option.label}

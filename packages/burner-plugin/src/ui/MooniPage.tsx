@@ -11,8 +11,7 @@ const UsdlayerPage: React.FC<PluginPageContext> = ({ burnerComponents, plugin })
   const _plugin = plugin as UsdlayerPlugin;
 
   useLayoutEffect(() => {
-
-    if(!usdlayerContainer.current) return;
+    if (!usdlayerContainer.current) return;
 
     const container = usdlayerContainer.current;
 
@@ -21,12 +20,11 @@ const UsdlayerPage: React.FC<PluginPageContext> = ({ burnerComponents, plugin })
       ethereum: _plugin.getWeb3Provider(),
       appUrl: _plugin.appUrl,
     });
-
   }, []);
 
   return (
     <Page title="Cash out">
-      <div ref={usdlayerContainer} style={{flex: 1, display: 'flex'}} />
+      <div ref={usdlayerContainer} style={{ flex: 1, display: 'flex' }} />
     </Page>
   );
 };

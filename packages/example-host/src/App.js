@@ -9,18 +9,17 @@ const usdlayer = new UsdlayerWidget({
 });
 
 function App() {
-
   const openUsdlayer = useCallback(() => {
     usdlayer.open();
   }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-        My awesome marketplace
-      </header>
+      <header className="App-header">My awesome marketplace</header>
       <main className="App-main">
-        <button className="open-widget" onClick={openUsdlayer}>Cash out</button>
+        <button className="open-widget" onClick={openUsdlayer}>
+          Cash out
+        </button>
       </main>
     </div>
   );

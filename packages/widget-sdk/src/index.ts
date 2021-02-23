@@ -17,22 +17,24 @@ export interface UsdlayerWidgetOptions {
 export interface ExternalProvider {
   isMetaMask?: boolean;
   isStatus?: boolean;
-  sendAsync?: (request: {
-    method: string;
-    params?: Array<any>;
-  }, callback: (error: any, response: any) => void) => void;
-  send?: (request: {
-    method: string;
-    params?: Array<any>;
-  }, callback: (error: any, response: any) => void) => void;
-  request?: (request: {
-    method: string;
-    params?: Array<any>;
-  }) => Promise<any>;
+  sendAsync?: (
+    request: {
+      method: string;
+      params?: Array<any>;
+    },
+    callback: (error: any, response: any) => void
+  ) => void;
+  send?: (
+    request: {
+      method: string;
+      params?: Array<any>;
+    },
+    callback: (error: any, response: any) => void
+  ) => void;
+  request?: (request: { method: string; params?: Array<any> }) => Promise<any>;
 }
 
 class UsdlayerWidget {
-
   private isModal: boolean;
   private containerElement?: HTMLElement;
   private iframeContainerElement?: HTMLDivElement;
@@ -43,8 +45,7 @@ class UsdlayerWidget {
   private ethereum?: ExternalProvider;
 
   constructor(opts: UsdlayerWidgetOptions = {}) {
-
-    if(opts.containerElement) {
+    if (opts.containerElement) {
       this.containerElement = opts.containerElement;
       this.isModal = false;
     } else {
@@ -57,15 +58,13 @@ class UsdlayerWidget {
 
     this.createIframe();
 
-    if(opts.ethereum) {
+    if (opts.ethereum) {
       this.ethereum = opts.ethereum;
       this.listenWeb3Messages();
     }
-
   }
 
   private createModal() {
-
     const style = document.createElement('style');
     style.innerHTML = modalStyles;
 
@@ -87,47 +86,40 @@ class UsdlayerWidget {
     this.iframeContainerElement.appendChild(widgetCloser);
 
     widgetCloser.onclick = this.close.bind(this);
-
   }
 
   private createIframe() {
-
     this.iframeElement = document.createElement('iframe');
 
     this.iframeElement.style.flex = '1';
     this.iframeElement.style.border = '0 transparent';
 
-    if(this.isModal) {
+    if (this.isModal) {
       this.iframeElement.style.borderRadius = '1rem';
       this.iframeContainerElement!.appendChild(this.iframeElement);
     } else {
       this.containerElement!.appendChild(this.iframeElement);
     }
-
   }
 
   public open() {
-    if(!this.iframeElement!.src) {
+    if (!this.iframeElement!.src) {
       this.iframeElement!.src = this.getAppUrl();
     }
-    if(this.isModal) {
+    if (this.isModal) {
       this.modalContainer!.style.display = 'flex';
     }
-
   }
 
   public close() {
-
-    if(this.isModal) {
+    if (this.isModal) {
       this.modalContainer!.style.display = 'none';
     }
-
   }
-
 
   private getAppUrl() {
     let appUrl = this.appUrl;
-    if(this.customToken) {
+    if (this.customToken) {
       appUrl += `?token=${this.customToken}`;
     }
     return appUrl;
@@ -144,12 +136,15 @@ class UsdlayerWidget {
   }
 
   private listenWeb3Messages() {
-
     const appOrigin = new UrlParse(this.appUrl).origin;
 
     const web3MessageListener = (e: any) => {
-      if (e.data && e.data.jsonrpc === JSON_RPC_VERSION && e.data.domain === IFRAME_PROVIDER_DOMAIN) {
-        if(e.data.method === 'usdlayer_handshake') {
+      if (
+        e.data &&
+        e.data.jsonrpc === JSON_RPC_VERSION &&
+        e.data.domain === IFRAME_PROVIDER_DOMAIN
+      ) {
+        if (e.data.method === 'usdlayer_handshake') {
           this.iframeElement!.contentWindow!.postMessage(
             {
               id: e.data.id,
@@ -170,24 +165,16 @@ class UsdlayerWidget {
             result,
           };
 
-          if(error) {
+          if (error) {
             message.error = error;
           }
-          this.iframeElement!.contentWindow!.postMessage(
-            message,
-            appOrigin
-          );
+          this.iframeElement!.contentWindow!.postMessage(message, appOrigin);
         });
-
       }
     };
 
     window.addEventListener('message', web3MessageListener);
-
   }
-
 }
-
-
 
 export default UsdlayerWidget;

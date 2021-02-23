@@ -1,10 +1,6 @@
 import React from 'react';
 
-import {
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import './App.css';
@@ -31,26 +27,26 @@ export const Routes: React.FC = () => {
       <Route exact path="/stats">
         <StatsPage />
       </Route>
-      {walletStatus === WalletStatus.CONNECTED ?
-      <>
-        <Route path="/account">
-          <AccountPage />
+      {walletStatus === WalletStatus.CONNECTED ? (
+        <>
+          <Route path="/account">
+            <AccountPage />
+          </Route>
+          <Route path="/status">
+            <StatusPage />
+          </Route>
+          <Route path="/exchange">
+            <ExchangePage />
+          </Route>
+        </>
+      ) : (
+        walletLoading && <Loader text="Loading Ethereum wallet" />
+      )}
+      {!walletLoading && (
+        <Route path="*">
+          <Redirect to="/" />
         </Route>
-        <Route path="/status">
-          <StatusPage />
-        </Route>
-        <Route path="/exchange">
-          <ExchangePage />
-        </Route>
-      </>
-        :
-        (walletLoading && <Loader text="Loading Ethereum wallet" />)
-      }
-      {!walletLoading &&
-      <Route path="*">
-        <Redirect to="/" />
-      </Route>
-      }
+      )}
     </Switch>
   );
-}
+};

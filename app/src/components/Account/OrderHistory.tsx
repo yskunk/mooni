@@ -3,8 +3,26 @@ import useSWR from 'swr';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Tooltip, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
-import { Button, IconCheck, IconClock, IconExternal, LoadingRing, useTheme, IconCross, Link } from '@aragon/ui';
+import {
+  Tooltip,
+  Box,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@material-ui/core';
+import {
+  Button,
+  IconCheck,
+  IconClock,
+  IconExternal,
+  LoadingRing,
+  useTheme,
+  IconCross,
+  Link,
+} from '@aragon/ui';
 import { useMediaQuery } from '@chakra-ui/react';
 
 import Api from '../../lib/apiWrapper';
@@ -33,42 +51,41 @@ interface OrderRowProps {
   order: UsdlayerOrder;
 }
 
-const OrderStatusIcon: React.FC<OrderRowProps> = ({order}) => {
+const OrderStatusIcon: React.FC<OrderRowProps> = ({ order }) => {
   const theme = useTheme();
 
   const date = new Date(order.createdAt);
   const now = new Date();
-  const expired = order.status === UsdlayerOrderStatus.PENDING && !order.txHash && ((+now - +date) > 10*60*1000);
+  const expired =
+    order.status === UsdlayerOrderStatus.PENDING && !order.txHash && +now - +date > 10 * 60 * 1000;
 
   let tooltipText;
-  if(expired) {
-    tooltipText = 'Expired'
-  } else if(order.status === UsdlayerOrderStatus.PENDING && !expired) {
-    tooltipText = 'Pending'
+  if (expired) {
+    tooltipText = 'Expired';
+  } else if (order.status === UsdlayerOrderStatus.PENDING && !expired) {
+    tooltipText = 'Pending';
   } else {
-    tooltipText = 'Executed'
+    tooltipText = 'Executed';
   }
 
   return (
     <Box display="flex" alignItems="center" justifyContent="center">
       <Tooltip title={tooltipText}>
         <Box display="flex" alignItems="center">
-          {order.status === UsdlayerOrderStatus.PENDING && !expired &&
-          <IconClock size="medium" style={{ color: theme.disabledContent }}  />
-          }
-          {expired &&
-          <IconCross size="medium" style={{ color: theme.negative }}  />
-          }
-          {order.status === UsdlayerOrderStatus.EXECUTED &&
-          <IconCheck size="medium" style={{ color: theme.positive }}/>
-          }
+          {order.status === UsdlayerOrderStatus.PENDING && !expired && (
+            <IconClock size="medium" style={{ color: theme.disabledContent }} />
+          )}
+          {expired && <IconCross size="medium" style={{ color: theme.negative }} />}
+          {order.status === UsdlayerOrderStatus.EXECUTED && (
+            <IconCheck size="medium" style={{ color: theme.positive }} />
+          )}
         </Box>
       </Tooltip>
     </Box>
   );
 };
 
-const OrderRow: React.FC<OrderRowProps> = ({order}) => {
+const OrderRow: React.FC<OrderRowProps> = ({ order }) => {
   const date = new Date(order.createdAt);
   const theme = useTheme();
 
@@ -76,16 +93,33 @@ const OrderRow: React.FC<OrderRowProps> = ({order}) => {
     <TableRow>
       <TableCell component="th" scope="row" align="center">
         <Box display="flex" alignItems="center" justifyContent="center">
-          <OrderStatusIcon order={order}/>
+          <OrderStatusIcon order={order} />
         </Box>
       </TableCell>
-      <TableCell><CellText>{significantNumbers(order.inputAmount)} {order.inputCurrency}</CellText></TableCell>
-      <TableCell><CellText>{significantNumbers(order.outputAmount)} {order.outputCurrency}</CellText></TableCell>
-      <TableCell><CellText>{date.toLocaleDateString()} {date.toLocaleTimeString()}</CellText></TableCell>
       <TableCell>
-        {order.txHash &&
-        <Button href={getEtherscanTxURL(order.txHash)} size="mini" display="all" icon={<IconExternal style={{color: theme.accent}}/>} />
-        }
+        <CellText>
+          {significantNumbers(order.inputAmount)} {order.inputCurrency}
+        </CellText>
+      </TableCell>
+      <TableCell>
+        <CellText>
+          {significantNumbers(order.outputAmount)} {order.outputCurrency}
+        </CellText>
+      </TableCell>
+      <TableCell>
+        <CellText>
+          {date.toLocaleDateString()} {date.toLocaleTimeString()}
+        </CellText>
+      </TableCell>
+      <TableCell>
+        {order.txHash && (
+          <Button
+            href={getEtherscanTxURL(order.txHash)}
+            size="mini"
+            display="all"
+            icon={<IconExternal style={{ color: theme.accent }} />}
+          />
+        )}
       </TableCell>
     </TableRow>
   );
@@ -94,23 +128,24 @@ const OrderRow: React.FC<OrderRowProps> = ({order}) => {
 export default function OrderHistory() {
   const dispatch = useDispatch();
   const jwsToken = useSelector(getJWS);
-  const [isSmall] = useMediaQuery("(max-width: 960px)")
+  const [isSmall] = useMediaQuery('(max-width: 960px)');
   const { data, error } = useSWR(jwsToken, Api.getOrders);
 
   if (error) return <Box>Failed to load orders</Box>;
-  if (!data) return (
-    <Box display="flex" flexDirection="column" alignItems="center">
-      <p>Loading orders...</p>
-      <Box m={1}/>
-      <LoadingRing mode="half-circle" />
-    </Box>
-  );
+  if (!data)
+    return (
+      <Box display="flex" flexDirection="column" alignItems="center">
+        <p>Loading orders...</p>
+        <Box m={1} />
+        <LoadingRing mode="half-circle" />
+      </Box>
+    );
 
   const orders = data as UsdlayerOrder[];
 
   return (
     <Box width={1} mx={2}>
-      {orders.length > 0 ?
+      {orders.length > 0 ? (
         <TableContainer component={CustomTableContainer}>
           <Table aria-label="order history" size={isSmall ? 'small' : 'medium'}>
             <TableHead>
@@ -123,18 +158,20 @@ export default function OrderHistory() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {orders.map(order => <OrderRow order={order} key={order.id}/>)}
+              {orders.map(order => (
+                <OrderRow order={order} key={order.id} />
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
-        :
-        <Box textAlign="center">
-          You didn't make any orders.
-        </Box>
-      }
+      ) : (
+        <Box textAlign="center">You didn't make any orders.</Box>
+      )}
       <OrdersHint>
         If you have any issues with an order, please contact the
-        <Link onClick={() => dispatch(setInfoPanel('support'))} style={{ textDecoration: 'none', fontStyle: 'italic' }}>
+        <Link
+          onClick={() => dispatch(setInfoPanel('support'))}
+          style={{ textDecoration: 'none', fontStyle: 'italic' }}>
           &nbsp;support
         </Link>
         .

@@ -4,15 +4,16 @@
 
 Usdlayer widget allows to quickly add Usdlayer into any web app in minutes.
 
-The widget can either appear as a modal on top of an app, or included inside an HTML element. 
+The widget can either appear as a modal on top of an app, or included inside an HTML element.
 
 If the hosting app already has a connected user with web3, this wallet can be forwarded to the widget.
 
 ## 🎁 Quick start
+
 #### Install
 
 `yarn add @usdlayer/widget`
- 
+
 #### Start widget
 
 ```javascript
@@ -37,7 +38,7 @@ We also provided some [code examples](../example-host) that includes Usdlayer wi
 #### Instanciation
 
 - `new UsdlayerWidget(opts)`  
-Instanciate a Usdlayer widget.
+  Instanciate a Usdlayer widget.
 
 `opts.containerElement`: Include Usdlayer inside of an HTML element on your website. If not set, the widget will appear as a modal.
 
@@ -46,12 +47,12 @@ Instanciate a Usdlayer widget.
 `opts.token`: Automatically select a token to sell in Usdlayer. Must be an ERC20 contract address.
 
 #### If used as a modal:
+
 - `usdlayer.open()`  
-Opens the Usdlayer widget modal.
+  Opens the Usdlayer widget modal.
 
-
-- `usdlayer.close()`  
-Closes the Usdlayer widget modal. Not mandatory, a button is present to enable the user to close it.
+* `usdlayer.close()`  
+  Closes the Usdlayer widget modal. Not mandatory, a button is present to enable the user to close it.
 
 ## Additional information
 
@@ -69,7 +70,7 @@ Closes the Usdlayer widget modal. Not mandatory, a button is present to enable t
 
 ```
 <script src="https://unpkg.com/@usdlayer/widget"></script>
-<script> 
+<script>
   UsdlayerWidget.open()
 </script>
 ```

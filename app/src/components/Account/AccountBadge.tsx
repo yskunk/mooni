@@ -2,14 +2,18 @@ import React, { useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Button } from '../UI/StyledComponents'
-import { LoadingRing, IconWallet } from '@aragon/ui'
-import { Flex, Box, Image} from '@chakra-ui/react';
+import { Button } from '../UI/StyledComponents';
+import { LoadingRing, IconWallet } from '@aragon/ui';
+import { Flex, Box, Image } from '@chakra-ui/react';
 import makeBlockie from 'ethereum-blockies-base64';
 
-
-import { getAddress, getShortAddress, getWalletStatus, isWalletLoading } from '../../redux/wallet/selectors';
-import { WalletStatus } from "../../redux/wallet/state";
+import {
+  getAddress,
+  getShortAddress,
+  getWalletStatus,
+  isWalletLoading,
+} from '../../redux/wallet/selectors';
+import { WalletStatus } from '../../redux/wallet/state';
 import { selectENS } from '../../redux/user/userSlice';
 import { login } from '../../redux/wallet/actions';
 
@@ -29,9 +33,11 @@ function AccountBadge() {
     history.push('/account');
   }
 
-  if(walletLoading)
+  if (walletLoading)
     return (
-      <Button variant="solid" leftIcon={<LoadingRing />} disabled>Connecting...</Button>
+      <Button variant="solid" leftIcon={<LoadingRing />} disabled>
+        Connecting...
+      </Button>
     );
 
   function connectWallet() {
@@ -39,31 +45,26 @@ function AccountBadge() {
   }
 
   let button;
-  if(walletStatus === WalletStatus.DISCONNECTED) {
+  if (walletStatus === WalletStatus.DISCONNECTED) {
     button = (
-      <Button variant="outline" leftIcon={<IconWallet />} onClick={connectWallet}>Not connected</Button>
+      <Button variant="outline" leftIcon={<IconWallet />} onClick={connectWallet}>
+        Not connected
+      </Button>
     );
   } else {
     const displayedName = ens || shortenAddress;
 
     button = (
       <Button variant="outline" onClick={goToProfile}>
-        <Image
-          src={imgBlockie}
-          borderRadius="full"
-          boxSize="20px"
-        />
-        <Box ml={2} mr={2}>{displayedName}</Box>
+        <Image src={imgBlockie} borderRadius="full" boxSize="20px" />
+        <Box ml={2} mr={2}>
+          {displayedName}
+        </Box>
       </Button>
     );
   }
 
-
-  return (
-    <Flex>
-      {button}
-    </Flex>
-  );
+  return <Flex>{button}</Flex>;
 }
 
 export default AccountBadge;

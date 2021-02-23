@@ -5,7 +5,7 @@ export interface Recipient {
     address?: string;
     zip?: string;
     city?: string;
-  }
+  };
   iban: string;
   bic_swift?: string;
   email?: string;
@@ -46,5 +46,3 @@ export interface Payment {
   status: PaymentStatus;
   steps: PaymentStep[];
 }
-
-

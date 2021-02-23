@@ -10,7 +10,7 @@ export const CustomMobileStepper = withStyles({
     background: 'none',
   },
   progress: {
-    width: '100%'
+    width: '100%',
   },
   dotActive: {
     backgroundColor: '#784af4',

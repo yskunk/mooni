@@ -2,7 +2,7 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@usdlayer/burner-plugin)](https://www.npmjs.com/package/@usdlayer/burner-plugin)
 
-Allows transfering funds from your Burner Wallet to your bank account. 
+Allows transfering funds from your Burner Wallet to your bank account.
 
 This plugin is using [Usdlayer](https://usdlayer.com) app.
 
@@ -31,19 +31,13 @@ import UsdlayerPlugin from '@usdlayer/burner-plugin';
 
 const core = new BurnerCore({
   signers: [new LocalSigner()],
-  gateways: [
-    new InfuraGateway(process.env.REACT_APP_INFURA_KEY),
-  ],
+  gateways: [new InfuraGateway(process.env.REACT_APP_INFURA_KEY)],
   assets: [eth, dai, usdc],
 });
 
-const BurnerWallet = () =>
-  <ModernUI
-    title="Usdlayer Burner Wallet"
-    core={core}
-    plugins={[new UsdlayerPlugin()]}
-  />
-
+const BurnerWallet = () => (
+  <ModernUI title="Usdlayer Burner Wallet" core={core} plugins={[new UsdlayerPlugin()]} />
+);
 
 ReactDOM.render(<BurnerWallet />, document.getElementById('root'));
 ```
