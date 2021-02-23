@@ -5,7 +5,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/pakokrew/usdlayer.git"
+    "url": "https://github.com/manifoldfinance/usdlayer.git"
   },
   "engines": {
     "node": "12.x"

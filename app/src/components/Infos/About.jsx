@@ -77,7 +77,7 @@ export default function AboutPage() {
         Usdlayer is open-source !
       </SubTitle>
       <Box display="flex" justifyContent="center" mt={1}>
-        <GitHubButton href="https://github.com/pakokrew/usdlayer" data-color-scheme="no-preference: dark; light: dark; dark: dark;">Github</GitHubButton>
+        <GitHubButton href="https://github.com/manifoldfinance/usdlayer" data-color-scheme="no-preference: dark; light: dark; dark: dark;">Github</GitHubButton>
       </Box>
     </Box>
   );

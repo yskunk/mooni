@@ -205,7 +205,7 @@ export default function Header() {
                 <MenuItem icon={<IconInfo/>} onClick={() => dispatch(setInfoPanel('about'))}> About</MenuItem>
                 <MenuItem paddingLeft="1rem" icon={<MenuBookIcon fontSize="small"/>} onClick={() => window.open('https://doc.usdlayer.tech')}> Docs</MenuItem>
                 <MenuItem paddingLeft="1rem" icon={<ContactSupportIcon fontSize="small"/>} onClick={() => dispatch(setInfoPanel('support'))}> Support</MenuItem>
-                <MenuItem icon={<IconChip/>} onClick={() => window.open('https://github.com/pakokrew/usdlayer')}> Code</MenuItem>
+                <MenuItem icon={<IconChip/>} onClick={() => window.open('https://github.com/manifoldfinance/usdlayer')}> Code</MenuItem>
                 <MenuItem icon={<IconFile/>} onClick={() => dispatch(setInfoPanel('terms'))}> Terms</MenuItem>
                 <MenuItem icon={<IconChat/>} onClick={() => window.open(config.discordInviteUrl)}> Discord</MenuItem>
               </MenuList>
