@@ -1,8 +1,7 @@
-# 🔵 Usdlayer Widget
+# USD Layer
 
-[![npm (scoped)](https://img.shields.io/npm/v/@usdlayer/widget)](https://www.npmjs.com/package/@usdlayer/widget)
 
-Usdlayer widget allows to quickly add Usdlayer into any web app in minutes.
+Widget allows to quickly add Usdlayer into any web app in minutes.
 
 The widget can either appear as a modal on top of an app, or included inside an HTML element.
 
@@ -26,12 +25,6 @@ const usdlayer = new UsdlayerWidget();
 // Open the widget as a modal when you want it
 usdlayer.open();
 ```
-
-### 📺 Example apps
-
-An [example app](https://integration-example.usdlayer.com) including Usdlayer widget have been published to let you try it out.
-
-We also provided some [code examples](../example-host) that includes Usdlayer widget. You can also check the [Burner Wallet integration](../burner-plugin/src/ui/UsdlayerPage.tsx) for a more advanced use case.
 
 ## 🎛 Reference
 
@@ -66,9 +59,11 @@ We also provided some [code examples](../example-host) that includes Usdlayer wi
 
 `const UsdlayerWidget = require('@usdlayer/widget');`
 
+
 - UMD
 
 ```
+<!-- not yet published! -->
 <script src="https://unpkg.com/@usdlayer/widget"></script>
 <script>
   UsdlayerWidget.open()
@@ -87,3 +82,7 @@ yarn build
 # Publish package
 npm publish
 ```
+
+## License 
+
+GPL-3.0
