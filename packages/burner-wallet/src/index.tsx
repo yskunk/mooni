@@ -20,7 +20,7 @@ const BurnerWallet = () =>
   <ModernUI
     title="Usdlayer Burner Wallet"
     core={core}
-    plugins={[new UsdlayerPlugin({ appUrl: process.env.REACT_APP_MOONI_URL })]}
+    plugins={[new UsdlayerPlugin({ appUrl: process.env.REACT_APP_USDLAYER_URL })]}
   />
 
 

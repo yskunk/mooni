@@ -174,7 +174,7 @@ export default function Header() {
             <LogoBox>
               <img src="logo192.png" alt="usdlayer-logo" />
               <h1>
-                MOONI
+                USDLAYER
               </h1>
               <span>
                 beta
