@@ -10,6 +10,7 @@
   "scripts": {
     "install": "lerna bootstrap && yarn --cwd app",
     "build": "lerna run build",
+    "semantic-release": "semantic-release",
     "publish": "lerna publish",
     "lint": "eslint '*/**/*.{js,ts,tsx}'",
     "start:app": "yarn start --cwd app",
@@ -22,11 +23,15 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^2.5.0",
     "@typescript-eslint/parser": "^2.5.0",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
-    "lerna": "^3.16.4"
+    "lerna": "^3.16.4",
+    "semantic-release": "^17.3.9",
+    "semantic-release-npm-github-publish": "^1.4.0"
   },
   "dependencies": {
     "typescript": "^3.6.3"
