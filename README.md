@@ -1,4 +1,4 @@
-# 🌚 Usdlayer
+# 🔵 Usdlayer
 
 Easily transfer funds from your crypto wallet to your bank account.
 

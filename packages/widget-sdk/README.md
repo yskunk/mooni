@@ -1,4 +1,4 @@
-# 🌚 Usdlayer Widget
+# 🔵 Usdlayer Widget
 
 [![npm (scoped)](https://img.shields.io/npm/v/@usdlayer/widget)](https://www.npmjs.com/package/@usdlayer/widget)
 
