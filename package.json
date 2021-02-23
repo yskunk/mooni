@@ -1,7 +1,6 @@
 {
   "name": "@usdlayer/monorepo",
   "description": "Monorepo for Usdlayer applications and  libraries",
-  "author": "Paco <manifoldfinance@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/manifoldfinance/usdlayer.git"
