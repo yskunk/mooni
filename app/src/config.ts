@@ -33,16 +33,18 @@ function parseEnv<T extends string | number | boolean>(
   }
   return v as T;
 }
+// 
+
 
 const config: IConfig = {
   chainId: parseEnv(process.env.REACT_APP_CHAIN_ID, ChainId.MAINNET),
-  infuraId: parseEnv(process.env.REACT_APP_INFURA_ID, 'd118ed6a19594e16893c0c29d09a2536'),
-  portisAppId: parseEnv(process.env.REACT_APP_PORTIS_APP_ID, 'dd65a1a7-e0dc-4a9a-acc6-ae5ed5e48dc2'),
-  fortmaticId: parseEnv(process.env.REACT_APP_FORTMATIC_ID, 'pk_live_362BC03A6D2421B4'),
-  logRocketId: parseEnv(process.env.REACT_APP_LOG_ROCKET_ID, '282s2e/usdlayer'),
+  infuraId: parseEnv(process.env.REACT_APP_INFURA_ID, '653725ca4251410eafca128ba7e880c2'),
+  portisAppId: parseEnv(process.env.REACT_APP_PORTIS_APP_ID, 'e81e7794-66cd-4499-bfb0-5a3875d3bcef'),
+  fortmaticId: parseEnv(process.env.REACT_APP_FORTMATIC_ID, 'pk_live_1448D7EC14FD9FF7'),
+  logRocketId: parseEnv(process.env.REACT_APP_LOG_ROCKET_ID, 'manifold-finance/usd-layer'),
   enableAnalytics: parseEnv(process.env.REACT_APP_ENABLE_ANALYTICS, false),
-  gtagId: parseEnv(process.env.REACT_APP_GTAG_ID, 'UA-68373171-8'),
-  discordInviteUrl: 'https://discord.gg/beq7cBCd2q',
+  gtagId: parseEnv(process.env.REACT_APP_GTAG_ID, ''),
+  discordInviteUrl: 'https://t.me/manifoldfinance',
   referralSharing: 0.1,
   private: {
     bityClientId: parseEnv(process.env.PRIVATE_BITY_CLIENT_ID, ''),
