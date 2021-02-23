@@ -4,9 +4,9 @@
 
 Allows transfering funds from your Burner Wallet to your bank account. 
 
-This plugin is using [Usdlayer](https://usdlayer.tech) app.
+This plugin is using [Usdlayer](https://usdlayer.com) app.
 
-A Burner Wallet have been deployed with this plugin included: [Usdlayer Burner Wallet](https://burner.usdlayer.tech).
+A Burner Wallet have been deployed with this plugin included: [Usdlayer Burner Wallet](https://burner.usdlayer.com).
 
 ## Usage
 

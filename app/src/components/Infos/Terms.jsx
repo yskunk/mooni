@@ -31,7 +31,7 @@ function Terms() {
       </SubTitle>
       <Content>
         Usdlayer is a web application that allows to transfer funds from a crypto wallet to a bank account. <br/>
-        The app is currently only available on the domain at <i>usdlayer.tech</i>. <br/>
+        The app is currently only available on the domain at <i>usdlayer.com</i>. <br/>
         It is not a money service provider, does not holds any users funds, and does not have any financial license. Instead, it uses different third party services such as a foreign exchange, decentralized liquidity providers and data storages, in order to serve its purpose.
       </Content>
       <SubTitle>
@@ -65,7 +65,7 @@ function Terms() {
         2.3 Provided support
       </SubTitle>
       <Content>
-        In case of a bug or lost funds, the users can get help by <Link href="mailto:contact@usdlayer.tech" external>contacting the contributors</Link> of this project, or by directly contacting Bity, but nothing is guaranteed in terms of response or funds recovery. <br/>
+        In case of a bug or lost funds, the users can get help by <Link href="mailto:contact@usdlayer.com" external>contacting the contributors</Link> of this project, or by directly contacting Bity, but nothing is guaranteed in terms of response or funds recovery. <br/>
         Should you encounter any bugs, glitches, lack of functionality or other problems on the website, please let us know immediately so we can rectify these accordingly.
       </Content>
       <SubTitle>

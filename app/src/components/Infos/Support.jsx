@@ -42,7 +42,7 @@ export default function Support() {
         Important informations
       </SubTitle>
       <Content>
-        Please make sure you are using our unique domain name at <u>app.usdlayer.tech</u>.
+        Please make sure you are using our unique domain name at <u>app.usdlayer.com</u>.
         Usdlayer will never ask for your seed/private keys or ever contact you by email.
       </Content>
 
@@ -92,7 +92,7 @@ export default function Support() {
       </SubTitle>
       <Content>
         You can
-        <Link href="mailto:contact@usdlayer.tech" external style={{ textDecoration: 'none' }}>
+        <Link href="mailto:contact@usdlayer.com" external style={{ textDecoration: 'none' }}>
           &nbsp;reach us by mail
         </Link>.
       </Content>

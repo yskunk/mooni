@@ -40,7 +40,7 @@ export default function AboutPage() {
         Usdlayer is a web application allowing to transfer funds from a crypto wallet to a bank account.
       </Title>
       <SubTitle>
-        Want to see how it works ? Check out the <Link href="https://doc.usdlayer.tech/walkthrough" external style={{ textDecoration: 'none' }}>Walkthrough</Link> !
+        Want to see how it works ? Check out the <Link href="https://doc.usdlayer.com/walkthrough" external style={{ textDecoration: 'none' }}>Walkthrough</Link> !
       </SubTitle>
       <Header>
         Availability
@@ -54,7 +54,7 @@ export default function AboutPage() {
       </Header>
       <Content>
         It is possible to integrate Usdlayer into any applications. Please refer to
-        <Link href="https://doc.usdlayer.tech" external style={{ textDecoration: 'none' }}>
+        <Link href="https://doc.usdlayer.com" external style={{ textDecoration: 'none' }}>
           &nbsp;the documentation&nbsp;
         </Link>
         for more informations.
@@ -69,7 +69,7 @@ export default function AboutPage() {
         <SocialIcon href={config.discordInviteUrl} target="_blank" rel="noopener noreferrer">
           <img src={DiscordIcon} width={30} alt="discord icon" />
         </SocialIcon>
-        <SocialIcon href="mailto:contact@usdlayer.tech" target="_blank">
+        <SocialIcon href="mailto:contact@usdlayer.com" target="_blank">
           <Email fontSize="large" />
         </SocialIcon>
       </Box>

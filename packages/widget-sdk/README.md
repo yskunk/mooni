@@ -28,7 +28,7 @@ usdlayer.open();
 
 ### 📺 Example apps
 
-An [example app](https://integration-example.usdlayer.tech) including Usdlayer widget have been published to let you try it out.
+An [example app](https://integration-example.usdlayer.com) including Usdlayer widget have been published to let you try it out.
 
 We also provided some [code examples](../example-host) that includes Usdlayer widget. You can also check the [Burner Wallet integration](../burner-plugin/src/ui/UsdlayerPage.tsx) for a more advanced use case.
 

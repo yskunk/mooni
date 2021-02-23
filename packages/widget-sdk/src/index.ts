@@ -1,7 +1,7 @@
 import UrlParse from 'url-parse';
 import modalStyles from './modalStyles';
 
-const defaultAppUrl = 'https://app.usdlayer.tech';
+const defaultAppUrl = 'https://app.usdlayer.com';
 
 // TODO common package
 const IFRAME_PROVIDER_DOMAIN = 'IFRAME_PROVIDER';

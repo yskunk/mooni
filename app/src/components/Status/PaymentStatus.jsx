@@ -167,7 +167,7 @@ function PaymentErrorInfo({ onRestart, payment }) {
       </>
       }
       <Hint>
-        If you think you found a bug, please <SimpleLink href="mailto:support@usdlayer.tech" external>contact support</SimpleLink>.
+        If you think you found a bug, please <SimpleLink href="mailto:support@usdlayer.com" external>contact support</SimpleLink>.
       </Hint>
       <Button mode="normal" onClick={onRestart} wide icon={<IconArrowLeft/>} label="Retry" />
     </Box>
