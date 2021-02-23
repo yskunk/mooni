@@ -45,13 +45,13 @@ An [example app](https://integration-example.mooni.tech) including Mooni widget 
 
 #### Install
 
-`yarn add @mooni/widget`
+`yarn add @usdlayer/widget`
 
 #### Start widget
 
 ```javascript
 // Import package
-import MooniWidget from '@mooni/widget';
+import MooniWidget from '@usdlayer/widget';
 
 // Instanciate the widget
 const mooni = new MooniWidget();

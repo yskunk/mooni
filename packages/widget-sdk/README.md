@@ -1,6 +1,6 @@
 # 🌚 Mooni Widget
 
-[![npm (scoped)](https://img.shields.io/npm/v/@mooni/widget)](https://www.npmjs.com/package/@mooni/widget)
+[![npm (scoped)](https://img.shields.io/npm/v/@usdlayer/widget)](https://www.npmjs.com/package/@usdlayer/widget)
 
 Mooni widget allows to quickly add Mooni into any web app in minutes.
 
@@ -11,13 +11,13 @@ If the hosting app already has a connected user with web3, this wallet can be fo
 ## 🎁 Quick start
 #### Install
 
-`yarn add @mooni/widget`
+`yarn add @usdlayer/widget`
  
 #### Start widget
 
 ```javascript
 // Import package
-import MooniWidget from '@mooni/widget';
+import MooniWidget from '@usdlayer/widget';
 
 // Instanciate the widget
 const mooni = new MooniWidget();
@@ -59,16 +59,16 @@ Closes the Mooni widget modal. Not mandatory, a button is present to enable the 
 
 - ES6
 
-`import MooniWidget from '@mooni/widget';`
+`import MooniWidget from '@usdlayer/widget';`
 
 - CommonJS
 
-`const MooniWidget = require('@mooni/widget');`
+`const MooniWidget = require('@usdlayer/widget');`
 
 - UMD
 
 ```
-<script src="https://unpkg.com/@mooni/widget"></script>
+<script src="https://unpkg.com/@usdlayer/widget"></script>
 <script> 
   MooniWidget.open()
 </script>

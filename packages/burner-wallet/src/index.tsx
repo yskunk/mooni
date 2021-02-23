@@ -6,7 +6,7 @@ import { LocalSigner } from '@burner-wallet/core/signers';
 import { InfuraGateway } from '@burner-wallet/core/gateways';
 import ModernUI from '@burner-wallet/modern-ui';
 
-import MooniPlugin from '@mooni/burner-plugin';
+import MooniPlugin from '@usdlayer/burner-plugin';
 
 const core = new BurnerCore({
   signers: [new LocalSigner()],

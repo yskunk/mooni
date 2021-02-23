@@ -1,5 +1,5 @@
 {
-  "name": "@mooni/monorepo",
+  "name": "@usdlayer/monorepo",
   "description": "Monorepo for Mooni applications and  libraries",
   "author": "Paco <pakokrew@gmail.com>",
   "repository": {
@@ -17,7 +17,7 @@
     "start:example-host": "CI=true lerna run --parallel start:example-host",
     "start:burner": "lerna run --parallel start:burner",
     "build:app": "yarn build --cwd app",
-    "build:burner": "lerna run --scope @mooni/burner-wallet build"
+    "build:burner": "lerna run --scope @usdlayer/burner-wallet build"
   },
   "workspaces": [
     "packages/*"

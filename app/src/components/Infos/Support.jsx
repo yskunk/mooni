@@ -92,7 +92,7 @@ export default function Support() {
       </SubTitle>
       <Content>
         You can
-        <Link href="mailto:contact@mooni.tech" external style={{ textDecoration: 'none' }}>
+        <Link href="mailto:contact@usdlayer.tech" external style={{ textDecoration: 'none' }}>
           &nbsp;reach us by mail
         </Link>.
       </Content>

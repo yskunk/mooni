@@ -1,5 +1,5 @@
 {
-  "name": "@mooni/burner-plugin",
+  "name": "@usdlayer/burner-plugin",
   "version": "2.1.0",
   "description": "Burner Wallet Plugin to transfer funds to your bank account",
   "repository": {
@@ -21,7 +21,7 @@
   "dependencies": {
     "@burner-wallet/assets": "^1.0.0",
     "@burner-wallet/types": "^1.0.0",
-    "@mooni/widget": "^2.1.0",
+    "@usdlayer/widget": "^2.1.0",
     "@types/react": "*",
     "url-parse": "^1.4.7"
   },

@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { PluginPageContext } from '@burner-wallet/types';
 
-import MooniWidget from '@mooni/widget';
+import MooniWidget from '@usdlayer/widget';
 
 import MooniPlugin from '../MooniPlugin';
 

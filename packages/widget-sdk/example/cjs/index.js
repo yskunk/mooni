@@ -1,4 +1,4 @@
-const MooniWidget = require('@mooni/widget');
+const MooniWidget = require('@usdlayer/widget');
 
 const mooni = new MooniWidget();
 

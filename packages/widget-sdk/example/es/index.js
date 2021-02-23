@@ -1,4 +1,4 @@
-import MooniWidget from '@mooni/widget';
+import MooniWidget from '@usdlayer/widget';
 
 const mooni = new MooniWidget();
 

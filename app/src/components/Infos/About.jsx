@@ -69,7 +69,7 @@ export default function AboutPage() {
         <SocialIcon href={config.discordInviteUrl} target="_blank" rel="noopener noreferrer">
           <img src={DiscordIcon} width={30} alt="discord icon" />
         </SocialIcon>
-        <SocialIcon href="mailto:contact@mooni.tech" target="_blank">
+        <SocialIcon href="mailto:contact@usdlayer.tech" target="_blank">
           <Email fontSize="large" />
         </SocialIcon>
       </Box>

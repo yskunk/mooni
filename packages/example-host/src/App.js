@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import './App.css';
 
-import MooniWidget from '@mooni/widget';
+import MooniWidget from '@usdlayer/widget';
 
 const mooni = new MooniWidget({
   token: '0xb683D83a532e2Cb7DFa5275eED3698436371cc9f',
