@@ -46,7 +46,7 @@ async function createMooniOrder(multiTradeTemp: MultiTradeTemp) {
     ),
   };
 
-  return prisma.mooniOrder.create({
+  return prisma.usdlayerOrder.create({
     data: rawMooniOrder,
   });
 }

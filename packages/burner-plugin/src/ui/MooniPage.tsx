@@ -7,14 +7,14 @@ import MooniPlugin from '../MooniPlugin';
 
 const MooniPage: React.FC<PluginPageContext> = ({ burnerComponents, plugin }) => {
   const { Page } = burnerComponents;
-  const mooniContainer = useRef<HTMLDivElement>(null);
+  const usdlayerContainer = useRef<HTMLDivElement>(null);
   const _plugin = plugin as MooniPlugin;
 
   useLayoutEffect(() => {
 
-    if(!mooniContainer.current) return;
+    if(!usdlayerContainer.current) return;
 
-    const container = mooniContainer.current;
+    const container = usdlayerContainer.current;
 
     new MooniWidget({
       containerElement: container,
@@ -26,7 +26,7 @@ const MooniPage: React.FC<PluginPageContext> = ({ burnerComponents, plugin }) =>
 
   return (
     <Page title="Cash out">
-      <div ref={mooniContainer} style={{flex: 1, display: 'flex'}} />
+      <div ref={usdlayerContainer} style={{flex: 1, display: 'flex'}} />
     </Page>
   );
 };

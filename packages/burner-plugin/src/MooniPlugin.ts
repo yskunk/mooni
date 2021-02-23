@@ -18,8 +18,8 @@ export default class MooniPlugin implements Plugin {
   initializePlugin(pluginContext: BurnerPluginContext) {
     this.pluginContext = pluginContext;
 
-    pluginContext.addPage('/mooni', MooniPage);
-    pluginContext.addButton('apps', 'Cash out', '/mooni', {
+    pluginContext.addPage('/usdlayer', MooniPage);
+    pluginContext.addButton('apps', 'Cash out', '/usdlayer', {
       description: 'Transfer funds to your bank account',
     });
 

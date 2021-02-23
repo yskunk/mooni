@@ -146,7 +146,7 @@ const ParaswapWrapper = {
     const srcAmount = amountToInt(inputAmount, dexTrade.tradeRequest.inputCurrencyObject.decimals);
     const destAmount = amountToInt(outputAmount, dexTrade.tradeRequest.outputCurrencyObject.decimals);
     const receiver = undefined;
-    const referrer = 'mooni';
+    const referrer = 'usdlayer';
 
     const txParams = await paraSwapSDK.buildTx(srcToken, destToken, srcAmount, destAmount, priceRoute, senderAddress, referrer, receiver);
     if((txParams as APIError).message) throw new Error((txParams as APIError).message);

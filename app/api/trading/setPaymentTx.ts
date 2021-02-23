@@ -16,18 +16,18 @@ export default errorMiddleware(authMiddleware(async (req: NowRequest, res: NowRe
     throw new APIError(400, 'wrong-body', '[multiTradeId, txHash] required');
   }
 
-  const mooniOrder = await prisma.mooniOrder.findUnique({
+  const usdlayerOrder = await prisma.usdlayerOrder.findUnique({
     where: {
       id: multiTradeId,
     },
   });
-  if(!mooniOrder || !compareAddresses(mooniOrder.ethAddress, token.claim.iss)) {
+  if(!usdlayerOrder || !compareAddresses(usdlayerOrder.ethAddress, token.claim.iss)) {
     throw new APIError(404, 'not-found', 'MooniOrder not found');
   }
-  if(mooniOrder.txHash) {
+  if(usdlayerOrder.txHash) {
     throw new APIError(400, 'invalid', 'Order already has a txHash set');
   }
-  await prisma.mooniOrder.update({
+  await prisma.usdlayerOrder.update({
     where: { id: multiTradeId },
     data: { txHash },
   });

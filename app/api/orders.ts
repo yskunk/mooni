@@ -6,7 +6,7 @@ import { errorMiddleware } from '../src/lib/api/errorMiddleware';
 
 export default errorMiddleware(authMiddleware(async (req: NowRequest, res: NowResponse, token: Token): Promise<NowResponse | void> => {
   const ethAddress = token.claim.iss.toLowerCase();
-  const orders = await prisma.mooniOrder.findMany({
+  const orders = await prisma.usdlayerOrder.findMany({
     where: {
       ethAddress,
     },

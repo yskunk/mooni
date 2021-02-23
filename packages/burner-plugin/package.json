@@ -4,7 +4,7 @@
   "description": "Burner Wallet Plugin to transfer funds to your bank account",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pakokrew/mooni.git"
+    "url": "https://github.com/pakokrew/usdlayer.git"
   },
   "publishConfig": {
     "access": "public"

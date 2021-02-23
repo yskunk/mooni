@@ -42,7 +42,7 @@ export default function Support() {
         Important informations
       </SubTitle>
       <Content>
-        Please make sure you are using our unique domain name at <u>app.mooni.tech</u>.
+        Please make sure you are using our unique domain name at <u>app.usdlayer.tech</u>.
         Mooni will never ask for your seed/private keys or ever contact you by email.
       </Content>
 

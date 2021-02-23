@@ -2,11 +2,11 @@
 
 Easily transfer funds from your crypto wallet to your bank account.
 
-[🖼 Landing page](https://mooni.tech)
+[🖼 Landing page](https://usdlayer.tech)
 
-[🚀 Web Application](https://app.mooni.tech)
+[🚀 Web Application](https://app.usdlayer.tech)
 
-[📒 Documentation](https://doc.mooni.tech)
+[📒 Documentation](https://doc.usdlayer.tech)
 
 [🔮 Frontend integration](#-frontend-integration)
 
@@ -24,7 +24,7 @@ Mooni is a simple solution for end-users, marketplaces or DAOs to cash out crypt
 * **Bank transfer** Receive funds in your bank account in EUR/CHF \(thanks to [Bity](https://bity.com)\)
 * **Quick checkout** No need to register accounts and pass long KYC verifications. Subject to amount limits.
 
-[🚀 Use Mooni now](https://app.mooni.tech)
+[🚀 Use Mooni now](https://app.usdlayer.tech)
 
 
 ### Use cases
@@ -39,7 +39,7 @@ You can easily integrate Mooni into your web application and quickly enable your
 This is useful for marketplace builders which want to increase conversion rate by allowing their users to withdraw the profit they make on the app.
 
 
-An [example app](https://integration-example.mooni.tech) including Mooni widget is available to let you try it out.
+An [example app](https://integration-example.usdlayer.tech) including Mooni widget is available to let you try it out.
 
 ### 🎁 Quick start
 
@@ -54,10 +54,10 @@ An [example app](https://integration-example.mooni.tech) including Mooni widget 
 import MooniWidget from '@usdlayer/widget';
 
 // Instanciate the widget
-const mooni = new MooniWidget();
+const usdlayer = new MooniWidget();
 
 // Open the widget when you want to show Mooni
-mooni.open();
+usdlayer.open();
 ```
 Check [the package](./packages/widget-sdk) for full API documentation.
 
@@ -65,14 +65,14 @@ Check [the package](./packages/widget-sdk) for full API documentation.
 
 A plugin for [Burner Wallet](https://github.com/burner-wallet/burner-wallet-2/) have been done to easily add the possibilty to cash out.
 
-We have our own [Mooni Burner Wallet](https://burner.mooni.tech) deployed if you want to try it.
+We have our own [Mooni Burner Wallet](https://burner.usdlayer.tech) deployed if you want to try it.
 
 Please refer to the [plugin documentation](packages/burner-plugin) for integration instructions.
 
 
 ## 💻 Development
 
-This repo is a monorepo including different apps and libraries for running mooni which are located under folders in `packages/*`.
+This repo is a monorepo including different apps and libraries for running usdlayer which are located under folders in `packages/*`.
 
 ### App
 

@@ -5,7 +5,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/pakokrew/mooni.git"
+    "url": "https://github.com/pakokrew/usdlayer.git"
   },
   "engines": {
     "node": "12.x"

@@ -3,7 +3,7 @@ import './App.css';
 
 import MooniWidget from '@usdlayer/widget';
 
-const mooni = new MooniWidget({
+const usdlayer = new MooniWidget({
   token: '0xb683D83a532e2Cb7DFa5275eED3698436371cc9f',
   ethereum: window.ethereum,
 });
@@ -11,7 +11,7 @@ const mooni = new MooniWidget({
 function App() {
 
   const openMooni = useCallback(() => {
-    mooni.open();
+    usdlayer.open();
   }, []);
 
   return (

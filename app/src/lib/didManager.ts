@@ -61,7 +61,7 @@ const DIDManager = {
       iat: +new Date(),
       exp: iat + tokenDuration,
       iss: address,
-      aud: 'mooni',
+      aud: 'usdlayer',
       tid: uuidv4(),
     };
 

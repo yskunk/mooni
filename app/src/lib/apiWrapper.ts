@@ -16,7 +16,7 @@ interface IAPI {
 }
 
 const API_URL = '/api';
-const mooniAPI = axios.create({
+const usdlayerAPI = axios.create({
   baseURL: API_URL,
   timeout: 30 * 1000,
 });
@@ -24,23 +24,23 @@ const mooniAPI = axios.create({
 /*
 const RETRY_ATTEMPTS = 3;
 
-async function mooniAPIRetryer(config: AxiosRequestConfig, attempt: number = 1) {
+async function usdlayerAPIRetryer(config: AxiosRequestConfig, attempt: number = 1) {
   try {
-    return await mooniAPICatcher(config);
+    return await usdlayerAPICatcher(config);
   }
   catch (error) {
     if(error.message === 'timeout' && attempt < RETRY_ATTEMPTS) {
       console.log('timeout retry', config)
-      return await mooniAPIRetryer(config, attempt+1);
+      return await usdlayerAPIRetryer(config, attempt+1);
     }
     throw error;
   }
 }
 */
 
-async function mooniAPICatcher(config: AxiosRequestConfig) {
+async function usdlayerAPICatcher(config: AxiosRequestConfig) {
   try {
-    return await mooniAPI(config);
+    return await usdlayerAPI(config);
   }
   catch (error) {
     if(error.code === 'ECONNABORTED') {
@@ -62,7 +62,7 @@ async function mooniAPICatcher(config: AxiosRequestConfig) {
 
 const ApiWrapper: IAPI = {
   async estimateMultiTrade(tradeRequest: TradeRequest): Promise<MultiTradeEstimation> {
-    const {data} = await mooniAPICatcher({
+    const {data} = await usdlayerAPICatcher({
       method: 'post',
       url: 'trading/estimateMultiTrade',
       data: tradeRequest,
@@ -71,7 +71,7 @@ const ApiWrapper: IAPI = {
     return data;
   },
   async createMultiTrade(multiTradeRequest: MultiTradeRequest, jwsToken: string): Promise<MultiTrade> {
-    const {data} = await mooniAPICatcher({
+    const {data} = await usdlayerAPICatcher({
       method: 'post',
       url: 'trading/createMultiTrade',
       headers: {
@@ -84,7 +84,7 @@ const ApiWrapper: IAPI = {
   },
 
   async getBityOrder(bityOrderId: string, jwsToken: string): Promise<BityOrderResponse> {
-    const {data} = await mooniAPICatcher({
+    const {data} = await usdlayerAPICatcher({
       method: 'post',
       url: 'bity/getOrder',
       headers: {
@@ -98,7 +98,7 @@ const ApiWrapper: IAPI = {
     return data;
   },
   async getOrders(jwsToken: string): Promise<MooniOrder[]> {
-    const {data} = await mooniAPICatcher({
+    const {data} = await usdlayerAPICatcher({
       method: 'get',
       url: 'orders',
       headers: {
@@ -109,7 +109,7 @@ const ApiWrapper: IAPI = {
     return data;
   },
   async getUser(jwsToken: string): Promise<User> {
-    const {data} = await mooniAPICatcher({
+    const {data} = await usdlayerAPICatcher({
       method: 'get',
       url: 'user',
       headers: {
@@ -120,7 +120,7 @@ const ApiWrapper: IAPI = {
     return data;
   },
   async setPaymentTx(multiTradeId: UUID, txHash: TransactionHash, jwsToken: string): Promise<User> {
-    const {data} = await mooniAPICatcher({
+    const {data} = await usdlayerAPICatcher({
       method: 'post',
       url: 'trading/setPaymentTx',
       headers: {
@@ -135,7 +135,7 @@ const ApiWrapper: IAPI = {
     return data;
   },
   async getStats(): Promise<Stats> {
-    const {data} = await mooniAPICatcher({
+    const {data} = await usdlayerAPICatcher({
       method: 'get',
       url: 'stats',
     });
@@ -143,7 +143,7 @@ const ApiWrapper: IAPI = {
     return data;
   },
   async getProfitShare(jwsToken: string): Promise<ProfitShare> {
-    const {data} = await mooniAPICatcher({
+    const {data} = await usdlayerAPICatcher({
       method: 'get',
       headers: {
         'Authorization': `Bearer ${jwsToken}`,

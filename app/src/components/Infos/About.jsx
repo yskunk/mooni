@@ -40,7 +40,7 @@ export default function AboutPage() {
         Mooni is a web application allowing to transfer funds from a crypto wallet to a bank account.
       </Title>
       <SubTitle>
-        Want to see how it works ? Check out the <Link href="https://doc.mooni.tech/walkthrough" external style={{ textDecoration: 'none' }}>Walkthrough</Link> !
+        Want to see how it works ? Check out the <Link href="https://doc.usdlayer.tech/walkthrough" external style={{ textDecoration: 'none' }}>Walkthrough</Link> !
       </SubTitle>
       <Header>
         Availability
@@ -54,7 +54,7 @@ export default function AboutPage() {
       </Header>
       <Content>
         It is possible to integrate Mooni into any applications. Please refer to
-        <Link href="https://doc.mooni.tech" external style={{ textDecoration: 'none' }}>
+        <Link href="https://doc.usdlayer.tech" external style={{ textDecoration: 'none' }}>
           &nbsp;the documentation&nbsp;
         </Link>
         for more informations.
@@ -63,7 +63,7 @@ export default function AboutPage() {
         Social
       </Header>
       <Box display="flex" justifyContent="center" my={1}>
-        <SocialIcon href="https://twitter.com/moonidapp" target="_blank">
+        <SocialIcon href="https://twitter.com/usdlayerdapp" target="_blank">
           <Twitter fontSize="large" />
         </SocialIcon>
         <SocialIcon href={config.discordInviteUrl} target="_blank" rel="noopener noreferrer">
@@ -77,7 +77,7 @@ export default function AboutPage() {
         Mooni is open-source !
       </SubTitle>
       <Box display="flex" justifyContent="center" mt={1}>
-        <GitHubButton href="https://github.com/pakokrew/mooni" data-color-scheme="no-preference: dark; light: dark; dark: dark;">Github</GitHubButton>
+        <GitHubButton href="https://github.com/pakokrew/usdlayer" data-color-scheme="no-preference: dark; light: dark; dark: dark;">Github</GitHubButton>
       </Box>
     </Box>
   );

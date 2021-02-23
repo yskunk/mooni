@@ -9,22 +9,22 @@ const prisma = new PrismaClient()
 const web3 = createAlchemyWeb3("https://eth-mainnet.alchemyapi.io/v2/demo");
 
 async function fetchOrderTx(bityOrder: BityOrderResponse) {
-  const mooniOrder = await prisma.mooniOrder.findUnique({
+  const usdlayerOrder = await prisma.usdlayerOrder.findUnique({
     where: { bityOrderId: bityOrder.id },
   });
-  if(!mooniOrder) throw new Error('mooniorder not found');
-  if(mooniOrder.txHash) return;
+  if(!usdlayerOrder) throw new Error('usdlayerorder not found');
+  if(usdlayerOrder.txHash) return;
 
   const transfers = await web3.alchemy.getAssetTransfers({
     fromBlock: web3.utils.numberToHex(11189980),
-    fromAddress: mooniOrder.ethAddress,
+    fromAddress: usdlayerOrder.ethAddress,
     toAddress: bityOrder.payment_details.crypto_address,
     category: [AssetTransfersCategory.EXTERNAL],
   });
   const transfer = transfers.transfers[0];
   const { hash: txHash } = transfer;
 
-  await prisma.mooniOrder.update({
+  await prisma.usdlayerOrder.update({
     where: { bityOrderId: bityOrder.id },
     data: { txHash },
   });
@@ -50,7 +50,7 @@ async function createMooniOrder(bityOrder: BityOrderResponse) {
     },
   }
 
-  await prisma.mooniOrder.create({
+  await prisma.usdlayerOrder.create({
     data: rawMooniOrder,
   })
 }

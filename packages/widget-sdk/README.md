@@ -20,15 +20,15 @@ If the hosting app already has a connected user with web3, this wallet can be fo
 import MooniWidget from '@usdlayer/widget';
 
 // Instanciate the widget
-const mooni = new MooniWidget();
+const usdlayer = new MooniWidget();
 
 // Open the widget as a modal when you want it
-mooni.open();
+usdlayer.open();
 ```
 
 ### 📺 Example apps
 
-An [example app](https://integration-example.mooni.tech) including Mooni widget have been published to let you try it out.
+An [example app](https://integration-example.usdlayer.tech) including Mooni widget have been published to let you try it out.
 
 We also provided some [code examples](../example-host) that includes Mooni widget. You can also check the [Burner Wallet integration](../burner-plugin/src/ui/MooniPage.tsx) for a more advanced use case.
 
@@ -46,11 +46,11 @@ Instanciate a Mooni widget.
 `opts.token`: Automatically select a token to sell in Mooni. Must be an ERC20 contract address.
 
 #### If used as a modal:
-- `mooni.open()`  
+- `usdlayer.open()`  
 Opens the Mooni widget modal.
 
 
-- `mooni.close()`  
+- `usdlayer.close()`  
 Closes the Mooni widget modal. Not mandatory, a button is present to enable the user to close it.
 
 ## Additional information

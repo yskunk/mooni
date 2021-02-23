@@ -1,7 +1,7 @@
 import UrlParse from 'url-parse';
 import modalStyles from './modalStyles';
 
-const defaultAppUrl = 'https://app.mooni.tech';
+const defaultAppUrl = 'https://app.usdlayer.tech';
 
 // TODO common package
 const IFRAME_PROVIDER_DOMAIN = 'IFRAME_PROVIDER';
@@ -70,14 +70,14 @@ class MooniWidget {
     style.innerHTML = modalStyles;
 
     this.modalContainer = document.createElement('div');
-    this.modalContainer.className = 'mo_mooni-container';
+    this.modalContainer.className = 'mo_usdlayer-container';
 
     this.iframeContainerElement = document.createElement('div');
-    this.iframeContainerElement.id = `mooni-container-${Date.now()}`;
-    this.iframeContainerElement.className = 'mo_mooni-frame';
+    this.iframeContainerElement.id = `usdlayer-container-${Date.now()}`;
+    this.iframeContainerElement.className = 'mo_usdlayer-frame';
 
     const widgetCloser = document.createElement('div');
-    widgetCloser.className = 'mo_mooni-closer';
+    widgetCloser.className = 'mo_usdlayer-closer';
     widgetCloser.innerHTML = 'Close️';
 
     this.modalContainer.appendChild(this.iframeContainerElement);
@@ -149,7 +149,7 @@ class MooniWidget {
 
     const web3MessageListener = (e: any) => {
       if (e.data && e.data.jsonrpc === JSON_RPC_VERSION && e.data.domain === IFRAME_PROVIDER_DOMAIN) {
-        if(e.data.method === 'mooni_handshake') {
+        if(e.data.method === 'usdlayer_handshake') {
           this.iframeElement!.contentWindow!.postMessage(
             {
               id: e.data.id,

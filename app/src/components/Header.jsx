@@ -172,7 +172,7 @@ export default function Header() {
         <MainHeader>
           <NavLink to="/">
             <LogoBox>
-              <img src="logo192.png" alt="mooni-logo" />
+              <img src="logo192.png" alt="usdlayer-logo" />
               <h1>
                 MOONI
               </h1>
@@ -203,9 +203,9 @@ export default function Header() {
               </MenuButton>
               <MenuList borderRadius="1rem" minWidth="8rem">
                 <MenuItem icon={<IconInfo/>} onClick={() => dispatch(setInfoPanel('about'))}> About</MenuItem>
-                <MenuItem paddingLeft="1rem" icon={<MenuBookIcon fontSize="small"/>} onClick={() => window.open('https://doc.mooni.tech')}> Docs</MenuItem>
+                <MenuItem paddingLeft="1rem" icon={<MenuBookIcon fontSize="small"/>} onClick={() => window.open('https://doc.usdlayer.tech')}> Docs</MenuItem>
                 <MenuItem paddingLeft="1rem" icon={<ContactSupportIcon fontSize="small"/>} onClick={() => dispatch(setInfoPanel('support'))}> Support</MenuItem>
-                <MenuItem icon={<IconChip/>} onClick={() => window.open('https://github.com/pakokrew/mooni')}> Code</MenuItem>
+                <MenuItem icon={<IconChip/>} onClick={() => window.open('https://github.com/pakokrew/usdlayer')}> Code</MenuItem>
                 <MenuItem icon={<IconFile/>} onClick={() => dispatch(setInfoPanel('terms'))}> Terms</MenuItem>
                 <MenuItem icon={<IconChat/>} onClick={() => window.open(config.discordInviteUrl)}> Discord</MenuItem>
               </MenuList>

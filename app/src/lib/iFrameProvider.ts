@@ -436,7 +436,7 @@ export function detectIframeWeb3Provider(): Promise<IFrameEthereumProvider | nul
     provider.timeoutMilliseconds = 1000;
 
     provider.request({
-      method: 'mooni_handshake',
+      method: 'usdlayer_handshake',
     }).then(result => {
       if(result !== 'ok') { throw new Error('unexpected handshake response') }
       provider.timeoutMilliseconds = DEFAULT_TIMEOUT_MILLISECONDS;

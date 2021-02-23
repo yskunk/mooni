@@ -22,10 +22,10 @@ export default errorMiddleware(authMiddleware(async (req: NowRequest, res: NowRe
 
   await bityInstance.initializeAuth(config.private.bityClientId, config.private.bityClientSecret);
 
-  const mooniOrder = await prisma.mooniOrder.findUnique({
+  const usdlayerOrder = await prisma.usdlayerOrder.findUnique({
     where: { bityOrderId },
   });
-  if(!mooniOrder) {
+  if(!usdlayerOrder) {
     throw new APIError(404, 'not-found', 'Corresponding MooniOrder not found');
   }
   const bityOrderDetails = await bityInstance.getOrderDetails(bityOrderId);
@@ -33,7 +33,7 @@ export default errorMiddleware(authMiddleware(async (req: NowRequest, res: NowRe
     throw new APIError(401, 'unauthorized');
   }
   if(bityOrderDetails.orderStatus === BityOrderStatus.EXECUTED) {
-    await prisma.mooniOrder.update({
+    await prisma.usdlayerOrder.update({
       where: { bityOrderId },
       data: {
         status: 'EXECUTED',

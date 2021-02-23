@@ -23,14 +23,14 @@ interface BityOrderExtract {
 }
 
 async function fetchOrderTx(bityOrder: BityOrderExtract) {
-  const mooniOrder = await prisma.mooniOrder.findUnique({
+  const usdlayerOrder = await prisma.usdlayerOrder.findUnique({
     where: { bityOrderId: bityOrder.id },
   });
-  if(!mooniOrder) throw new Error('mooniorder not found');
-  if(mooniOrder.txHash) return;
+  if(!usdlayerOrder) throw new Error('usdlayerorder not found');
+  if(usdlayerOrder.txHash) return;
 
   if(bityOrder.tx_hash) {
-    await prisma.mooniOrder.update({
+    await prisma.usdlayerOrder.update({
       where: { bityOrderId: bityOrder.id },
       data: { txHash: bityOrder.tx_hash },
     });
@@ -39,7 +39,7 @@ async function fetchOrderTx(bityOrder: BityOrderExtract) {
 
   const transfers = await web3.alchemy.getAssetTransfers({
     fromBlock: web3.utils.numberToHex(10220000),
-    fromAddress: mooniOrder.ethAddress,
+    fromAddress: usdlayerOrder.ethAddress,
     category: [AssetTransfersCategory.EXTERNAL],
   });
   const transfer = transfers.transfers.find(t =>
@@ -50,7 +50,7 @@ async function fetchOrderTx(bityOrder: BityOrderExtract) {
   }
   const { hash: txHash } = transfer;
 
-  await prisma.mooniOrder.update({
+  await prisma.usdlayerOrder.update({
     where: { bityOrderId: bityOrder.id },
     data: { txHash },
   });
@@ -58,10 +58,10 @@ async function fetchOrderTx(bityOrder: BityOrderExtract) {
 }
 
 async function createMooniOrder(bityOrder: BityOrderExtract) {
-  const mooniOrder = await prisma.mooniOrder.findUnique({
+  const usdlayerOrder = await prisma.usdlayerOrder.findUnique({
     where: { bityOrderId: bityOrder.id },
   });
-  if(mooniOrder) return;
+  if(usdlayerOrder) return;
 
   const date = `${bityOrder.timestamp_executed}.000Z`
   const rawMooniOrder = {
@@ -82,7 +82,7 @@ async function createMooniOrder(bityOrder: BityOrderExtract) {
     },
   }
 
-  await prisma.mooniOrder.create({
+  await prisma.usdlayerOrder.create({
     data: rawMooniOrder,
   })
 }
