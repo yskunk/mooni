@@ -1,14 +1,14 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import {BityOrderError, BityOrderResponse} from './wrappers/bityTypes';
 import {MultiTrade, MultiTradeEstimation, MultiTradeRequest, TradeRequest} from "./trading/types";
-import { MooniOrder, ProfitShare, Stats, TransactionHash, User, UUID } from '../types/api';
+import { UsdlayerOrder, ProfitShare, Stats, TransactionHash, User, UUID } from '../types/api';
 import {APIError} from "./errors";
 
 interface IAPI {
   getBityOrder(orderId: string, jwsToken?: string): Promise<BityOrderResponse>;
   createMultiTrade(multiTradeRequest: MultiTradeRequest, jwsToken: string): Promise<MultiTrade>;
   estimateMultiTrade(tradeRequest: TradeRequest): Promise<MultiTradeEstimation>;
-  getOrders(jwsToken: string): Promise<MooniOrder[]>;
+  getOrders(jwsToken: string): Promise<UsdlayerOrder[]>;
   getUser(jwsToken: string): Promise<User>;
   getProfitShare(jwsToken: string): Promise<ProfitShare>;
   setPaymentTx(multiTradeId: UUID, txHash: TransactionHash, jwsToken: string): Promise<User>;
@@ -97,7 +97,7 @@ const ApiWrapper: IAPI = {
 
     return data;
   },
-  async getOrders(jwsToken: string): Promise<MooniOrder[]> {
+  async getOrders(jwsToken: string): Promise<UsdlayerOrder[]> {
     const {data} = await usdlayerAPICatcher({
       method: 'get',
       url: 'orders',

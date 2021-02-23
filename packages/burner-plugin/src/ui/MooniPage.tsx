@@ -1,14 +1,14 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { PluginPageContext } from '@burner-wallet/types';
 
-import MooniWidget from '@usdlayer/widget';
+import UsdlayerWidget from '@usdlayer/widget';
 
-import MooniPlugin from '../MooniPlugin';
+import UsdlayerPlugin from '../UsdlayerPlugin';
 
-const MooniPage: React.FC<PluginPageContext> = ({ burnerComponents, plugin }) => {
+const UsdlayerPage: React.FC<PluginPageContext> = ({ burnerComponents, plugin }) => {
   const { Page } = burnerComponents;
   const usdlayerContainer = useRef<HTMLDivElement>(null);
-  const _plugin = plugin as MooniPlugin;
+  const _plugin = plugin as UsdlayerPlugin;
 
   useLayoutEffect(() => {
 
@@ -16,7 +16,7 @@ const MooniPage: React.FC<PluginPageContext> = ({ burnerComponents, plugin }) =>
 
     const container = usdlayerContainer.current;
 
-    new MooniWidget({
+    new UsdlayerWidget({
       containerElement: container,
       ethereum: _plugin.getWeb3Provider(),
       appUrl: _plugin.appUrl,
@@ -31,4 +31,4 @@ const MooniPage: React.FC<PluginPageContext> = ({ burnerComponents, plugin }) =>
   );
 };
 
-export default MooniPage;
+export default UsdlayerPage;

@@ -1,6 +1,6 @@
 {
   "name": "@usdlayer/monorepo",
-  "description": "Monorepo for Mooni applications and  libraries",
+  "description": "Monorepo for Usdlayer applications and  libraries",
   "author": "Paco <pakokrew@gmail.com>",
   "repository": {
     "type": "git",

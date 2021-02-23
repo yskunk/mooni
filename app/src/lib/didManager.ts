@@ -20,7 +20,7 @@ export type Token = {
   serializedToken: string;
 }
 
-const FRIENDLY_STRING = "Please sign this message to login to Mooni: ";
+const FRIENDLY_STRING = "Please sign this message to login to Usdlayer: ";
 
 function serializeClaim(claim: Claim): string {
   return `${FRIENDLY_STRING}${JSON.stringify(claim)}`;

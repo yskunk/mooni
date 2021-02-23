@@ -1,6 +1,6 @@
 import { PrismaClient } from '../../../app/node_modules/.prisma/client'
 import {BityOrderResponse} from "../../../app/src/lib/wrappers/bityTypes"
-import {MooniOrderStatus} from "../../../app/src/types/api"
+import {UsdlayerOrderStatus} from "../../../app/src/types/api"
 import { AssetTransfersCategory, createAlchemyWeb3 } from '@alch/alchemy-web3';
 
 import {readJSON} from "./utils"
@@ -31,8 +31,8 @@ async function fetchOrderTx(bityOrder: BityOrderResponse) {
 
 }
 
-async function createMooniOrder(bityOrder: BityOrderResponse) {
-  const rawMooniOrder = {
+async function createUsdlayerOrder(bityOrder: BityOrderResponse) {
+  const rawUsdlayerOrder = {
     createdAt: bityOrder.timestamp_created,
     executedAt: bityOrder.timestamp_executed,
     inputAmount: bityOrder.input.amount,
@@ -41,7 +41,7 @@ async function createMooniOrder(bityOrder: BityOrderResponse) {
     outputCurrency: bityOrder.output.currency,
     bityOrderId: bityOrder.id,
     ethAmount: bityOrder.input.amount,
-    status: 'EXECUTED' as MooniOrderStatus,
+    status: 'EXECUTED' as UsdlayerOrderStatus,
     user: {
       connectOrCreate: {
         where: { ethAddress: bityOrder.input.crypto_address },
@@ -51,7 +51,7 @@ async function createMooniOrder(bityOrder: BityOrderResponse) {
   }
 
   await prisma.usdlayerOrder.create({
-    data: rawMooniOrder,
+    data: rawUsdlayerOrder,
   })
 }
 
@@ -66,7 +66,7 @@ async function run() {
       for(let order of monthOrders) {
         if(order.input) {
           console.log(order.id)
-          await createMooniOrder(order).catch(error => {
+          await createUsdlayerOrder(order).catch(error => {
             if(error.code === 'P2002') return
             throw error
           })

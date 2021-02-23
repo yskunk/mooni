@@ -1,6 +1,6 @@
 {
   "name": "@usdlayer/widget",
-  "description": "Mooni Widget SDK",
+  "description": "Usdlayer Widget SDK",
   "repository": {
     "type": "git",
     "url": "https://github.com/pakokrew/usdlayer.git"

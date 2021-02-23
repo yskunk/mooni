@@ -24,13 +24,13 @@ function Terms() {
         1.1 Object
       </SubTitle>
       <Content>
-        This terms and conditions applies between <b>Mooni</b>, which is an open source software, provided as a web platform, and a <b>user</b>, which is the person that use this platform.
+        This terms and conditions applies between <b>Usdlayer</b>, which is an open source software, provided as a web platform, and a <b>user</b>, which is the person that use this platform.
       </Content>
       <SubTitle>
         1.2 Service
       </SubTitle>
       <Content>
-        Mooni is a web application that allows to transfer funds from a crypto wallet to a bank account. <br/>
+        Usdlayer is a web application that allows to transfer funds from a crypto wallet to a bank account. <br/>
         The app is currently only available on the domain at <i>usdlayer.tech</i>. <br/>
         It is not a money service provider, does not holds any users funds, and does not have any financial license. Instead, it uses different third party services such as a foreign exchange, decentralized liquidity providers and data storages, in order to serve its purpose.
       </Content>
@@ -44,7 +44,7 @@ function Terms() {
         1.4 Third parties
       </SubTitle>
       <Content>
-        Mooni make the use of the following third party services: <Link href="https://bity.com" external>Bity</Link>, <Link href="https://paraswap.io" external>Paraswap</Link>, <Link href="https://3box.io" external>3Box</Link>.<br/>
+        Usdlayer make the use of the following third party services: <Link href="https://bity.com" external>Bity</Link>, <Link href="https://paraswap.io" external>Paraswap</Link>, <Link href="https://3box.io" external>3Box</Link>.<br/>
         By accepting this terms, the user also accept all the terms of the third party services, notably the <Link href="https://bity.com/legal/" external>terms of Bity</Link>, which is responsible of the crypto-to-fiat exchange. <br/>
         Notably, the user acknowledge that the financial transactions executed are legally acceptable. This acceptability is determined by Bity own rules.
       </Content>
@@ -59,7 +59,7 @@ function Terms() {
         2.2 Limitation of liability
       </SubTitle>
       <Content>
-        The open source contributors of this software will not be liable for any loss, whether such loss is direct, indirect, special or consequential, suffered by any party as a result of their use of the Mooni platform, its software or content. Any transactions on the website are done at the user’s own risk and the user will be solely responsible for any damage to any computer system or loss of data or funds that results from such activities.
+        The open source contributors of this software will not be liable for any loss, whether such loss is direct, indirect, special or consequential, suffered by any party as a result of their use of the Usdlayer platform, its software or content. Any transactions on the website are done at the user’s own risk and the user will be solely responsible for any damage to any computer system or loss of data or funds that results from such activities.
       </Content>
       <SubTitle>
         2.3 Provided support

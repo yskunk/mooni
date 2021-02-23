@@ -10,8 +10,8 @@
     "access": "public"
   },
   "license": "GPL-3.0",
-  "main": "dist/MooniPlugin.js",
-  "types": "dist/MooniPlugin.d.ts",
+  "main": "dist/UsdlayerPlugin.js",
+  "types": "dist/UsdlayerPlugin.d.ts",
   "scripts": {
     "build": "tsc",
     "prepublish": "yarn run build",

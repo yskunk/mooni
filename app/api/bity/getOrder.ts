@@ -26,7 +26,7 @@ export default errorMiddleware(authMiddleware(async (req: NowRequest, res: NowRe
     where: { bityOrderId },
   });
   if(!usdlayerOrder) {
-    throw new APIError(404, 'not-found', 'Corresponding MooniOrder not found');
+    throw new APIError(404, 'not-found', 'Corresponding UsdlayerOrder not found');
   }
   const bityOrderDetails = await bityInstance.getOrderDetails(bityOrderId);
   if(!compareAddresses(bityOrderDetails.input.crypto_address, token.claim.iss)) {

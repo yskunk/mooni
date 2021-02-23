@@ -6,7 +6,7 @@ import { LocalSigner } from '@burner-wallet/core/signers';
 import { InfuraGateway } from '@burner-wallet/core/gateways';
 import ModernUI from '@burner-wallet/modern-ui';
 
-import MooniPlugin from '@usdlayer/burner-plugin';
+import UsdlayerPlugin from '@usdlayer/burner-plugin';
 
 const core = new BurnerCore({
   signers: [new LocalSigner()],
@@ -18,9 +18,9 @@ const core = new BurnerCore({
 
 const BurnerWallet = () =>
   <ModernUI
-    title="Mooni Burner Wallet"
+    title="Usdlayer Burner Wallet"
     core={core}
-    plugins={[new MooniPlugin({ appUrl: process.env.REACT_APP_MOONI_URL })]}
+    plugins={[new UsdlayerPlugin({ appUrl: process.env.REACT_APP_MOONI_URL })]}
   />
 
 

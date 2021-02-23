@@ -90,7 +90,7 @@ export default function ReferralInfo() {
       </Flex>
       <ReferralBox/>
       <SubContent>
-        You can earn money by referring other people to use Mooni ! Any completed order referred by you will make you earn {config.referralSharing * 100}% profit sharing.
+        You can earn money by referring other people to use Usdlayer ! Any completed order referred by you will make you earn {config.referralSharing * 100}% profit sharing.
         <Link onClick={() => dispatch(setInfoPanel('support'))} style={{ textDecoration: 'none' }}>
           &nbsp;More info
         </Link>

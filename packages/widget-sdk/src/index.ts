@@ -7,7 +7,7 @@ const defaultAppUrl = 'https://app.usdlayer.tech';
 const IFRAME_PROVIDER_DOMAIN = 'IFRAME_PROVIDER';
 const JSON_RPC_VERSION = '2.0';
 
-export interface MooniWidgetOptions {
+export interface UsdlayerWidgetOptions {
   containerElement?: HTMLElement;
   appUrl?: string;
   ethereum?: any;
@@ -31,7 +31,7 @@ export interface ExternalProvider {
   }) => Promise<any>;
 }
 
-class MooniWidget {
+class UsdlayerWidget {
 
   private isModal: boolean;
   private containerElement?: HTMLElement;
@@ -42,7 +42,7 @@ class MooniWidget {
   private customToken?: string;
   private ethereum?: ExternalProvider;
 
-  constructor(opts: MooniWidgetOptions = {}) {
+  constructor(opts: UsdlayerWidgetOptions = {}) {
 
     if(opts.containerElement) {
       this.containerElement = opts.containerElement;
@@ -190,4 +190,4 @@ class MooniWidget {
 
 
 
-export default MooniWidget;
+export default UsdlayerWidget;

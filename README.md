@@ -1,4 +1,4 @@
-# 🌚 Mooni
+# 🌚 Usdlayer
 
 Easily transfer funds from your crypto wallet to your bank account.
 
@@ -16,7 +16,7 @@ Easily transfer funds from your crypto wallet to your bank account.
 
 ## 📃 Presentation
 
-Mooni is a simple solution for end-users, marketplaces or DAOs to cash out cryptos in fiat directly to a bank account.
+Usdlayer is a simple solution for end-users, marketplaces or DAOs to cash out cryptos in fiat directly to a bank account.
 
 ### Features
 
@@ -24,7 +24,7 @@ Mooni is a simple solution for end-users, marketplaces or DAOs to cash out crypt
 * **Bank transfer** Receive funds in your bank account in EUR/CHF \(thanks to [Bity](https://bity.com)\)
 * **Quick checkout** No need to register accounts and pass long KYC verifications. Subject to amount limits.
 
-[🚀 Use Mooni now](https://app.usdlayer.tech)
+[🚀 Use Usdlayer now](https://app.usdlayer.tech)
 
 
 ### Use cases
@@ -34,12 +34,12 @@ Mooni is a simple solution for end-users, marketplaces or DAOs to cash out crypt
 
 ## 🔮 Frontend integration
 
-You can easily integrate Mooni into your web application and quickly enable your users to cash out their crypto.
+You can easily integrate Usdlayer into your web application and quickly enable your users to cash out their crypto.
 
 This is useful for marketplace builders which want to increase conversion rate by allowing their users to withdraw the profit they make on the app.
 
 
-An [example app](https://integration-example.usdlayer.tech) including Mooni widget is available to let you try it out.
+An [example app](https://integration-example.usdlayer.tech) including Usdlayer widget is available to let you try it out.
 
 ### 🎁 Quick start
 
@@ -51,12 +51,12 @@ An [example app](https://integration-example.usdlayer.tech) including Mooni widg
 
 ```javascript
 // Import package
-import MooniWidget from '@usdlayer/widget';
+import UsdlayerWidget from '@usdlayer/widget';
 
 // Instanciate the widget
-const usdlayer = new MooniWidget();
+const usdlayer = new UsdlayerWidget();
 
-// Open the widget when you want to show Mooni
+// Open the widget when you want to show Usdlayer
 usdlayer.open();
 ```
 Check [the package](./packages/widget-sdk) for full API documentation.
@@ -65,7 +65,7 @@ Check [the package](./packages/widget-sdk) for full API documentation.
 
 A plugin for [Burner Wallet](https://github.com/burner-wallet/burner-wallet-2/) have been done to easily add the possibilty to cash out.
 
-We have our own [Mooni Burner Wallet](https://burner.usdlayer.tech) deployed if you want to try it.
+We have our own [Usdlayer Burner Wallet](https://burner.usdlayer.tech) deployed if you want to try it.
 
 Please refer to the [plugin documentation](packages/burner-plugin) for integration instructions.
 

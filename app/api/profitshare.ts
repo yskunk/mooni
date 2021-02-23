@@ -16,7 +16,7 @@ export default errorMiddleware(authMiddleware(async (req: NowRequest, res: NowRe
     SELECT 
       SUM(CAST("ethAmount" AS numeric)) AS "totalETH",
       COUNT(*)
-    FROM "MooniOrder"
+    FROM "UsdlayerOrder"
     WHERE "referralId" = '${referralId}';
   `);
 

@@ -99,7 +99,7 @@ function PaymentOngoingInfo({ payment }) {
 function PaymentSuccessInfo() {
   const user = useSelector(selectUser);
   const referralURL = `${window.location.origin}?referralId=${user.referralId}`;
-  const tweetURL = `https://twitter.com/intent/tweet?text=I've%20just%20cashed%20out%20my%20crypto%20with%20Mooni%20in%20minutes!&via=usdlayerdapp&url=${referralURL}&hashtags=defi,offramp,crypto`;
+  const tweetURL = `https://twitter.com/intent/tweet?text=I've%20just%20cashed%20out%20my%20crypto%20with%20Usdlayer%20in%20minutes!&via=usdlayerdapp&url=${referralURL}&hashtags=defi,offramp,crypto`;
 
   return (
     <Box width={1}>

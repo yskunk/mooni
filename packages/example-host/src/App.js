@@ -1,16 +1,16 @@
 import React, { useCallback } from 'react';
 import './App.css';
 
-import MooniWidget from '@usdlayer/widget';
+import UsdlayerWidget from '@usdlayer/widget';
 
-const usdlayer = new MooniWidget({
+const usdlayer = new UsdlayerWidget({
   token: '0xb683D83a532e2Cb7DFa5275eED3698436371cc9f',
   ethereum: window.ethereum,
 });
 
 function App() {
 
-  const openMooni = useCallback(() => {
+  const openUsdlayer = useCallback(() => {
     usdlayer.open();
   }, []);
 
@@ -20,7 +20,7 @@ function App() {
         My awesome marketplace
       </header>
       <main className="App-main">
-        <button className="open-widget" onClick={openMooni}>Cash out</button>
+        <button className="open-widget" onClick={openUsdlayer}>Cash out</button>
       </main>
     </div>
   );

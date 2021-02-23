@@ -43,7 +43,7 @@ export default function Support() {
       </SubTitle>
       <Content>
         Please make sure you are using our unique domain name at <u>app.usdlayer.tech</u>.
-        Mooni will never ask for your seed/private keys or ever contact you by email.
+        Usdlayer will never ask for your seed/private keys or ever contact you by email.
       </Content>
 
       <SubTitle>
@@ -81,7 +81,7 @@ export default function Support() {
         We did not store order information in previous versions of the app. If you need a full order history, please contact us.
       </Content>
       <FaqSection>
-        I have referred users to use Mooni, how can I get a profit sharing ?
+        I have referred users to use Usdlayer, how can I get a profit sharing ?
       </FaqSection>
       <Content>
         To be able to earn profit sharing, referred user must have successfully completed orders. If they did, please contact our support to know your available balance and ask for a withdrawal. This is a new feature, and automatic withdrawal request will be available once there is enough demand. Payments will be made in Ether (ETH) currency.

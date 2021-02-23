@@ -9,7 +9,7 @@ import { useMediaQuery } from '@chakra-ui/react';
 
 import Api from '../../lib/apiWrapper';
 import { getJWS } from '../../redux/wallet/selectors';
-import { MooniOrder, MooniOrderStatus } from '../../types/api';
+import { UsdlayerOrder, UsdlayerOrderStatus } from '../../types/api';
 import { significantNumbers } from '../../lib/numbers';
 import { ShadowBox } from '../UI/StyledComponents';
 import { getEtherscanTxURL } from '../../lib/eth';
@@ -30,7 +30,7 @@ const OrdersHint = styled.p`
 `;
 
 interface OrderRowProps {
-  order: MooniOrder;
+  order: UsdlayerOrder;
 }
 
 const OrderStatusIcon: React.FC<OrderRowProps> = ({order}) => {
@@ -38,12 +38,12 @@ const OrderStatusIcon: React.FC<OrderRowProps> = ({order}) => {
 
   const date = new Date(order.createdAt);
   const now = new Date();
-  const expired = order.status === MooniOrderStatus.PENDING && !order.txHash && ((+now - +date) > 10*60*1000);
+  const expired = order.status === UsdlayerOrderStatus.PENDING && !order.txHash && ((+now - +date) > 10*60*1000);
 
   let tooltipText;
   if(expired) {
     tooltipText = 'Expired'
-  } else if(order.status === MooniOrderStatus.PENDING && !expired) {
+  } else if(order.status === UsdlayerOrderStatus.PENDING && !expired) {
     tooltipText = 'Pending'
   } else {
     tooltipText = 'Executed'
@@ -53,13 +53,13 @@ const OrderStatusIcon: React.FC<OrderRowProps> = ({order}) => {
     <Box display="flex" alignItems="center" justifyContent="center">
       <Tooltip title={tooltipText}>
         <Box display="flex" alignItems="center">
-          {order.status === MooniOrderStatus.PENDING && !expired &&
+          {order.status === UsdlayerOrderStatus.PENDING && !expired &&
           <IconClock size="medium" style={{ color: theme.disabledContent }}  />
           }
           {expired &&
           <IconCross size="medium" style={{ color: theme.negative }}  />
           }
-          {order.status === MooniOrderStatus.EXECUTED &&
+          {order.status === UsdlayerOrderStatus.EXECUTED &&
           <IconCheck size="medium" style={{ color: theme.positive }}/>
           }
         </Box>
@@ -106,7 +106,7 @@ export default function OrderHistory() {
     </Box>
   );
 
-  const orders = data as MooniOrder[];
+  const orders = data as UsdlayerOrder[];
 
   return (
     <Box width={1} mx={2}>

@@ -26,7 +26,7 @@ module.exports = [
       filename: 'index.umd.js',
       libraryTarget: 'umd',
       globalObject: 'this',
-      library: 'MooniWidget',
+      library: 'UsdlayerWidget',
       libraryExport: 'default',
     },
     module: moduleCommon,

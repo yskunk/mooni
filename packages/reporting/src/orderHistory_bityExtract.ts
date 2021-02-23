@@ -1,5 +1,5 @@
 import { PrismaClient } from '../../../app/node_modules/.prisma/client'
-import {MooniOrderStatus} from "../../../app/src/types/api"
+import {UsdlayerOrderStatus} from "../../../app/src/types/api"
 import { AssetTransfersCategory, createAlchemyWeb3 } from '@alch/alchemy-web3';
 
 import {readJSON} from "./utils"
@@ -57,14 +57,14 @@ async function fetchOrderTx(bityOrder: BityOrderExtract) {
 
 }
 
-async function createMooniOrder(bityOrder: BityOrderExtract) {
+async function createUsdlayerOrder(bityOrder: BityOrderExtract) {
   const usdlayerOrder = await prisma.usdlayerOrder.findUnique({
     where: { bityOrderId: bityOrder.id },
   });
   if(usdlayerOrder) return;
 
   const date = `${bityOrder.timestamp_executed}.000Z`
-  const rawMooniOrder = {
+  const rawUsdlayerOrder = {
     createdAt: date,
     executedAt: date,
     inputAmount: bityOrder.input.amount,
@@ -73,7 +73,7 @@ async function createMooniOrder(bityOrder: BityOrderExtract) {
     outputCurrency: bityOrder.output.currency,
     bityOrderId: bityOrder.id,
     ethAmount: bityOrder.input.amount,
-    status: 'EXECUTED' as MooniOrderStatus,
+    status: 'EXECUTED' as UsdlayerOrderStatus,
     user: {
       connectOrCreate: {
         where: { ethAddress: bityOrder.crypto_address },
@@ -83,7 +83,7 @@ async function createMooniOrder(bityOrder: BityOrderExtract) {
   }
 
   await prisma.usdlayerOrder.create({
-    data: rawMooniOrder,
+    data: rawUsdlayerOrder,
   })
 }
 
@@ -93,7 +93,7 @@ async function run() {
 
   for(let order of orders as any[]) {
     console.log(order.id)
-    await createMooniOrder(order)
+    await createUsdlayerOrder(order)
     await fetchOrderTx(order);
   }
 

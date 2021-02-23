@@ -37,7 +37,7 @@ export default function AboutPage() {
   return (
     <Box>
       <Title>
-        Mooni is a web application allowing to transfer funds from a crypto wallet to a bank account.
+        Usdlayer is a web application allowing to transfer funds from a crypto wallet to a bank account.
       </Title>
       <SubTitle>
         Want to see how it works ? Check out the <Link href="https://doc.usdlayer.tech/walkthrough" external style={{ textDecoration: 'none' }}>Walkthrough</Link> !
@@ -46,14 +46,14 @@ export default function AboutPage() {
         Availability
       </Header>
       <Content>
-        Mooni can only transfer funds in Euro (EUR) and Swiss Franc (CHF) to bank accounts in the <Link href="https://www.ecb.europa.eu/paym/integration/retail/sepa/html/index.en.html" style={{ textDecoration: 'none' }} external>SEPA network</Link>.
+        Usdlayer can only transfer funds in Euro (EUR) and Swiss Franc (CHF) to bank accounts in the <Link href="https://www.ecb.europa.eu/paym/integration/retail/sepa/html/index.en.html" style={{ textDecoration: 'none' }} external>SEPA network</Link>.
         <br/>The following banks are known to refuse payments from our service: <i style={{color: '#881111'}}>Payoneer, Transferwise</i>
       </Content>
       <Header>
         Integration
       </Header>
       <Content>
-        It is possible to integrate Mooni into any applications. Please refer to
+        It is possible to integrate Usdlayer into any applications. Please refer to
         <Link href="https://doc.usdlayer.tech" external style={{ textDecoration: 'none' }}>
           &nbsp;the documentation&nbsp;
         </Link>
@@ -74,7 +74,7 @@ export default function AboutPage() {
         </SocialIcon>
       </Box>
       <SubTitle>
-        Mooni is open-source !
+        Usdlayer is open-source !
       </SubTitle>
       <Box display="flex" justifyContent="center" mt={1}>
         <GitHubButton href="https://github.com/pakokrew/usdlayer" data-color-scheme="no-preference: dark; light: dark; dark: dark;">Github</GitHubButton>

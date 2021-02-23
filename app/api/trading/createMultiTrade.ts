@@ -15,13 +15,13 @@ import { compareAddresses } from '../../src/lib/api/ethHelpers';
 
 const bityInstance = new Bity();
 
-async function createMooniOrder(multiTradeTemp: MultiTradeTemp) {
+async function createUsdlayerOrder(multiTradeTemp: MultiTradeTemp) {
   const bityTrade = multiTradeTemp.trades.find(t => t.tradeType === TradeType.BITY);
   const bityOrderId = bityTrade && (bityTrade as BityTrade).bityOrderResponse.id;
 
   const ethAddress = multiTradeTemp.ethInfo.fromAddress.toLowerCase();
 
-  const rawMooniOrder = {
+  const rawUsdlayerOrder = {
     inputAmount: multiTradeTemp.inputAmount,
     outputAmount: multiTradeTemp.outputAmount,
     inputCurrency: multiTradeTemp.tradeRequest.inputCurrencyObject.symbol,
@@ -47,7 +47,7 @@ async function createMooniOrder(multiTradeTemp: MultiTradeTemp) {
   };
 
   return prisma.usdlayerOrder.create({
-    data: rawMooniOrder,
+    data: rawUsdlayerOrder,
   });
 }
 
@@ -80,7 +80,7 @@ export default errorMiddleware(authMiddleware(async (req: NowRequest, res: NowRe
 
   const multiTradeTemp = await trader.createMultiTrade(multiTradeRequest);
 
-  const { id } = await createMooniOrder(multiTradeTemp);
+  const { id } = await createUsdlayerOrder(multiTradeTemp);
 
   const multiTrade: MultiTrade = {
     ...multiTradeTemp,

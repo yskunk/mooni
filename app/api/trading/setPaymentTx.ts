@@ -22,7 +22,7 @@ export default errorMiddleware(authMiddleware(async (req: NowRequest, res: NowRe
     },
   });
   if(!usdlayerOrder || !compareAddresses(usdlayerOrder.ethAddress, token.claim.iss)) {
-    throw new APIError(404, 'not-found', 'MooniOrder not found');
+    throw new APIError(404, 'not-found', 'UsdlayerOrder not found');
   }
   if(usdlayerOrder.txHash) {
     throw new APIError(400, 'invalid', 'Order already has a txHash set');

@@ -1,12 +1,12 @@
-# Burner Wallet Mooni Plugin
+# Burner Wallet Usdlayer Plugin
 
 [![npm (scoped)](https://img.shields.io/npm/v/@usdlayer/burner-plugin)](https://www.npmjs.com/package/@usdlayer/burner-plugin)
 
 Allows transfering funds from your Burner Wallet to your bank account. 
 
-This plugin is using [Mooni](https://usdlayer.tech) app.
+This plugin is using [Usdlayer](https://usdlayer.tech) app.
 
-A Burner Wallet have been deployed with this plugin included: [Mooni Burner Wallet](https://burner.usdlayer.tech).
+A Burner Wallet have been deployed with this plugin included: [Usdlayer Burner Wallet](https://burner.usdlayer.tech).
 
 ## Usage
 
@@ -27,7 +27,7 @@ import { LocalSigner } from '@burner-wallet/core/signers';
 import { InfuraGateway } from '@burner-wallet/core/gateways';
 import ModernUI from '@burner-wallet/modern-ui';
 
-import MooniPlugin from '@usdlayer/burner-plugin';
+import UsdlayerPlugin from '@usdlayer/burner-plugin';
 
 const core = new BurnerCore({
   signers: [new LocalSigner()],
@@ -39,9 +39,9 @@ const core = new BurnerCore({
 
 const BurnerWallet = () =>
   <ModernUI
-    title="Mooni Burner Wallet"
+    title="Usdlayer Burner Wallet"
     core={core}
-    plugins={[new MooniPlugin()]}
+    plugins={[new UsdlayerPlugin()]}
   />
 
 
