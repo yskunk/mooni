@@ -1,5 +1,5 @@
 export default `
-.mo_mooni-container {
+.mo_usdlayer-container {
   display: none;
   z-index: 999;
   background: rgba(0,0,0,.8);
@@ -12,17 +12,17 @@ export default `
   justify-content: center;
   align-items: center;
 }
-.mo_mooni-frame {
+.mo_usdlayer-frame {
   position: relative;
   border-radius: 1rem;
   width: 100%;
   height:700px;
-  max-width: 400px;
+  max-width: 475px;
   max-height: 90%;
   background: #fff;
   display: flex;
 }
-.mo_mooni-closer {
+.mo_usdlayer-closer {
   position: absolute;
   right: 0;
   top: -30px;

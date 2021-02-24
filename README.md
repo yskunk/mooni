@@ -1,12 +1,12 @@
-# 🌚 Mooni
+# 🔵 Usdlayer
 
 Easily transfer funds from your crypto wallet to your bank account.
 
-[🖼 Landing page](https://mooni.tech)
+[🖼 Landing page](https://usdlayer.com)
 
-[🚀 Web Application](https://app.mooni.tech)
+[🚀 Web Application](https://app.usdlayer.com)
 
-[📒 Documentation](https://doc.mooni.tech)
+[📒 Documentation](https://doc.usdlayer.com)
 
 [🔮 Frontend integration](#-frontend-integration)
 
@@ -16,63 +16,61 @@ Easily transfer funds from your crypto wallet to your bank account.
 
 ## 📃 Presentation
 
-Mooni is a simple solution for end-users, marketplaces or DAOs to cash out cryptos in fiat directly to a bank account.
+Usdlayer is a simple solution for end-users, marketplaces or DAOs to cash out cryptos in fiat directly to a bank account.
 
 ### Features
 
-* **Web wallets** Login with any web3-compatible wallet _\(Metamask, WalletConnect, etc...\)_
-* **Bank transfer** Receive funds in your bank account in EUR/CHF \(thanks to [Bity](https://bity.com)\)
-* **Quick checkout** No need to register accounts and pass long KYC verifications. Subject to amount limits.
+- **Web wallets** Login with any web3-compatible wallet _\(Metamask, WalletConnect, etc...\)_
+- **Bank transfer** Receive funds in your bank account in EUR/CHF \(thanks to [Bity](https://bity.com)\)
+- **Quick checkout** No need to register accounts and pass long KYC verifications. Subject to amount limits.
 
-[🚀 Use Mooni now](https://app.mooni.tech)
-
+[🚀 Use Usdlayer now](https://app.usdlayer.com)
 
 ### Use cases
 
-* **Crypto owner** Any crypto holder can convert some crypto into fiat into their bank account
-* **dApps** Decentralized applications that makes users generate revenue can allow them to exit and withdraw funds into their bank account \(games, decentralized marketplaces, via a widget\)
+- **Crypto owner** Any crypto holder can convert some crypto into fiat into their bank account
+- **dApps** Decentralized applications that makes users generate revenue can allow them to exit and withdraw funds into their bank account \(games, decentralized marketplaces, via a widget\)
 
 ## 🔮 Frontend integration
 
-You can easily integrate Mooni into your web application and quickly enable your users to cash out their crypto.
+You can easily integrate Usdlayer into your web application and quickly enable your users to cash out their crypto.
 
 This is useful for marketplace builders which want to increase conversion rate by allowing their users to withdraw the profit they make on the app.
 
-
-An [example app](https://integration-example.mooni.tech) including Mooni widget is available to let you try it out.
+An [example app](https://integration-example.usdlayer.com) including Usdlayer widget is available to let you try it out.
 
 ### 🎁 Quick start
 
 #### Install
 
-`yarn add @mooni/widget`
+`yarn add @usdlayer/widget`
 
 #### Start widget
 
 ```javascript
 // Import package
-import MooniWidget from '@mooni/widget';
+import UsdlayerWidget from '@usdlayer/widget';
 
 // Instanciate the widget
-const mooni = new MooniWidget();
+const usdlayer = new UsdlayerWidget();
 
-// Open the widget when you want to show Mooni
-mooni.open();
+// Open the widget when you want to show Usdlayer
+usdlayer.open();
 ```
+
 Check [the package](./packages/widget-sdk) for full API documentation.
 
 ## 📎 Burner Wallet Plugin
 
 A plugin for [Burner Wallet](https://github.com/burner-wallet/burner-wallet-2/) have been done to easily add the possibilty to cash out.
 
-We have our own [Mooni Burner Wallet](https://burner.mooni.tech) deployed if you want to try it.
+We have our own [Usdlayer Burner Wallet](https://burner.usdlayer.com) deployed if you want to try it.
 
 Please refer to the [plugin documentation](packages/burner-plugin) for integration instructions.
 
-
 ## 💻 Development
 
-This repo is a monorepo including different apps and libraries for running mooni which are located under folders in `packages/*`.
+This repo is a monorepo including different apps and libraries for running usdlayer which are located under folders in `packages/*`.
 
 ### App
 

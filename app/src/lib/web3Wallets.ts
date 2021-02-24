@@ -37,7 +37,7 @@ export async function getWalletProvider(walletType) {
       const ledger = createLedgerSubprovider(getTransport);
 
       engine.addProvider(ledger);
-      engine.addProvider(new RpcSubprovider({rpcUrl: getInfuraUrl(infuraId)}));
+      engine.addProvider(new RpcSubprovider({ rpcUrl: getInfuraUrl(infuraId) }));
       engine.start();
 
       return engine;
@@ -50,17 +50,16 @@ export async function getWalletProvider(walletType) {
     }
     */
     default: {
-      throw new Error('wallet-provider-not-supported')
+      throw new Error('wallet-provider-not-supported');
     }
   }
 }
 
 export function detectWalletError(error) {
-  if(error instanceof MetaError || error instanceof BityOrderError) {
+  if (error instanceof MetaError || error instanceof BityOrderError) {
     return error;
-  }
-  else if(
-    error?.code === 4001 ||  // Metamask
+  } else if (
+    error?.code === 4001 || // Metamask
     (error && error.message && String(error.message).includes('User canceled')) // Trust wallet
   ) {
     return new Error('user-rejected-transaction');
@@ -76,11 +75,7 @@ const providerOptions = {
     options: {
       infuraId,
       qrcodeModalOptions: {
-        mobileLinks: [
-          'rainbow',
-          'metamask',
-          'trust',
-        ],
+        mobileLinks: ['rainbow', 'metamask', 'trust'],
       },
     },
   },
@@ -101,7 +96,7 @@ const providerOptions = {
 };
 
 export const web3Modal = new Web3Modal({
-  'network': 'mainnet',
-  'cacheProvider': true,
+  network: 'mainnet',
+  cacheProvider: true,
   providerOptions,
 });

@@ -1,5 +1,5 @@
-import MooniWidget from '@mooni/widget';
+import UsdlayerWidget from '@usdlayer/widget';
 
-const mooni = new MooniWidget();
+const usdlayer = new UsdlayerWidget();
 
-document.getElementById('modal-opener').onclick = () => mooni.open();
+document.getElementById('modal-opener').onclick = () => usdlayer.open();

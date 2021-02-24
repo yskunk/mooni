@@ -5,7 +5,7 @@ export interface Recipient {
     address?: string;
     zip?: string;
     city?: string;
-  }
+  };
   iban: string;
   bic_swift?: string;
   email?: string;
@@ -14,6 +14,8 @@ export interface Recipient {
 export type OrderErrors = any[];
 
 export enum PaymentStatus {
+  CANCELLED = 'CANCELLED',
+  PENDING = 'PENDING',
   ONGOING = 'ONGOING',
   DONE = 'DONE',
   ERROR = 'ERROR',
@@ -46,5 +48,3 @@ export interface Payment {
   status: PaymentStatus;
   steps: PaymentStep[];
 }
-
-

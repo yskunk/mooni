@@ -2,7 +2,7 @@
 CREATE TYPE "OrderStatus" AS ENUM ('PENDING', 'EXECUTED');
 
 -- CreateTable
-CREATE TABLE "MooniOrder" (
+CREATE TABLE "UsdlayerOrder" (
     "id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "executedAt" TIMESTAMP(3),
@@ -30,7 +30,7 @@ CREATE TABLE "User" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "MooniOrder.bityOrderId_unique" ON "MooniOrder"("bityOrderId");
+CREATE UNIQUE INDEX "UsdlayerOrder.bityOrderId_unique" ON "UsdlayerOrder"("bityOrderId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User.ethAddress_unique" ON "User"("ethAddress");
@@ -39,7 +39,7 @@ CREATE UNIQUE INDEX "User.ethAddress_unique" ON "User"("ethAddress");
 CREATE UNIQUE INDEX "User.referralId_unique" ON "User"("referralId");
 
 -- AddForeignKey
-ALTER TABLE "MooniOrder" ADD FOREIGN KEY("ethAddress")REFERENCES "User"("ethAddress") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "UsdlayerOrder" ADD FOREIGN KEY("ethAddress")REFERENCES "User"("ethAddress") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "MooniOrder" ADD FOREIGN KEY("referralId")REFERENCES "User"("referralId") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "UsdlayerOrder" ADD FOREIGN KEY("referralId")REFERENCES "User"("referralId") ON DELETE SET NULL ON UPDATE CASCADE;

@@ -1,18 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 import { ETHER } from '../lib/trading/currencyList';
 import { useSelector } from 'react-redux';
 
 import { getAddress, getETHManager } from '../redux/wallet/selectors';
-import { amountToDecimal } from '../lib/numbers';
+import { amountToDecimal, BN } from '../lib/numbers';
 import { useCurrency } from './currencies';
 import { CurrencySymbol, TokenCurrency } from '../lib/trading/currencyTypes';
 import { logError } from '../lib/log';
 import { MetaError } from '../lib/errors';
+import { MultiTradeEstimation, TradeExact, TradeRequest } from '../lib/trading/types';
+import { applySlippage, MAX_SLIPPAGE } from '../lib/trading/dexProxy';
 
 export interface BalanceData {
-  balance: string,
-  balanceLoading: boolean,
+  balance: string;
+  balanceLoading: boolean;
 }
 
 /**
@@ -30,15 +32,14 @@ export function useBalance(symbol: CurrencySymbol): BalanceData {
   useEffect(() => {
     setLoading(true);
 
-    if(!ethManager || !ethAddress) {
+    if (!ethManager || !ethAddress) {
       setLoading(false);
       setBalance('0');
       return;
     }
 
-    if(currency.equals(ETHER)) {
-
-      const updateBalance = (res) => {
+    if (currency.equals(ETHER)) {
+      const updateBalance = res => {
         setLoading(true);
         const balanceEth = amountToDecimal(res.toString(), ETHER.decimals);
         setBalance(balanceEth);
@@ -47,20 +48,22 @@ export function useBalance(symbol: CurrencySymbol): BalanceData {
 
       const signer = ethManager.provider.getSigner();
       setLoading(true);
-      signer.getBalance()
+      signer
+        .getBalance()
         .then(updateBalance)
         .catch(error => {
           logError('error-fetching-balance-eth', error);
         });
       ethManager.provider.on(ethAddress, updateBalance);
 
-      return () => ethManager.provider.removeListener(ethAddress, updateBalance);
-
-    } else if(currency instanceof TokenCurrency) {
-
+      return () => {
+        ethManager.provider.removeListener(ethAddress, updateBalance);
+      };
+    } else if (currency instanceof TokenCurrency) {
       const updateBalance = () => {
         setLoading(true);
-        currency.fetchBalance(ethAddress)
+        currency
+          .fetchBalance(ethAddress)
           .then(res => {
             setBalance(res);
             setLoading(false);
@@ -68,7 +71,7 @@ export function useBalance(symbol: CurrencySymbol): BalanceData {
           .catch(error => {
             logError('error-fetching-balance-token', error);
           });
-      }
+      };
 
       updateBalance();
       ethManager.provider.on('block', updateBalance);
@@ -77,10 +80,43 @@ export function useBalance(symbol: CurrencySymbol): BalanceData {
         ethManager.provider.removeListener('block', updateBalance);
       };
     } else {
-      const error = new MetaError('currency_balance_unavailable', {symbol: currency.symbol});
-      logError(error.message, error)
+      const error = new MetaError('currency_balance_unavailable', { symbol: currency.symbol });
+      logError(error.message, error);
     }
   }, [currency, ethManager, ethAddress]);
 
   return { balanceLoading, balance };
 }
+
+export const useTradeBalance = (
+  tradeRequest: TradeRequest,
+  multiTradeEstimation: MultiTradeEstimation | null
+) => {
+  const { balanceLoading, balance } = useBalance(tradeRequest.inputCurrencyObject.symbol);
+
+  const maxAmount = useMemo<string>(() => {
+    if (balanceLoading) return '0';
+
+    return tradeRequest.inputCurrencyObject.symbol !== ETHER.symbol
+      ? applySlippage(balance, tradeRequest.inputCurrencyObject.decimals, -2 * MAX_SLIPPAGE)
+      : balance;
+  }, [balance, balanceLoading, tradeRequest]);
+
+  const insufficientBalance = useMemo(() => {
+    if ((tradeRequest.tradeExact === TradeExact.OUTPUT && !multiTradeEstimation) || balanceLoading)
+      return false;
+
+    const inputAmount = multiTradeEstimation
+      ? multiTradeEstimation.trades[0].inputAmount
+      : tradeRequest.amount;
+
+    return new BN(maxAmount).lt(inputAmount);
+  }, [balanceLoading, maxAmount, multiTradeEstimation, tradeRequest]);
+
+  return {
+    balance,
+    balanceLoading,
+    insufficientBalance,
+    maxAmount,
+  };
+};

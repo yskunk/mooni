@@ -1,57 +1,51 @@
-# 🌚 Mooni Widget
+# USD Layer
 
-[![npm (scoped)](https://img.shields.io/npm/v/@mooni/widget)](https://www.npmjs.com/package/@mooni/widget)
 
-Mooni widget allows to quickly add Mooni into any web app in minutes.
+Widget allows to quickly add Usdlayer into any web app in minutes.
 
-The widget can either appear as a modal on top of an app, or included inside an HTML element. 
+The widget can either appear as a modal on top of an app, or included inside an HTML element.
 
 If the hosting app already has a connected user with web3, this wallet can be forwarded to the widget.
 
 ## 🎁 Quick start
+
 #### Install
 
-`yarn add @mooni/widget`
- 
+`yarn add @usdlayer/widget`
+
 #### Start widget
 
 ```javascript
 // Import package
-import MooniWidget from '@mooni/widget';
+import UsdlayerWidget from '@usdlayer/widget';
 
 // Instanciate the widget
-const mooni = new MooniWidget();
+const usdlayer = new UsdlayerWidget();
 
 // Open the widget as a modal when you want it
-mooni.open();
+usdlayer.open();
 ```
-
-### 📺 Example apps
-
-An [example app](https://integration-example.mooni.tech) including Mooni widget have been published to let you try it out.
-
-We also provided some [code examples](../example-host) that includes Mooni widget. You can also check the [Burner Wallet integration](../burner-plugin/src/ui/MooniPage.tsx) for a more advanced use case.
 
 ## 🎛 Reference
 
 #### Instanciation
 
-- `new MooniWidget(opts)`  
-Instanciate a Mooni widget.
+- `new UsdlayerWidget(opts)`  
+  Instanciate a Usdlayer widget.
 
-`opts.containerElement`: Include Mooni inside of an HTML element on your website. If not set, the widget will appear as a modal.
+`opts.containerElement`: Include Usdlayer inside of an HTML element on your website. If not set, the widget will appear as a modal.
 
-`opts.ethereum`: A standard JSON-RPC provider. This is useful if the hosting app already authenticated the web3 wallet of the user, so he doesn't have to login again on Mooni.
+`opts.ethereum`: A standard JSON-RPC provider. This is useful if the hosting app already authenticated the web3 wallet of the user, so he doesn't have to login again on Usdlayer.
 
-`opts.token`: Automatically select a token to sell in Mooni. Must be an ERC20 contract address.
+`opts.token`: Automatically select a token to sell in Usdlayer. Must be an ERC20 contract address.
 
 #### If used as a modal:
-- `mooni.open()`  
-Opens the Mooni widget modal.
 
+- `usdlayer.open()`  
+  Opens the Usdlayer widget modal.
 
-- `mooni.close()`  
-Closes the Mooni widget modal. Not mandatory, a button is present to enable the user to close it.
+* `usdlayer.close()`  
+  Closes the Usdlayer widget modal. Not mandatory, a button is present to enable the user to close it.
 
 ## Additional information
 
@@ -59,18 +53,20 @@ Closes the Mooni widget modal. Not mandatory, a button is present to enable the 
 
 - ES6
 
-`import MooniWidget from '@mooni/widget';`
+`import UsdlayerWidget from '@usdlayer/widget';`
 
 - CommonJS
 
-`const MooniWidget = require('@mooni/widget');`
+`const UsdlayerWidget = require('@usdlayer/widget');`
+
 
 - UMD
 
 ```
-<script src="https://unpkg.com/@mooni/widget"></script>
-<script> 
-  MooniWidget.open()
+<!-- not yet published! -->
+<script src="https://unpkg.com/@usdlayer/widget"></script>
+<script>
+  UsdlayerWidget.open()
 </script>
 ```
 
@@ -86,3 +82,7 @@ yarn build
 # Publish package
 npm publish
 ```
+
+## License 
+
+GPL-3.0

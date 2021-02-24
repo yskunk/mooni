@@ -20,7 +20,7 @@ export interface CurrencyObject {
   img?: string;
 }
 
-export interface TokenObject extends CurrencyObject{
+export interface TokenObject extends CurrencyObject {
   address: string;
   chainId: ChainId;
 }
@@ -34,17 +34,14 @@ export abstract class Currency {
 
   constructor(type, decimals, symbol, name?, img?) {
     this.type = type;
-    this.decimals = decimals;
+    this.decimals = Number(decimals);
     this.symbol = symbol;
     this.img = img;
     this._name = name;
   }
 
   equals(currency: Currency) {
-    return (
-      this.type === currency.type &&
-      this.symbol === currency.symbol
-    );
+    return this.type === currency.type && this.symbol === currency.symbol;
   }
 
   get name(): string {
@@ -57,7 +54,7 @@ export abstract class Currency {
       decimals: this.decimals,
       symbol: this.symbol,
       name: this.name,
-    }
+    };
   }
 }
 
@@ -85,14 +82,15 @@ export class TokenCurrency extends Currency {
   }
 
   equals(token: TokenCurrency) {
-    return super.equals(token) && (
+    return (
+      super.equals(token) &&
       this.address.toLowerCase() === token.address.toLowerCase() &&
       this.chainId === token.chainId
     );
   }
 
   getContract(provider: ethers.providers.BaseProvider = defaultProvider) {
-    if(!this.contract) {
+    if (!this.contract) {
       this.contract = new ethers.Contract(this.address, ERC20_ABI, provider);
     }
     return this.contract;
@@ -115,22 +113,39 @@ export class TokenCurrency extends Currency {
 }
 
 export function createFromCurrencyObject<T extends Currency>(currencyObject: CurrencyObject): T {
-  switch(currencyObject.type) {
+  switch (currencyObject.type) {
     case CurrencyType.FIAT:
-      return new FiatCurrency(currencyObject.decimals, currencyObject.symbol, currencyObject.name, currencyObject.img) as T;
+      return new FiatCurrency(
+        currencyObject.decimals,
+        currencyObject.symbol,
+        currencyObject.name,
+        currencyObject.img
+      ) as T;
 
     case CurrencyType.CRYPTO:
-      return new CryptoCurrency(currencyObject.decimals, currencyObject.symbol, currencyObject.name, currencyObject.img) as T;
+      return new CryptoCurrency(
+        currencyObject.decimals,
+        currencyObject.symbol,
+        currencyObject.name,
+        currencyObject.img
+      ) as T;
 
     case CurrencyType.ERC20:
-      if(!(currencyObject as any).chainId || !(currencyObject as any).address) {
-        throw new Error('invalid token object, mising chainId or address')
+      if (!(currencyObject as any).chainId || !(currencyObject as any).address) {
+        throw new Error('invalid token object, mising chainId or address');
       }
       const tokenObject = currencyObject as TokenObject;
-      return new TokenCurrency(currencyObject.decimals, tokenObject.address, tokenObject.chainId, currencyObject.symbol, currencyObject.name, currencyObject.img) as unknown as T;
+      return (new TokenCurrency(
+        currencyObject.decimals,
+        tokenObject.address,
+        tokenObject.chainId,
+        currencyObject.symbol,
+        currencyObject.name,
+        currencyObject.img
+      ) as unknown) as T;
 
     default:
-      throw new Error('unknown currency type')
+      throw new Error('unknown currency type');
   }
 }
 

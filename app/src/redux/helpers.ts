@@ -1,5 +1,5 @@
 import { get, isArray } from 'lodash';
-import {RootState} from './store';
+import { RootState } from './store';
 
 export function selectProperty(path, defaultValue = null) {
   let stringPath = path;
@@ -8,4 +8,3 @@ export function selectProperty(path, defaultValue = null) {
   }
   return (state: RootState) => get(state, stringPath, defaultValue);
 }
-

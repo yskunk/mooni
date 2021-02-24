@@ -1,17 +1,16 @@
-import axios, {AxiosInstance} from 'axios'
-import qs from 'qs'
+import axios, { AxiosInstance } from 'axios';
+import qs from 'qs';
 
-const API_URL = 'https://exchange.api.bity.com'
-const REPORTING_URL = 'https://reporting.api.bity.com/exchange/v1'
-const AUTH_URL = 'https://connect.bity.com/oauth2/token'
-const TIMEOUT = 10 * 1000
+const API_URL = 'https://exchange.api.bity.com';
+const REPORTING_URL = 'https://reporting.api.bity.com/exchange/v1';
+const AUTH_URL = 'https://connect.bity.com/oauth2/token';
+const TIMEOUT = 10 * 1000;
 
 export class Reporter {
-  reportInstance: AxiosInstance
-  apiInstance: AxiosInstance
+  reportInstance: AxiosInstance;
+  apiInstance: AxiosInstance;
 
-  constructor() {
-  }
+  constructor() {}
 
   async initializeAuth(client_id: string, client_secret: string) {
     const { data } = await axios({
@@ -23,23 +22,23 @@ export class Reporter {
         client_id,
         client_secret,
       }),
-    })
-    const { access_token } = data
+    });
+    const { access_token } = data;
 
     this.reportInstance = axios.create({
       baseURL: REPORTING_URL,
       timeout: TIMEOUT,
       headers: {
-        'Authorization': `Bearer ${access_token}`,
+        Authorization: `Bearer ${access_token}`,
       },
-    })
+    });
     this.apiInstance = axios.create({
       baseURL: API_URL,
       timeout: TIMEOUT,
       headers: {
-        'Authorization': `Bearer ${access_token}`,
+        Authorization: `Bearer ${access_token}`,
       },
-    })
+    });
   }
 
   async getOrder(orderId: string) {
@@ -51,11 +50,11 @@ export class Reporter {
     console.log('[DONE] order', orderId);
 
     let orderStatus = 'WAITING';
-    if(data.timestamp_cancelled) {
+    if (data.timestamp_cancelled) {
       orderStatus = 'CANCELLED';
-    } else if(data.timestamp_executed) {
+    } else if (data.timestamp_executed) {
       orderStatus = 'EXECUTED';
-    } else if(data.timestamp_payment_received) {
+    } else if (data.timestamp_payment_received) {
       orderStatus = 'RECEIVED';
     }
     data.orderStatus = orderStatus;

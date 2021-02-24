@@ -1,9 +1,9 @@
-import * as actions from "./actions";
-import { STATE_NAME, initialState } from "./state";
+import * as actions from './actions';
+import { STATE_NAME, initialState } from './state';
 
 export { STATE_NAME };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case actions.SET_ETH_MANAGER: {
       const { ethManager } = action.payload;

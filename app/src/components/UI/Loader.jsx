@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
-import { EmptyStateCard, LoadingRing } from '@aragon/ui'
+import { EmptyStateCard, LoadingRing } from '@aragon/ui';
 import LoadImage from '../../assets/undraw_counting_stars_rrnl.svg';
+import { Surface } from './StyledComponents';
 
 function Loader({ text = 'Loading...' }) {
   return (
@@ -9,7 +10,11 @@ function Loader({ text = 'Loading...' }) {
       <EmptyStateCard
         text={text}
         illustration={<img src={LoadImage} width="80%" alt="" />}
-        action={<Box display="flex" justifyContent="center"><LoadingRing /></Box>}
+        action={
+          <Box display="flex" justifyContent="center">
+            <LoadingRing />
+          </Box>
+        }
       />
     </Box>
   );

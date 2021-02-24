@@ -1,19 +1,19 @@
-# Burner Wallet Mooni Plugin
+# Burner Wallet Usdlayer Plugin
 
-[![npm (scoped)](https://img.shields.io/npm/v/@mooni/burner-plugin)](https://www.npmjs.com/package/@mooni/burner-plugin)
+[![npm (scoped)](https://img.shields.io/npm/v/@usdlayer/burner-plugin)](https://www.npmjs.com/package/@usdlayer/burner-plugin)
 
-Allows transfering funds from your Burner Wallet to your bank account. 
+Allows transfering funds from your Burner Wallet to your bank account.
 
-This plugin is using [Mooni](https://mooni.tech) app.
+This plugin is using [Usdlayer](https://usdlayer.com) app.
 
-A Burner Wallet have been deployed with this plugin included: [Mooni Burner Wallet](https://burner.mooni.tech).
+A Burner Wallet have been deployed with this plugin included: [Usdlayer Burner Wallet](https://burner.usdlayer.com).
 
 ## Usage
 
 Install package:
 
 ```
-yarn add @mooni/burner-plugin
+yarn add @usdlayer/burner-plugin
 ```
 
 Add plugin to Burner Wallet
@@ -27,23 +27,17 @@ import { LocalSigner } from '@burner-wallet/core/signers';
 import { InfuraGateway } from '@burner-wallet/core/gateways';
 import ModernUI from '@burner-wallet/modern-ui';
 
-import MooniPlugin from '@mooni/burner-plugin';
+import UsdlayerPlugin from '@usdlayer/burner-plugin';
 
 const core = new BurnerCore({
   signers: [new LocalSigner()],
-  gateways: [
-    new InfuraGateway(process.env.REACT_APP_INFURA_KEY),
-  ],
+  gateways: [new InfuraGateway(process.env.REACT_APP_INFURA_KEY)],
   assets: [eth, dai, usdc],
 });
 
-const BurnerWallet = () =>
-  <ModernUI
-    title="Mooni Burner Wallet"
-    core={core}
-    plugins={[new MooniPlugin()]}
-  />
-
+const BurnerWallet = () => (
+  <ModernUI title="Usdlayer Burner Wallet" core={core} plugins={[new UsdlayerPlugin()]} />
+);
 
 ReactDOM.render(<BurnerWallet />, document.getElementById('root'));
 ```

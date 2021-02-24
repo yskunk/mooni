@@ -1,9 +1,9 @@
 {
-  "name": "@mooni/example-host",
+  "name": "@usdlayer/example-host",
   "version": "2.0.0",
   "private": true,
   "dependencies": {
-    "@mooni/widget": "^2.1.0",
+    "@usdlayer/widget": "^2.1.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "^3.4.1"

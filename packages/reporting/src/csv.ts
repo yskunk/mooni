@@ -1,13 +1,13 @@
-import { readJSON, writeCSV } from './utils'
+import { readJSON, writeCSV } from './utils';
 
 function getAmount(amountArray, currency) {
-  const d = amountArray.find(i => i.currency === currency)
-  if(!d) return 0
-  return d.amount
+  const d = amountArray.find(i => i.currency === currency);
+  if (!d) return 0;
+  return d.amount;
 }
 
 export async function reportsToCSV() {
-  const reports = readJSON('./output/reports.json')
+  const reports = readJSON('./output/reports.json');
 
   const headers = [
     'year',
@@ -21,11 +21,11 @@ export async function reportsToCSV() {
     'partnerProfitETH',
   ];
 
-  const data = []
+  const data = [];
 
-  for(let year of Object.keys(reports)) {
+  for (let year of Object.keys(reports)) {
     const reportYear = reports[year];
-    for(let month of Object.keys(reportYear)) {
+    for (let month of Object.keys(reportYear)) {
       const reportMonth = reportYear[month];
       const row = [
         year,
@@ -37,10 +37,10 @@ export async function reportsToCSV() {
         getAmount(reportMonth.customer_trading_fee, 'ETH'),
         getAmount(reportMonth.partner_fee, 'ETH'),
         getAmount(reportMonth.profit_sharing, 'ETH'),
-      ]
-      data.push(row)
+      ];
+      data.push(row);
     }
   }
 
-  writeCSV('./output/reports.csv', data, headers)
+  writeCSV('./output/reports.csv', data, headers);
 }
