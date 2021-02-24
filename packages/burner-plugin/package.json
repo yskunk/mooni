@@ -14,7 +14,6 @@
   "types": "dist/UsdlayerPlugin.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepublish": "yarn run build",
     "dev": "tsc -w",
     "start:burner": "yarn dev"
   },
