@@ -1,27 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Button,
-  Box,
-  Flex,
-} from "@chakra-ui/react"
-
-import { HamburgerIcon } from '@chakra-ui/icons'
-import { IconChip, IconFile, IconInfo, IconChat } from '@aragon/ui'
+import { Menu, MenuButton, MenuList, MenuItem, Button, Box } from '@chakra-ui/react';
+import { IconChip, IconFile, IconInfo, IconChat } from '@aragon/ui';
 import MenuBookIcon from '@material-ui/icons/MenuBookOutlined';
 
 import ContactSupportIcon from '@material-ui/icons/ContactSupportOutlined';
+import { HamburgerIcon } from '@chakra-ui/icons';
 import AccountBadge from './Account/AccountBadge';
 import { NavLink } from './UI/StyledComponents';
-import { DiscordButton } from './UI/Tools';
-import { getWalletStatus } from "../redux/wallet/selectors";
+import { getWalletStatus } from '../redux/wallet/selectors';
 import { useSelector, useDispatch } from 'react-redux';
-import { WalletStatus } from "../redux/wallet/state";
+import { WalletStatus } from '../redux/wallet/state';
 import { setInfoPanel } from '../redux/ui/actions';
 import config from '../config';
 
@@ -176,43 +166,70 @@ export default function Header() {
         <MainHeader>
           <NavLink to="/">
             <LogoBox>
-              <img src="logo192.png" alt="mooni-logo" />
-              <h1>
-                MOONI
-              </h1>
-              <span>
-                beta
-              </span>
+              <img src="logo192.png" alt="usdlayer-logo" />
+              <h1>USDLAYER</h1>
+              <span>beta</span>
             </LogoBox>
           </NavLink>
           <RoutesContainer>
-            {walletStatus === WalletStatus.CONNECTED &&
-            <>
-              <RouteLink to="/order" activeClassName="active">Exchange</RouteLink>
-              <RouteLink to="/account" activeClassName="active">Account</RouteLink>
-            </>
-            }
-            <RouteLink to="/stats" activeClassName="active">Stats</RouteLink>
+            {walletStatus === WalletStatus.CONNECTED && (
+              <>
+                <RouteLink to="/exchange" activeClassName="active">
+                  Exchange
+                </RouteLink>
+                <RouteLink to="/account" activeClassName="active">
+                  Account
+                </RouteLink>
+              </>
+            )}
+            <RouteLink to="/stats" activeClassName="active">
+              Stats
+            </RouteLink>
           </RoutesContainer>
         </MainHeader>
 
         <SecondaryHeader>
-          <AccountBadge />
-          <Flex ml={2}>
-            <Box mr={2}>
-              <DiscordButton variant="outline" label="Chat"/>
-            </Box>
+          <Box>
+            <AccountBadge />
+          </Box>
+          <Box ml={2}>
             <Menu>
               <MenuButton as={Button} variant="outline">
-                <HamburgerIcon/>
+                <HamburgerIcon />
               </MenuButton>
               <MenuList borderRadius="1rem" minWidth="8rem">
-                <MenuItem icon={<IconInfo/>} onClick={() => dispatch(setInfoPanel('about'))}> About</MenuItem>
-                <MenuItem paddingLeft="1rem" icon={<MenuBookIcon fontSize="small"/>} onClick={() => window.open('https://doc.mooni.tech')}> Docs</MenuItem>
-                <MenuItem paddingLeft="1rem" icon={<ContactSupportIcon fontSize="small"/>} onClick={() => dispatch(setInfoPanel('support'))}> Support</MenuItem>
-                <MenuItem icon={<IconChip/>} onClick={() => window.open('https://github.com/pakokrew/mooni')}> Code</MenuItem>
-                <MenuItem icon={<IconFile/>} onClick={() => dispatch(setInfoPanel('terms'))}> Terms</MenuItem>
-                <MenuItem icon={<IconChat/>} onClick={() => window.open(config.discordInviteUrl)}> Discord</MenuItem>
+                <MenuItem icon={<IconInfo />} onClick={() => dispatch(setInfoPanel('about'))}>
+                  {' '}
+                  About
+                </MenuItem>
+                <MenuItem
+                  paddingLeft="1rem"
+                  icon={<MenuBookIcon fontSize="small" />}
+                  onClick={() => window.open('https://doc.usdlayer.com')}>
+                  {' '}
+                  Docs
+                </MenuItem>
+                <MenuItem
+                  paddingLeft="1rem"
+                  icon={<ContactSupportIcon fontSize="small" />}
+                  onClick={() => dispatch(setInfoPanel('support'))}>
+                  {' '}
+                  Support
+                </MenuItem>
+                <MenuItem
+                  icon={<IconChip />}
+                  onClick={() => window.open('https://github.com/manifoldfinance/usdlayer')}>
+                  {' '}
+                  Code
+                </MenuItem>
+                <MenuItem icon={<IconFile />} onClick={() => dispatch(setInfoPanel('terms'))}>
+                  {' '}
+                  Terms
+                </MenuItem>
+                <MenuItem icon={<IconChat />} onClick={() => window.open(config.discordInviteUrl)}>
+                  {' '}
+                  Discord
+                </MenuItem>
               </MenuList>
             </Menu>
           </Flex>
@@ -221,4 +238,3 @@ export default function Header() {
     </HeaderRoot>
   );
 }
-

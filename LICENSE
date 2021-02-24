@@ -178,14 +178,14 @@ makes it unnecessary.
 
   3. Protecting Users' Legal Rights From Anti-Circumvention Law.
 
-  No covered work shall be deemed part of an effective technological
+  No covered work shall be deemed part of an effective.comnological
 measure under any applicable law fulfilling obligations under article
 11 of the WIPO copyright treaty adopted on 20 December 1996, or
 similar laws prohibiting or restricting circumvention of such
 measures.
 
   When you convey a covered work, you waive any legal power to forbid
-circumvention of technological measures to the extent such circumvention
+circumvention of.comnological measures to the extent such circumvention
 is effected by exercising rights under this License with respect to
 the covered work, and you disclaim any intention to limit operation or
 modification of the work as a means of enforcing, against the work's
@@ -631,8 +631,8 @@ to attach them to the start of each source file to most effectively
 state the exclusion of warranty; and each file should have at least
 the "copyright" line and a pointer to where the full notice is found.
 
-    mooni
-    Copyright (C) 2019 Pacien Boisson (pakokrew@gmail.com)
+    usdlayer
+    Copyright (C) 2019 Pacien Boisson (manifoldfinance@gmail.com)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -652,7 +652,7 @@ Also add information on how to contact you by electronic and paper mail.
   If the program does terminal interaction, make it output a short
 notice like this when it starts in an interactive mode:
 
-    mooni  Copyright (C) 2019  Pacien Boisson (pakokrew@gmail.com)
+    usdlayer  Copyright (C) 2019  Pacien Boisson (manifoldfinance@gmail.com)
     This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
     This is free software, and you are welcome to redistribute it
     under certain conditions; type `show c' for details.

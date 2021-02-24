@@ -39,36 +39,26 @@ export default function AccountPage() {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      justifyContent="center"
-    >
+      justifyContent="center">
+      <Title>My account</Title>
 
-      <Title>
-        My account
-      </Title>
+      <AccountInfo />
 
-      <AccountInfo/>
-
-      <Grid container classes={{'root': classes.gridContainer}}>
-
-        <Grid item xs={12} sm={6} classes={{'item': classes.gridItem}}>
+      <Grid container classes={{ root: classes.gridContainer }}>
+        <Grid item xs={12} sm={6} classes={{ item: classes.gridItem }}>
           <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column">
-            <SubTitle>
-              Referral
-            </SubTitle>
-            <ReferralInfo/>
+            <SubTitle>Referral</SubTitle>
+            <ReferralInfo />
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={6} classes={{'item': classes.gridItem}}>
+        <Grid item xs={12} sm={6} classes={{ item: classes.gridItem }}>
           <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column">
-            <SubTitle>
-              Order history
-            </SubTitle>
-            <OrderHistory/>
+            <SubTitle>Order history</SubTitle>
+            <OrderHistory />
           </Box>
         </Grid>
       </Grid>
-
     </Box>
   );
 }

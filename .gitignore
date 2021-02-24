@@ -1,5 +1,6 @@
 .idea
 .DS_Store
+.vcs.json
 
 node_modules
 yarn-error.log

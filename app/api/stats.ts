@@ -1,5 +1,5 @@
-import { NowRequest, NowResponse } from '@now/node'
-import prisma from "../src/lib/api/prisma";
+import { NowRequest, NowResponse } from '@now/node';
+import prisma from '../src/lib/api/prisma';
 import { Stats } from '../src/types/api';
 
 export default async (req: NowRequest, res: NowResponse): Promise<NowResponse | void> => {
@@ -7,7 +7,7 @@ export default async (req: NowRequest, res: NowResponse): Promise<NowResponse | 
     SELECT 
       SUM(CAST("ethAmount" AS numeric)) AS "totalETH",
       COUNT(*)
-    FROM "MooniOrder"
+    FROM "UsdlayerOrder"
     WHERE status = 'EXECUTED';
   `);
 
@@ -15,7 +15,7 @@ export default async (req: NowRequest, res: NowResponse): Promise<NowResponse | 
     SELECT 
       SUM(CAST("outputAmount" AS numeric)) as "totalOutput",
       "outputCurrency"
-    FROM "MooniOrder"
+    FROM "UsdlayerOrder"
     WHERE status = 'EXECUTED'
     GROUP BY "outputCurrency"
   `);

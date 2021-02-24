@@ -1,7 +1,15 @@
 import React from 'react';
 
 import { Box } from '@material-ui/core';
-import { Info, textStyle, GU, IconWarning, useTheme, IconRotateLeft, IconArrowLeft } from '@aragon/ui'
+import {
+  Info,
+  textStyle,
+  GU,
+  IconWarning,
+  useTheme,
+  IconRotateLeft,
+  IconArrowLeft,
+} from '@aragon/ui';
 import styled from 'styled-components';
 import { FlexCenterBox, RoundButton } from '../UI/StyledComponents';
 import { dailyLimits, yearlyLimits } from '../../constants/limits';
@@ -46,68 +54,74 @@ function GenericErrors({ orderErrors }) {
   );
 }
 
-function ErrorCTA({action, label, icon}) {
+function ErrorCTA({ action, label, icon }) {
   return (
     <Box mt={2}>
-      <RoundButton
-        mode="strong"
-        onClick={action}
-        wide
-        icon={icon}
-        label={label}
-      />
+      <MButton
+        variant="outlined"
+        color="primary"
+        size="small"
+        startIcon={icon}
+        style={{ width: '100%' }}
+        onClick={action}>
+        {label}
+      </MButton>
     </Box>
-  )
+  );
 }
 
-function ErrorCatcher({orderErrors}) {
+function ErrorCatcher({ orderErrors, onStartOver }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  function onRestart(home: boolean = false) {
-    dispatch(resetOrder());
-    history.push(home ? '/' : '/order');
-  }
+  if (orderErrors[0].code === 'exceeds_quota') {
+    const goHome = () => history.push('/');
 
   if(orderErrors[0].code === 'exceeds_quota') {
     return (
       <>
-        <ErrorContent>You have reach your limits with this bank account. Please try again with a lower amount or wait 24h so that your limits are reset.</ErrorContent>
+        <ErrorContent>
+          You have reach your limits with this bank account. Please try again with a lower amount or
+          wait 24h so that your limits are reset.
+        </ErrorContent>
         <Label>Exchange limits</Label>
-        <LimitLine><b>Daily</b> {numberWithCommas(dailyLimits['EUR'])} EUR/{numberWithCommas(dailyLimits['CHF'])} CHF</LimitLine>
-        <LimitLine><b>Annually</b> {numberWithCommas(yearlyLimits['EUR'])} EUR/{numberWithCommas(yearlyLimits['CHF'])} CHF</LimitLine>
-        <ErrorCTA
-          icon={<IconArrowLeft/>}
-          action={() => onRestart(true)}
-          label="Go home"
-        />
+        <LimitLine>
+          <b>Daily</b> {numberWithCommas(dailyLimits['EUR'])} EUR/
+          {numberWithCommas(dailyLimits['CHF'])} CHF
+        </LimitLine>
+        <LimitLine>
+          <b>Annually</b> {numberWithCommas(yearlyLimits['EUR'])} EUR/
+          {numberWithCommas(yearlyLimits['CHF'])} CHF
+        </LimitLine>
+        <ErrorCTA icon={<IconArrowLeft />} action={goHome} label="Go home" />
+      </>
+    );
+  } else if (orderErrors[0].code === 'expired') {
+    return (
+      <>
+        <ErrorContent>The order you made has expired. Please create a new one.</ErrorContent>
+        <ErrorCTA icon={<IconRotateLeft />} action={onStartOver} label="Start over" />
       </>
     );
   } else {
     return (
       <>
-        <GenericErrors orderErrors={orderErrors}/>
-        <ErrorCTA
-          icon={<IconRotateLeft/>}
-          action={onRestart}
-          label="Start over"
-        />
+        <GenericErrors orderErrors={orderErrors} />
+        <ErrorCTA icon={<IconRotateLeft />} action={onStartOver} label="Start over" />
       </>
     );
   }
 }
-export default function OrderError({ orderErrors }) {
+export default function OrderError({ orderErrors, onStartOver }) {
   const theme = useTheme();
 
   return (
     <Box width={1}>
       <FlexCenterBox>
-        <IconWarning size="large" style={{ color: theme.negative }}  />
+        <IconWarning size="large" style={{ color: theme.negative }} />
       </FlexCenterBox>
-      <SubTitle>
-        Order error
-      </SubTitle>
-      <ErrorCatcher orderErrors={orderErrors} />
+      <SubTitle>Order error</SubTitle>
+      <ErrorCatcher orderErrors={orderErrors} onStartOver={onStartOver} />
     </Box>
   );
 }

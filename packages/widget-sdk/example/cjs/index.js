@@ -1,5 +1,5 @@
-const MooniWidget = require('@mooni/widget');
+const UsdlayerWidget = require('@usdlayer/widget');
 
-const mooni = new MooniWidget();
+const usdlayer = new UsdlayerWidget();
 
-document.getElementById('modal-opener').onclick = () => mooni.open();
+document.getElementById('modal-opener').onclick = () => usdlayer.open();

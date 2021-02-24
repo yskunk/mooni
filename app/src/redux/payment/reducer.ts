@@ -1,19 +1,16 @@
-import {
-  OrderErrors,
-  Payment,
-  PaymentStatus,
-  PaymentStep,
-  Recipient,
-} from '../../lib/types';
+import { OrderErrors, Payment, PaymentStatus, PaymentStep, Recipient } from '../../lib/types';
 
-import { STATE_NAME, PaymentState, initialState } from "./state";
+import { STATE_NAME, PaymentState, initialState } from './state';
 import * as actions from './actions';
 import { BankInfo, MultiTrade, MultiTradeRequest, TradeRequest } from '../../lib/trading/types';
 import { CurrencyObject } from '../../lib/trading/currencyTypes';
 
 export { STATE_NAME };
 
-export default function(state : PaymentState = initialState, action: { type: string, payload?: any }): PaymentState {
+export default function (
+  state: PaymentState = initialState,
+  action: { type: string; payload?: any }
+): PaymentState {
   switch (action.type) {
     case actions.SET_TRADE_REQUEST: {
       const { tradeRequest }: { tradeRequest: TradeRequest } = action.payload;
@@ -116,15 +113,15 @@ export default function(state : PaymentState = initialState, action: { type: str
     case actions.UPDATE_PAYMENT_STEP: {
       const { paymentStepUpdate }: { paymentStepUpdate: PaymentStep } = action.payload;
 
-      if(!state.payment) throw new Error('Cannot update payment step on undefined');
+      if (!state.payment) throw new Error('Cannot update payment step on undefined');
 
       const stepIndex = state.payment.steps.findIndex(s => s.id === paymentStepUpdate.id);
-      if(stepIndex === -1) throw new Error('payment step not found');
+      if (stepIndex === -1) throw new Error('payment step not found');
 
       const newState = Object.assign({}, state);
       newState.payment = Object.assign({}, state.payment);
-      newState.payment.steps = state.payment.steps.map((s,i) =>
-          i === stepIndex ? Object.assign({}, s, paymentStepUpdate) : s
+      newState.payment.steps = state.payment.steps.map((s, i) =>
+        i === stepIndex ? Object.assign({}, s, paymentStepUpdate) : s
       );
 
       return newState;
@@ -132,7 +129,7 @@ export default function(state : PaymentState = initialState, action: { type: str
     case actions.SET_PAYMENT_STATUS: {
       const { status }: { status: PaymentStatus } = action.payload;
 
-      if(!state.payment) throw new Error('Cannot update payment status on undefined');
+      if (!state.payment) throw new Error('Cannot update payment status on undefined');
 
       const newState = Object.assign({}, state);
       newState.payment = Object.assign({}, state.payment);

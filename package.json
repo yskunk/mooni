@@ -1,33 +1,37 @@
 {
-  "name": "@mooni/monorepo",
-  "description": "Monorepo for Mooni applications and  libraries",
-  "author": "Paco <pakokrew@gmail.com>",
+  "name": "@usdlayer/monorepo",
+  "description": "Monorepo for Usdlayer applications and  libraries",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pakokrew/mooni.git"
+    "url": "https://github.com/manifoldfinance/usdlayer.git"
   },
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
     "install": "lerna bootstrap && yarn --cwd app",
     "build": "lerna run build",
+    "semantic-release": "semantic-release",
     "publish": "lerna publish",
     "lint": "eslint '*/**/*.{js,ts,tsx}'",
     "start:app": "yarn start --cwd app",
     "start:example-host": "CI=true lerna run --parallel start:example-host",
     "start:burner": "lerna run --parallel start:burner",
     "build:app": "yarn build --cwd app",
-    "build:burner": "lerna run --scope @mooni/burner-wallet build"
+    "build:burner": "lerna run --scope @usdlayer/burner-wallet build"
   },
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^2.5.0",
     "@typescript-eslint/parser": "^2.5.0",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
-    "lerna": "^3.16.4"
+    "lerna": "^3.16.4",
+    "semantic-release": "^17.3.9",
+    "semantic-release-npm-github-publish": "^1.4.0"
   },
   "dependencies": {
     "typescript": "^3.6.3"

@@ -15,7 +15,7 @@ interface UserState {
 const initialState: UserState = {
   user: null,
   ens: null,
-}
+};
 
 export const userSlice = createSlice({
   name: STATE_NAME,
@@ -33,14 +33,15 @@ export const userSlice = createSlice({
 const { setENS } = userSlice.actions;
 export const { setUser } = userSlice.actions;
 
-const fetchENS = (address) => dispatch => {
-  defaultProvider.lookupAddress(address)
+const fetchENS = address => dispatch => {
+  defaultProvider
+    .lookupAddress(address)
     .then(ens => dispatch(setENS(ens)))
-    .catch(_ => dispatch(setENS(null)))
+    .catch(_ => dispatch(setENS(null)));
 };
 
 export const fetchUser = () => async (dispatch, getState) => {
-  const jwsToken = getJWS(getState())
+  const jwsToken = getJWS(getState());
   const user = await Api.getUser(jwsToken);
   dispatch(setUser(user));
   dispatch(fetchENS(user.ethAddress));

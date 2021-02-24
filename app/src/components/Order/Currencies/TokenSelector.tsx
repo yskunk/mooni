@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box } from '@material-ui/core';
-import { Button, IconDown, useTheme, GU } from '@aragon/ui'
+import { Button, IconDown, useTheme, GU } from '@aragon/ui';
 
 import { TokenSelectorModal } from './TokenSelectorModal';
 import { CurrencyLogo } from './CurrencyLogo';
@@ -12,7 +12,7 @@ const CurrencyButton = styled(Button)`
   border: none;
   outline: none;
   box-shadow: none;
-`
+`;
 
 type Props = {
   selectedSymbol: string;
@@ -28,7 +28,7 @@ export const TokenSelector: React.FC<Props> = ({ selectedSymbol, onChange, disab
     onChange(symbol);
     setModalOpen(false);
   }
-  
+
   return (
     <>
       <TokenSelectorModal
@@ -39,24 +39,25 @@ export const TokenSelector: React.FC<Props> = ({ selectedSymbol, onChange, disab
       <CurrencyButton
         onClick={() => setModalOpen(true)}
         disabled={disabled}
-        icon={<CurrencyLogo symbol={selectedSymbol}/>}
+        icon={<CurrencyLogo symbol={selectedSymbol} />}
         label={selectedSymbol}
-        wide
-      >
+        wide>
         <Box display="flex" alignItems="center" justifyContent="center" width={1}>
           <Box width={25} display="flex" alignItems="center" justifyContent="center">
-            <CurrencyLogo symbol={selectedSymbol}/>
+            <CurrencyLogo symbol={selectedSymbol} />
           </Box>
           <Box flex={1} ml={1} textAlign="start" fontSize="1.2rem">
             {selectedSymbol}
           </Box>
-          <Box color={disabled ? theme.disabledIcon.toString() : theme.accent.toString()} ml={1} display="flex" alignItems="center">
-            <IconDown
-              size="tiny"
-            />
+          <Box
+            color={disabled ? theme.disabledIcon.toString() : theme.accent.toString()}
+            ml={1}
+            display="flex"
+            alignItems="center">
+            <IconDown size="tiny" />
           </Box>
         </Box>
       </CurrencyButton>
     </>
   );
-}
+};

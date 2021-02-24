@@ -1,6 +1,6 @@
 import React from 'react';
 import BN from 'bignumber.js';
-import { Box, Button} from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import styled from 'styled-components';
 import { textStyle } from '@aragon/ui';
 
@@ -66,7 +66,7 @@ const Input = styled.input`
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0;
-  
+
   &:focus {
     outline: none;
   }
@@ -93,37 +93,40 @@ type Props = {
   balanceAvailable?: string;
 };
 
-const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`) // match escaped "." characters via in a non-capturing group
-
-export function escapeRegExp(string: string): string {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& means the whole matched string
-}
-
-
-export const AmountRow: React.FC<Props> = ({ value, selectedSymbol, onChangeValue, onChangeCurrency, currencyType, active, error, valueDisabled, currencyDisabled, caption, onMax, balanceAvailable }) => {
-  const displayedValue = value !== null ?
-    (active ? value : new BN(value).sd(SIGNIFICANT_DIGITS).toFixed())
-    : '';
+export const AmountRow: React.FC<Props> = ({
+  value,
+  selectedSymbol,
+  onChangeValue,
+  onChangeCurrency,
+  currencyType,
+  active,
+  error,
+  valueDisabled,
+  currencyDisabled,
+  caption,
+  onMax,
+  balanceAvailable,
+}) => {
+  const displayedValue =
+    value !== null ? (active ? value : new BN(value).sd(SIGNIFICANT_DIGITS).toFixed()) : '';
 
   return (
-    <Container className={[valueDisabled && 'disabled', active && 'active', error && 'error'].join(' ')}>
+    <Container
+      className={[valueDisabled && 'disabled', active && 'active', error && 'error'].join(' ')}>
       <LabelContainer>
-        <RowLabel>
-          {caption}
-        </RowLabel>
+        <RowLabel>{caption}</RowLabel>
 
-        {balanceAvailable && balanceAvailable !== '0' &&
-        <Button
-          variant="link"
-          onClick={onMax}
-          disabled={!onMax}
-          _disabled={{
-            color: 'gray.400',
-          }}
-        >
-          Available: {significantNumbers(balanceAvailable)}
-        </Button>
-        }
+        {balanceAvailable && balanceAvailable !== '0' && (
+          <Button
+            variant="link"
+            onClick={onMax}
+            disabled={!onMax}
+            _disabled={{
+              color: 'gray.400',
+            }}>
+            Available: {significantNumbers(balanceAvailable)}
+          </Button>
+        )}
       </LabelContainer>
       <InputContainer>
         <Input

@@ -21,14 +21,14 @@ class BoxManager {
     await box.syncDone;
     log('box synced');
 
-    const space = await box.openSpace('mooni');
+    const space = await box.openSpace('usdlayer');
     log('space opened');
     await space.syncDone;
     log('space synced');
 
     return new BoxManager({
       box,
-      space
+      space,
     });
   }
 

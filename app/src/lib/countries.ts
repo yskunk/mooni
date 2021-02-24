@@ -39,11 +39,14 @@ const COUNTRIES_NON_EEA = {
   GI: 'Gibraltar',
   JE: 'Jersey',
   MC: 'Monaco',
-}
+};
 
 export const COUNTRIES_MAP = {
   ...COUTRIES_EU,
   ...COUNTRIES_NON_EEA,
 };
 
-export const COUNTRIES_ARRAY = Object.entries(COUNTRIES_MAP).map(e => ({ code: e[0], label: e[1]}));
+export const COUNTRIES_ARRAY = Object.entries(COUNTRIES_MAP).map(e => ({
+  code: e[0],
+  label: e[1],
+}));

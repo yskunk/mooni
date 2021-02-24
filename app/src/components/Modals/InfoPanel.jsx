@@ -8,7 +8,7 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-} from "@chakra-ui/react"
+} from '@chakra-ui/react';
 
 import About from '../Infos/About';
 import Terms from '../Infos/Terms';
@@ -18,7 +18,7 @@ import { getInfoPanel } from '../../redux/ui/selectors';
 import { setInfoPanel } from '../../redux/ui/actions';
 
 function getPanelTitle(panelType) {
-  switch(panelType) {
+  switch (panelType) {
     case 'about':
       return 'About';
     case 'terms':
@@ -31,7 +31,7 @@ function getPanelTitle(panelType) {
 }
 
 function getPanelContent(panelType) {
-  switch(panelType) {
+  switch (panelType) {
     case 'about':
       return <About />;
     case 'terms':
@@ -50,15 +50,14 @@ export default function InfoPanel() {
   const panelTitle = getPanelTitle(panelType);
   const panelContent = getPanelContent(panelType);
 
-  if(!panelType) return null;
+  if (!panelType) return null;
 
   return (
     <Drawer
       isOpen={panelType}
       placement="right"
       size="lg"
-      onClose={() => dispatch(setInfoPanel(null))}
-    >
+      onClose={() => dispatch(setInfoPanel(null))}>
       <DrawerOverlay>
         <DrawerContent>
           <DrawerCloseButton />
@@ -67,7 +66,6 @@ export default function InfoPanel() {
           <DrawerBody mt={4} mb={4}>
             {panelContent}
           </DrawerBody>
-
         </DrawerContent>
       </DrawerOverlay>
     </Drawer>

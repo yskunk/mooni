@@ -13,7 +13,7 @@ enum OrderStatus {
   EXECUTED
 }
 
-model MooniOrder {
+model UsdlayerOrder {
   id              String        @id @default(uuid())
   createdAt       DateTime      @default(now())
   executedAt      DateTime?
@@ -36,6 +36,6 @@ model User {
   createdAt       DateTime      @default(now())
   ethAddress      String        @unique
   referralId      String        @unique @default(cuid())
-  orders          MooniOrder[]  @relation("UserOrders")
-  referrals       MooniOrder[]  @relation("ReferredOrders")
+  orders          UsdlayerOrder[]  @relation("UserOrders")
+  referrals       UsdlayerOrder[]  @relation("ReferredOrders")
 }

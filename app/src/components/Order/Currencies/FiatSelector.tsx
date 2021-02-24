@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box} from '@material-ui/core';
+import { Box } from '@material-ui/core';
 
-import { DropDown } from '@aragon/ui'
+import { DropDown } from '@aragon/ui';
 
 import { CurrencyLogo } from './CurrencyLogo';
 import styled from 'styled-components';
@@ -10,8 +10,10 @@ import { fiatCurrencies } from '../../../lib/trading/currencyList';
 function CurrencyItem({ symbol }) {
   return (
     <Box display="flex" alignItems="center">
-      <CurrencyLogo symbol={symbol} width="20px"/>
-      <Box ml={1} fontSize="1.2rem">{symbol}</Box>
+      <CurrencyLogo symbol={symbol} width="20px" />
+      <Box ml={1} fontSize="1.2rem">
+        {symbol}
+      </Box>
     </Box>
   );
 }
@@ -35,7 +37,9 @@ type Props = {
 export const FiatSelector: React.FC<Props> = ({ selectedSymbol, onChange, disabled }) => {
   return (
     <CustomDropDown
-      items={outputCurrencies.map(symbol => <CurrencyItem symbol={symbol}/>)}
+      items={outputCurrencies.map(symbol => (
+        <CurrencyItem symbol={symbol} />
+      ))}
       selected={outputCurrencies.indexOf(selectedSymbol)}
       onChange={i => onChange(outputCurrencies[i])}
       disabled={disabled}

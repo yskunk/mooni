@@ -8,12 +8,12 @@ const moduleCommon = {
     {
       test: /\.tsx?$/,
       exclude: /node_modules/,
-      use: 'ts-loader'
+      use: 'ts-loader',
     },
-  ]
+  ],
 };
 const resolveCommon = {
-  extensions: [ '.tsx', '.ts', '.js' ],
+  extensions: ['.tsx', '.ts', '.js'],
 };
 
 module.exports = [
@@ -26,7 +26,7 @@ module.exports = [
       filename: 'index.umd.js',
       libraryTarget: 'umd',
       globalObject: 'this',
-      library: 'MooniWidget',
+      library: 'UsdlayerWidget',
       libraryExport: 'default',
     },
     module: moduleCommon,

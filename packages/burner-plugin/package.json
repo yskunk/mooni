@@ -1,17 +1,17 @@
 {
-  "name": "@mooni/burner-plugin",
+  "name": "@usdlayer/burner-plugin",
   "version": "2.1.0",
   "description": "Burner Wallet Plugin to transfer funds to your bank account",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pakokrew/mooni.git"
+    "url": "https://github.com/manifoldfinance/usdlayer.git"
   },
   "publishConfig": {
     "access": "public"
   },
   "license": "GPL-3.0",
-  "main": "dist/MooniPlugin.js",
-  "types": "dist/MooniPlugin.d.ts",
+  "main": "dist/UsdlayerPlugin.js",
+  "types": "dist/UsdlayerPlugin.d.ts",
   "scripts": {
     "build": "tsc",
     "prepublish": "yarn run build",
@@ -20,13 +20,18 @@
   },
   "dependencies": {
     "@burner-wallet/assets": "^1.0.0",
-    "@burner-wallet/types": "^1.0.0",
-    "@mooni/widget": "^2.1.0",
+    "@burner-wallet/types": "^1.0.9",
     "@types/react": "*",
+    "@types/styled-components": "^5.1.7",
+    "@types/web3": "^1.2.2",
+    "@usdlayer/widget": "^2.1.0",
     "url-parse": "^1.4.7"
   },
   "devDependencies": {
     "typescript": "^3.5.2"
   },
-  "gitHead": "0a4db043fcefe21f6519f68108b17dcd12057af9"
+  "gitHead": "0a4db043fcefe21f6519f68108b17dcd12057af9",
+  "peerDependencies": {
+    "@babel/core": "^7"
+  }
 }

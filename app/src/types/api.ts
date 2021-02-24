@@ -6,7 +6,7 @@ export type EthereumAddress = string;
 export type CurrencyAmount = string;
 export type TransactionHash = string;
 
-export enum MooniOrderStatus {
+export enum UsdlayerOrderStatus {
   PENDING = 'PENDING',
   EXECUTED = 'EXECUTED',
   CANCELLED = 'CANCELLED',
@@ -19,11 +19,11 @@ export interface User {
   referralId: CUID;
 }
 
-export interface MooniOrder {
+export interface UsdlayerOrder {
   id: UUID;
   createdAt: Date;
   executedAt?: Date;
-  status: MooniOrderStatus;
+  status: UsdlayerOrderStatus;
   ethAddress: EthereumAddress;
   txHash: TransactionHash;
   inputAmount: CurrencyAmount;

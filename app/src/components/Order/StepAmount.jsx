@@ -1,5 +1,5 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Box } from '@material-ui/core';
 
@@ -12,7 +12,7 @@ export default function StepAmount({ onComplete }) {
   const dispatch = useDispatch();
   const { tradeRequest } = useSelector(getMultiTradeRequest);
 
-  const onSubmit = (tradeRequest) => {
+  const onSubmit = tradeRequest => {
     dispatch(setTradeRequest(tradeRequest));
     onComplete();
   };
@@ -21,5 +21,5 @@ export default function StepAmount({ onComplete }) {
     <Box width={1} py={1}>
       <RateForm onSubmit={onSubmit} initialTradeRequest={tradeRequest} />
     </Box>
-  )
+  );
 }

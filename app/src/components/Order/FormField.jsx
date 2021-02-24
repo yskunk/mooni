@@ -33,40 +33,29 @@ function Field({ label, required, errorMessage, children }) {
     <FieldContainer>
       <Flex justify="space-between">
         <Box mb={2}>
-          <Label>
-            {label}
-          </Label>
-          <RequiredIcon>
-            {required ? '*' : null}
-          </RequiredIcon>
+          <Label>{label}</Label>
+          <RequiredIcon>{required ? '*' : null}</RequiredIcon>
         </Box>
-        <ErrorMessage>
-          {errorMessage ?? null}
-        </ErrorMessage>
+        <ErrorMessage>{errorMessage ?? null}</ErrorMessage>
       </Flex>
-      <Box>
-        {children}
-      </Box>
+      <Box>{children}</Box>
     </FieldContainer>
   );
 }
 
-const FormField = React.forwardRef(({ label, name, required, children, errors, errorMessages, placeholder }, ref) =>{
-  const errorMessage = get(errors, name) && errorMessages[name];
-  return (
-    <Field label={label} required={required} errorMessage={errorMessage}>
-      {children ?
-        children
-        :
-        <WideInput
-          name={name}
-          ref={ref}
-          placeholder={placeholder}
-          data-private
-        />
-      }
-    </Field>
-  )
-});
+const FormField = React.forwardRef(
+  ({ label, name, required, children, errors, errorMessages, placeholder }, ref) => {
+    const errorMessage = get(errors, name) && errorMessages[name];
+    return (
+      <Field label={label} required={required} errorMessage={errorMessage}>
+        {children ? (
+          children
+        ) : (
+          <WideInput name={name} ref={ref} placeholder={placeholder} data-private />
+        )}
+      </Field>
+    );
+  }
+);
 
 export default FormField;

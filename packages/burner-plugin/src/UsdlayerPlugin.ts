@@ -1,29 +1,29 @@
 import { BurnerPluginContext, Plugin } from '@burner-wallet/types';
-import MooniPage from './ui/MooniPage';
-import MooniElement from './ui/MooniElement';
+import UsdlayerPage from './ui/UsdlayerPage';
+import UsdlayerElement from './ui/UsdlayerElement';
 
-interface MooniConstructor {
+interface UsdlayerConstructor {
   appUrl?: string;
 }
 
-export default class MooniPlugin implements Plugin {
+export default class UsdlayerPlugin implements Plugin {
   private pluginContext?: BurnerPluginContext;
 
   public appUrl?: string;
 
-  constructor(props: MooniConstructor) {
+  constructor(props: UsdlayerConstructor) {
     this.appUrl = props.appUrl;
   }
 
   initializePlugin(pluginContext: BurnerPluginContext) {
     this.pluginContext = pluginContext;
 
-    pluginContext.addPage('/mooni', MooniPage);
-    pluginContext.addButton('apps', 'Cash out', '/mooni', {
+    pluginContext.addPage('/usdlayer', UsdlayerPage);
+    pluginContext.addButton('apps', 'Cash out', '/usdlayer', {
       description: 'Transfer funds to your bank account',
     });
 
-    pluginContext.addElement('home-middle', MooniElement);
+    pluginContext.addElement('home-middle', UsdlayerElement);
   }
 
   getWeb3Provider() {
