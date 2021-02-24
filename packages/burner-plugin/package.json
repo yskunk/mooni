@@ -20,13 +20,18 @@
   },
   "dependencies": {
     "@burner-wallet/assets": "^1.0.0",
-    "@burner-wallet/types": "^1.0.0",
-    "@usdlayer/widget": "^2.1.0",
+    "@burner-wallet/types": "^1.0.9",
     "@types/react": "*",
+    "@types/styled-components": "^5.1.7",
+    "@types/web3": "^1.2.2",
+    "@usdlayer/widget": "^2.1.0",
     "url-parse": "^1.4.7"
   },
   "devDependencies": {
     "typescript": "^3.5.2"
   },
-  "gitHead": "0a4db043fcefe21f6519f68108b17dcd12057af9"
+  "gitHead": "0a4db043fcefe21f6519f68108b17dcd12057af9",
+  "peerDependencies": {
+    "@babel/core": "^7"
+  }
 }
